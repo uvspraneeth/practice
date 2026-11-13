@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BITS Pilani, Hyderabad Campus — PhD Biological Sciences test and interview prep</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F2F6F5; --surface:#FFFFFF; --ink:#13302E; --muted:#4D6663; --rule:#CFDDDA;
+  --eosin:#B8325F; --eosin-soft:#F8E3EA; --haem:#3A3E8C; --haem-soft:#E4E5F5; --neutral-soft:#E3ECEA; --ok:#2F6B4F; --ok-soft:#DDF0E6;
+  --focus:#3A3E8C; color-scheme: light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0F1C1B; --surface:#162625; --ink:#E4EFED; --muted:#9DB5B1; --rule:#2B403E;
+    --eosin:#F07AA0; --eosin-soft:#3A1C27; --haem:#A9ADF2; --haem-soft:#23264A; --neutral-soft:#1F3331; --ok:#7FD1A6; --ok-soft:#183A2A;
+    --focus:#A9ADF2; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0F1C1B; --surface:#162625; --ink:#E4EFED; --muted:#9DB5B1; --rule:#2B403E;
+  --eosin:#F07AA0; --eosin-soft:#3A1C27; --haem:#A9ADF2; --haem-soft:#23264A; --neutral-soft:#1F3331; --ok:#7FD1A6; --ok-soft:#183A2A;
+  --focus:#A9ADF2; color-scheme: dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 3.5rem)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:1.02rem;line-height:1.6}
+a{color:var(--haem);text-underline-offset:2px}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:3px}
+h1,h2,h3,h4{font-family:"Bricolage Grotesque","Atkinson Hyperlegible",system-ui,sans-serif;line-height:1.15;letter-spacing:-0.01em;margin:0}
+h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:700}
+h2{font-size:clamp(1.45rem,3vw,1.9rem);font-weight:700;margin-bottom:.7rem}
+h3{font-size:1.2rem;font-weight:700;margin:1.4rem 0 .5rem}
+h4{font-size:1rem;font-weight:700;margin:0 0 .3rem}
+.wrap{max-width:1100px;margin:0 auto;padding:0 1.25rem}
+.prose{max-width:72ch}
+section{padding:2.4rem 0;border-top:1px solid var(--rule)}
+header{padding:2.6rem 0 2rem}
+.lede{font-size:1.12rem;color:var(--muted);max-width:66ch;margin:.9rem 0 0}
+nav.toc{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--rule);padding:.55rem 0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+nav.toc{top:env(safe-area-inset-top,0px)}
+nav.toc .wrap{display:flex;gap:.4rem 1.1rem;flex-wrap:nowrap;overflow-x:auto;font-size:.93rem;white-space:nowrap}
+nav.toc a{text-decoration:none;color:var(--ink);padding:.15rem 0}
+nav.toc a:hover{color:var(--haem)}
+.countdown{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.6rem}
+.fact{background:var(--surface);border-left:6px solid var(--eosin);border-radius:4px;padding:.9rem 1.1rem;min-width:200px;flex:1}
+.fact .big{font-family:"Bricolage Grotesque",sans-serif;font-size:1.7rem;font-weight:700;color:var(--eosin);line-height:1.1}
+.fact p{margin:.3rem 0 0}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:1.2rem 1.3rem;margin-top:1rem}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1rem 1.6rem}
+.tier{display:inline-block;font-weight:700;font-size:.82rem;padding:.12rem .55rem;border-radius:999px;white-space:nowrap}
+.t1{background:var(--eosin-soft);color:var(--eosin)}
+.t2{background:var(--haem-soft);color:var(--haem)}
+.t3{background:var(--neutral-soft);color:var(--muted)}
+.scroll{overflow-x:auto;background:var(--surface);border:1px solid var(--rule);border-radius:6px;margin-top:1rem}
+table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.45}
+.wide{min-width:980px}
+th,td{text-align:left;vertical-align:top;padding:.7rem .75rem;border-bottom:1px solid var(--rule)}
+thead th{background:var(--surface);font-family:"Bricolage Grotesque",sans-serif;font-size:.95rem;border-bottom:2px solid var(--ink)}
+td ul{margin:0;padding-left:1rem}
+td strong{display:block}
+ul.tight li{margin-bottom:.35rem}
+.note{font-size:.92rem;color:var(--muted)}
+.callout{background:var(--haem-soft);border-radius:6px;padding:1rem 1.2rem;margin-top:1rem}
+.callout.warn{background:var(--eosin-soft)}
+/* MCQs */
+.q{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:1rem 1.1rem;margin-top:.8rem}
+.q p{margin:0 0 .5rem}
+.q ol{margin:.2rem 0 .6rem;padding-left:1.4rem}
+.q ol li{margin-bottom:.15rem}
+details summary{cursor:pointer;font-weight:700;color:var(--haem)}
+details[open] summary{margin-bottom:.4rem}
+.ans{background:var(--ok-soft);color:var(--ink);border-radius:4px;padding:.6rem .8rem}
+.qtag{font-size:.82rem;color:var(--muted)}
+/* plan */
+.plan{list-style:none;margin:1rem 0 0;padding:0}
+.plan li{display:grid;grid-template-columns:auto 7.5rem 1fr;gap:.4rem .9rem;align-items:start;background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:.75rem .9rem;margin-bottom:.5rem}
+.plan input{width:1.2rem;height:1.2rem;margin-top:.2rem;accent-color:var(--ok)}
+.plan .d{font-family:"Bricolage Grotesque",sans-serif;font-weight:700}
+.plan li.done{opacity:.6}
+.plan li.done .what{text-decoration:line-through}
+.plan li.key{border-left:6px solid var(--eosin)}
+.progress{margin-top:.6rem;font-weight:700}
+@media (max-width:560px){.plan li{grid-template-columns:auto 1fr}.plan .what{grid-column:2}}
+button.reset{font:inherit;font-size:.9rem;background:transparent;color:var(--muted);border:1px solid var(--rule);border-radius:4px;padding:.3rem .7rem;cursor:pointer;margin-left:.6rem}
+.sources li{margin-bottom:.35rem;word-break:break-word}
+footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px solid var(--rule)}
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <h1>BITS Hyderabad PhD, Biological Sciences: what to learn, practise and say</h1>
+  <p class="lede">A complete plan for the written test on 27 November 2026 and the interview that may follow, written as if I were the one sitting it with an M.Sc. in Zoology (Cell &amp; Molecular Biology) and two weeks to prepare.</p>
+  <div class="countdown">
+    <div class="fact"><div class="big" id="days">27 Nov</div><p>Written test at the Hyderabad campus (BITS Pilani’s official name for it is “BITS Pilani, Hyderabad Campus”). The interview may be on 27 or 28 Nov.</p></div>
+    <div class="fact"><div class="big">50–100 MCQs</div><p>All subject-specific, 2–3 hours, possible −25% per wrong answer.</p></div>
+    <div class="fact"><div class="big">₹37,000/month</div><p>Institute fellowship if admitted; offers announced 7 Dec 2026.</p></div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Sections">
+  <div class="wrap">
+    <a href="https://claude.ai/artifact/XvhhPNqEu9mwS3EJWmnnAh"><strong>Open the study notebook</strong></a><a href="#exam">Exam and strategy</a><a href="#priority">What matters most</a><a href="#books">Books</a><a href="#papers">Past papers</a><a href="#practice">20 practice MCQs</a><a href="#plan">14-day plan</a><a href="#interview">Interview guide</a><a href="#dayof">Test day</a><a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<section id="exam">
+  <h2>The exam, and how to play it</h2>
+  <div class="grid2">
+    <div class="prose">
+      <h3 style="margin-top:0">What is confirmed</h3>
+      <ul class="tight">
+        <li>The test has 50–100 multiple-choice questions, all subject-specific, in 2–3 hours. Negative marking of 25% per wrong answer may apply.</li>
+        <li>CSIR/UGC NET-JRF, DBT-JRF and similar fellowship holders are exempt from the test.</li>
+        <li>Interview shortlisting may depend on the test score, so the test is the gate.</li>
+        <li>The syllabus (2024–25 official brochure, very likely unchanged) covers ten areas: genetics, molecular techniques, biological chemistry, microbiology, ecology, plant physiology, biophysics, developmental biology, cell biology and animal physiology.</li>
+      </ul>
+      <p class="note">Older BITS papers used a separate 30-question aptitude section. The current notice says “all subject specific”, so aptitude questions are unlikely, but a few calculation questions are still likely within subjects.</p>
+    </div>
+    <div class="prose">
+      <h3 style="margin-top:0">Strategy I would use</h3>
+      <ul class="tight">
+        <li><strong>Pace:</strong> about 1.8 minutes per question on average. First pass: answer everything she is sure of. Second pass: the eliminations. Leave 10 minutes at the end.</li>
+        <li><strong>Guessing:</strong> with four options and a 25% penalty, even a blind guess has a small positive expected score (¼ × 1 − ¾ × 0.25 = +0.06 per question). After eliminating one option it is clearly worth answering. Skip only total blanks, and only if the paper says there are more than four options or a bigger penalty.</li>
+        <li><strong>Read the stem twice</strong> for words like “not”, “except” and “incorrect”. These cost more marks than difficulty does.</li>
+        <li><strong>Numericals are free marks</strong> if practised. Most are one formula (see the list below).</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="priority">
+  <h2>What matters most</h2>
+  <div class="prose">
+    <p>BITS does not publish how many questions come from each subject, so these tiers are my judgement. I ranked by two things: how likely the topic is to produce many questions in a cell and molecular-flavoured department, and how quickly she can convert it into marks. Tier 1 is also what the interview panel will probe.</p>
+  </div>
+  <div class="scroll">
+  <table class="wide">
+    <thead><tr><th>Subject</th><th>Priority</th><th>Must know (learn these first)</th><th>Practise</th><th>Source I would use</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Cell biology</strong></td><td><span class="tier t1">Tier 1</span></td>
+        <td><ul><li>Membrane structure, transport (pumps, channels, carriers; Na⁺/K⁺-ATPase stoichiometry)</li><li>Protein sorting: ER, Golgi, signal sequences, vesicles</li><li>Mitochondria, chloroplasts, cytoskeleton and motors</li><li>Cell cycle, checkpoints, cyclin–CDK, apoptosis</li><li>Signalling: GPCR, RTK, second messengers</li></ul></td>
+        <td>Rapid MCQ sets; draw the cell cycle and one signalling pathway from memory</td><td>Her M.Sc. notes; Alberts (free search on NCBI) or Lodish</td></tr>
+      <tr><td><strong>Molecular biology and gene expression</strong></td><td><span class="tier t1">Tier 1</span></td>
+        <td><ul><li>Replication enzymes in prokaryotes and eukaryotes, telomeres</li><li>Transcription, promoters, RNA processing, splicing</li><li>Translation, genetic code, wobble</li><li>Operons (lac, trp), eukaryotic regulation, chromatin, miRNA/RNAi</li></ul></td>
+        <td>“Which enzyme/factor does X” MCQs; lac operon state tables</td><td>Lodish or Alberts; Lehninger part III</td></tr>
+      <tr><td><strong>Molecular techniques</strong></td><td><span class="tier t1">Tier 1</span></td>
+        <td><ul><li>Restriction enzymes, vectors (plasmid, phage, BAC/YAC), cloning, blue–white screening</li><li>Southern, Northern, Western blots</li><li>PCR, RT-PCR, qPCR, Sanger and next-generation sequencing basics</li><li>Electrophoresis, chromatography, centrifugation, ELISA, flow cytometry</li></ul></td>
+        <td>PCR copy number, restriction frequency, gel interpretation; “what control would you use?”</td><td>Old &amp; Primrose (official list); Wilson &amp; Walker for techniques</td></tr>
+      <tr><td><strong>Genetics</strong></td><td><span class="tier t1">Tier 1</span></td>
+        <td><ul><li>Mendelian ratios, gene interactions (epistasis ratios 9:3:4, 9:7, 15:1, 12:3:1)</li><li>Linkage, recombination, three-point crosses, map distance</li><li>Bacterial and phage genetics: conjugation, transduction, transformation</li><li>Hardy–Weinberg and population genetics basics</li></ul></td>
+        <td>Daily numericals: map distance, interference, Hardy–Weinberg, pedigree</td><td>Her notes; Tamarin or Griffiths</td></tr>
+      <tr><td><strong>Biological chemistry</strong></td><td><span class="tier t1">Tier 1</span></td>
+        <td><ul><li>Amino acids, protein structure, carbohydrates, lipids, nucleotides</li><li>Enzyme kinetics: Km, Vmax, Lineweaver–Burk, inhibition types</li><li>Vitamins and coenzymes (which vitamin → which cofactor)</li><li>Glycolysis, TCA cycle, electron transport chain, ATP yield, regulation; photosynthesis basics</li></ul></td>
+        <td>Km/Vmax graphs, pH/pKa, ATP counting, regulatory enzyme of each pathway</td><td>Lehninger (official list)</td></tr>
+      <tr><td><strong>Developmental biology</strong></td><td><span class="tier t2">Tier 2</span></td>
+        <td><ul><li>Model organisms: Drosophila, Xenopus, zebrafish, chick, mouse, C. elegans, Arabidopsis</li><li>Axis formation (bicoid, nanos), organizer, induction, morphogens</li><li>Gastrulation, germ layers, neural crest, organogenesis, Hox genes</li><li>Germ cells, sex determination</li></ul></td>
+        <td>“Which gene/where expressed” MCQs; Zoology background helps</td><td>Wolpert (official list) or Gilbert 6th ed. (free on NCBI)</td></tr>
+      <tr><td><strong>Animal physiology and immunity</strong></td><td><span class="tier t2">Tier 2</span></td>
+        <td><ul><li>Digestion, respiration (O₂ dissociation curve, Bohr effect), circulation, excretion</li><li>Nerve impulse, synapse, muscle contraction</li><li>Endocrine axes and hormone receptor types</li><li>Innate versus adaptive immunity, MHC, antibodies</li></ul></td>
+        <td>Curve-shift questions; hormone–receptor matching</td><td>Sherwood (official list) or Guyton for quick lookup</td></tr>
+      <tr><td><strong>Microbiology</strong></td><td><span class="tier t2">Tier 2</span></td>
+        <td><ul><li>Bacterial structure, Gram stain, growth curve, sterilisation</li><li>Viruses and phage life cycles</li><li>Host–microbe interaction, major human pathogens, antibiotics and their targets</li></ul></td>
+        <td>Antibiotic–target and pathogen–disease matching</td><td>Tortora (official list); Baron’s Medical Microbiology (free on NCBI)</td></tr>
+      <tr><td><strong>Ecology</strong></td><td><span class="tier t3">Tier 3</span></td>
+        <td><ul><li>Energy flow, 10% rule, food chains, productivity</li><li>Population growth (exponential, logistic, r and K)</li><li>Community interactions, succession, biomes</li></ul></td>
+        <td>Growth equations, Lincoln index</td><td>Odum (official list); her B.Sc. notes</td></tr>
+      <tr><td><strong>Plant physiology</strong></td><td><span class="tier t3">Tier 3</span></td>
+        <td><ul><li>Water potential, transpiration, phloem transport</li><li>Essential elements and deficiency symptoms</li><li>Plant hormones and their effects; C3, C4, CAM</li></ul></td>
+        <td>Hormone–effect matching; ψ = ψs + ψp</td><td>Taiz &amp; Zeiger or Salisbury &amp; Ross</td></tr>
+      <tr><td><strong>Biophysics</strong></td><td><span class="tier t3">Tier 3</span></td>
+        <td><ul><li>Bond types and energies, protein conformation, Ramachandran plot</li><li>Membrane biophysics</li><li>What each method tells you: UV-vis, fluorescence, CD, X-ray crystallography, NMR, mass spectrometry</li></ul></td>
+        <td>Beer–Lambert; “which technique for which question”</td><td>Wilson &amp; Walker; Lehninger chapter 3–4</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>The numericals to drill (one formula each)</h3>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>Topic</th><th>Formula or rule</th></tr></thead>
+      <tbody>
+        <tr><td>PCR yield</td><td>copies = starting copies × 2ⁿ (n = cycles, ideal efficiency)</td></tr>
+        <tr><td>Restriction site frequency</td><td>once every 4ⁿ bp for an n-bp site in random DNA</td></tr>
+        <tr><td>Map distance</td><td>recombinants ÷ total × 100 = cM; interference = 1 − (observed ÷ expected double crossovers)</td></tr>
+        <tr><td>Hardy–Weinberg</td><td>p + q = 1; p² + 2pq + q² = 1</td></tr>
+        <tr><td>Enzyme kinetics</td><td>v = Vmax[S] ÷ (Km + [S]); competitive inhibition raises apparent Km, non-competitive lowers Vmax</td></tr>
+        <tr><td>Buffers</td><td>pH = pKa + log([A⁻] ÷ [HA])</td></tr>
+        <tr><td>Absorbance</td><td>A = εcl (NADH ε₃₄₀ = 6220 M⁻¹ cm⁻¹)</td></tr>
+        <tr><td>Chargaff</td><td>A = T, G = C; A + G = 50% in double-stranded DNA</td></tr>
+        <tr><td>Dilutions</td><td>C₁V₁ = C₂V₂</td></tr>
+        <tr><td>Population growth</td><td>dN/dt = rN (exponential); rN(K − N)/K (logistic)</td></tr>
+        <tr><td>Mark–recapture</td><td>N = (marked first × total second) ÷ marked recaptured</td></tr>
+        <tr><td>Membrane potential</td><td>Nernst: E = (61.5/z) log([out]/[in]) mV at 37 °C</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="books">
+  <h2>Books: what I would actually open</h2>
+  <div class="prose">
+    <p>With two weeks, she should not read any textbook cover to cover. Her own M.Sc. notes are the main text. Books are for checking a concept or filling a gap. The official BITS reference list is in the 2024–25 brochure; my picks below follow it where it is sensible and swap in easier options where it is not.</p>
+  </div>
+  <div class="scroll">
+    <table class="wide">
+      <thead><tr><th>Need</th><th>My pick</th><th>Free online option</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>Biochemistry</td><td>Lehninger, <em>Principles of Biochemistry</em> (official list; any recent edition)</td><td>—</td><td>The standard for kinetics, metabolism and the numericals.</td></tr>
+        <tr><td>Cell and molecular biology</td><td>Lodish, <em>Molecular Cell Biology</em>, or Alberts, <em>Molecular Biology of the Cell</em></td><td><a href="http://www.ncbi.nlm.nih.gov/books/NBK21475/">Lodish 4th ed. on NCBI</a>; <a href="https://www.ncbi.nlm.nih.gov/books/NBK21054/">Alberts 4th ed. on NCBI</a> (search only)</td><td>Old editions are fine for fundamentals. Use NCBI’s search box to jump to a topic.</td></tr>
+        <tr><td>Techniques and biophysics</td><td>Wilson &amp; Walker, <em>Principles and Techniques of Biochemistry and Molecular Biology</em></td><td>—</td><td>Covers both molecular techniques and the instrument-based biophysics in one readable book. Old &amp; Primrose is the official cloning reference.</td></tr>
+        <tr><td>Genetics</td><td>Her notes, plus Tamarin (official) or Griffiths</td><td>Griffiths 7th ed. is on NCBI Bookshelf (search “Introduction to Genetic Analysis”)</td><td>Mostly a numericals subject; practice beats reading.</td></tr>
+        <tr><td>Developmental biology</td><td>Wolpert, <em>Principles of Development</em> (official)</td><td><a href="https://www.ncbi.nlm.nih.gov/books/NBK9983/">Gilbert 6th ed. on NCBI</a></td><td>Gilbert’s chapters on Drosophila axis and amphibian induction are excellent and free.</td></tr>
+        <tr><td>Animal physiology</td><td>Sherwood (official) or Guyton</td><td>—</td><td>She already knows much of this from Zoology; revise curves and hormones.</td></tr>
+        <tr><td>Microbiology</td><td>Tortora, <em>Microbiology: An Introduction</em> (official)</td><td><a href="https://www.ncbi.nlm.nih.gov/books/NBK7627/">Baron, Medical Microbiology, on NCBI</a></td><td>Short chapters on bacterial structure, genetics and pathogens.</td></tr>
+        <tr><td>Ecology</td><td>Odum, <em>Fundamentals of Ecology</em> (official)</td><td>—</td><td>Read summaries of energy flow and population chapters only.</td></tr>
+        <tr><td>Plant physiology</td><td>Taiz &amp; Zeiger or Salisbury &amp; Ross (official)</td><td>—</td><td>Hormones, water relations and photosynthesis types only.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="papers">
+  <h2>Previous questions: what exists and what to use instead</h2>
+  <div class="callout warn prose">
+    <p style="margin:0"><strong>BITS does not publish its PhD entrance papers,</strong> and I found no genuine past BITS PhD Biological Sciences paper online. Anything sold as one should be treated with suspicion. The useful substitute is official papers from similar PhD and fellowship exams.</p>
+  </div>
+  <div class="scroll">
+    <table class="wide">
+      <thead><tr><th>Source</th><th>Why it is useful</th><th>How to use it</th></tr></thead>
+      <tbody>
+        <tr><td><strong>SCTIMST Trivandrum PhD Biological Sciences entrance papers</strong> (official, with answers): <a href="https://www.sctimst.ac.in/Academic%20and%20Research/Academic/previous%20year%20questions/resources/PHD_Biological_Sciences_2021_01.pdf">2020 paper</a>, <a href="https://sctimst.ac.in/academic%20and%20research/Academic/previous%20year%20questions/resources/ENTRANCE%20EXAMINATION%20FOR%20PHD%20-%20BIOLOGICAL%20SCIENCE%20STREAM.pdf">2016 paper</a></td><td>Same format (100-mark, 2-hour MCQ PhD test) and a similar level.</td><td>Use one as a full mock on day 8.</td></tr>
+        <tr><td><strong>CSIR-NET Life Sciences, Part B</strong>: <a href="https://prepp.in/csir-net-life-science-exam/previous-year-question-paper">papers with official keys (2015–2025)</a>; <a href="https://easybiologyclass.com/csir-jrf-net-life-sciences-previous-year-question-papers/">older papers with explanations</a></td><td>Part B questions are one-concept MCQs across exactly these subjects.</td><td>30 Part B questions a day on that day’s subject. Skip Part C; it is harder than needed.</td></tr>
+        <tr><td><strong>University PhD entrance papers</strong> (JNU Life Sciences, Kerala University Zoology, Biotechnology, Biochemistry): <a href="https://easybiologyclass.com/ph-d-research-entrance-exams-life-science-previous-year-question-papers-download-pdf/">collection</a></td><td>Show the range of what PhD panels ask.</td><td>Use the JNU papers as a second full mock.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="practice">
+  <h2>20 practice MCQs in the BITS style</h2>
+  <div class="prose">
+    <p>I wrote these to match the syllabus and the level. They are not BITS questions. Answer each before opening the explanation; aim for under 30 minutes for all twenty.</p>
+  </div>
+
+  <div class="q"><span class="qtag">Molecular biology</span><p>1. In E. coli, which enzyme removes RNA primers during replication?</p><ol type="A"><li>DNA polymerase III</li><li>DNA polymerase I</li><li>DNA ligase</li><li>Primase</li></ol><details><summary>Answer</summary><div class="ans">B. Polymerase I has 5′→3′ exonuclease activity that removes primers and fills the gap; ligase then seals the nick.</div></details></div>
+
+  <div class="q"><span class="qtag">Genetics</span><p>2. In a population in Hardy–Weinberg equilibrium, 16% show a recessive phenotype. What fraction are heterozygous?</p><ol type="A"><li>0.16</li><li>0.24</li><li>0.36</li><li>0.48</li></ol><details><summary>Answer</summary><div class="ans">D. q² = 0.16, so q = 0.4 and p = 0.6; 2pq = 0.48.</div></details></div>
+
+  <div class="q"><span class="qtag">Biochemistry</span><p>3. A competitive inhibitor changes kinetic parameters how?</p><ol type="A"><li>Km increases, Vmax unchanged</li><li>Km unchanged, Vmax decreases</li><li>Both decrease</li><li>Km decreases, Vmax increases</li></ol><details><summary>Answer</summary><div class="ans">A. It competes for the active site, so high substrate overcomes it; on a Lineweaver–Burk plot the lines meet on the y-axis.</div></details></div>
+
+  <div class="q"><span class="qtag">Genetics</span><p>4. A test cross gives 182 parental and 18 recombinant progeny. The map distance between the genes is:</p><ol type="A"><li>18 cM</li><li>9 cM</li><li>4.5 cM</li><li>0.9 cM</li></ol><details><summary>Answer</summary><div class="ans">B. 18 ÷ 200 × 100 = 9 cM.</div></details></div>
+
+  <div class="q"><span class="qtag">Techniques</span><p>5. Starting with 10 template copies, ideal PCR for 20 cycles gives roughly:</p><ol type="A"><li>200 copies</li><li>2 × 10⁴ copies</li><li>1 × 10⁷ copies</li><li>1 × 10¹⁰ copies</li></ol><details><summary>Answer</summary><div class="ans">C. 10 × 2²⁰ ≈ 10 × 1.05 × 10⁶ ≈ 1 × 10⁷.</div></details></div>
+
+  <div class="q"><span class="qtag">Techniques</span><p>6. A 6-bp restriction site is expected to occur in random DNA about once every:</p><ol type="A"><li>256 bp</li><li>1,024 bp</li><li>4,096 bp</li><li>65,536 bp</li></ol><details><summary>Answer</summary><div class="ans">C. 4⁶ = 4,096 bp.</div></details></div>
+
+  <div class="q"><span class="qtag">Gene regulation</span><p>7. The lac operon is expressed at its highest level when:</p><ol type="A"><li>Glucose present, lactose absent</li><li>Glucose present, lactose present</li><li>Glucose absent, lactose present</li><li>Glucose absent, lactose absent</li></ol><details><summary>Answer</summary><div class="ans">C. Lactose (allolactose) removes the repressor, and low glucose raises cAMP so CAP–cAMP activates transcription.</div></details></div>
+
+  <div class="q"><span class="qtag">Cell biology</span><p>8. Phosphorylation of Rb, releasing E2F at the G1/S transition, is initiated mainly by:</p><ol type="A"><li>Cyclin B–CDK1</li><li>Cyclin D–CDK4/6</li><li>Cyclin A–CDK2 only</li><li>p53</li></ol><details><summary>Answer</summary><div class="ans">B. Cyclin D–CDK4/6 begins Rb phosphorylation; cyclin E–CDK2 completes it. Cyclin B–CDK1 drives mitosis.</div></details></div>
+
+  <div class="q"><span class="qtag">Cell biology</span><p>9. One cycle of the Na⁺/K⁺-ATPase moves:</p><ol type="A"><li>2 Na⁺ out, 3 K⁺ in</li><li>3 Na⁺ out, 2 K⁺ in</li><li>3 Na⁺ in, 2 K⁺ out</li><li>1 Na⁺ out, 1 K⁺ in</li></ol><details><summary>Answer</summary><div class="ans">B. 3 Na⁺ out and 2 K⁺ in per ATP, making the pump electrogenic.</div></details></div>
+
+  <div class="q"><span class="qtag">Developmental biology</span><p>10. In the Drosophila egg, bicoid mRNA is localised at the:</p><ol type="A"><li>Posterior pole</li><li>Anterior pole</li><li>Dorsal side</li><li>Uniformly</li></ol><details><summary>Answer</summary><div class="ans">B. Anterior; Bicoid protein forms an anterior-to-posterior gradient. Nanos mRNA is posterior.</div></details></div>
+
+  <div class="q"><span class="qtag">Developmental biology</span><p>11. Spemann’s organizer in amphibian embryos is located in the:</p><ol type="A"><li>Animal cap</li><li>Ventral marginal zone</li><li>Dorsal lip of the blastopore</li><li>Vegetal pole</li></ol><details><summary>Answer</summary><div class="ans">C. Transplanting the dorsal lip induces a secondary axis.</div></details></div>
+
+  <div class="q"><span class="qtag">Animal physiology</span><p>12. Which shifts the oxygen–haemoglobin dissociation curve to the right?</p><ol type="A"><li>Lower temperature</li><li>Higher pH</li><li>Higher 2,3-BPG</li><li>Lower CO₂</li></ol><details><summary>Answer</summary><div class="ans">C. Raised 2,3-BPG, CO₂, temperature or acidity lower haemoglobin’s O₂ affinity (Bohr effect), favouring unloading in tissues.</div></details></div>
+
+  <div class="q"><span class="qtag">Immunity</span><p>13. Peptides presented on MHC class I are recognised by:</p><ol type="A"><li>CD4⁺ T cells</li><li>CD8⁺ T cells</li><li>B cells</li><li>Neutrophils</li></ol><details><summary>Answer</summary><div class="ans">B. CD8⁺ cytotoxic T cells; MHC class II presents to CD4⁺ T cells.</div></details></div>
+
+  <div class="q"><span class="qtag">Microbiology</span><p>14. Lipopolysaccharide is a component of the:</p><ol type="A"><li>Gram-positive cell wall</li><li>Gram-negative outer membrane</li><li>Bacterial cytoplasmic membrane</li><li>Fungal cell wall</li></ol><details><summary>Answer</summary><div class="ans">B. LPS (with lipid A, the endotoxin) sits in the outer leaflet of the Gram-negative outer membrane.</div></details></div>
+
+  <div class="q"><span class="qtag">Ecology</span><p>15. On average, the fraction of energy passed from one trophic level to the next is about:</p><ol type="A"><li>1%</li><li>10%</li><li>50%</li><li>90%</li></ol><details><summary>Answer</summary><div class="ans">B. Lindeman’s 10% rule; the rest is lost mostly as respiration and heat.</div></details></div>
+
+  <div class="q"><span class="qtag">Plant physiology</span><p>16. In C4 plants, the first CO₂ acceptor in mesophyll cells is:</p><ol type="A"><li>Ribulose-1,5-bisphosphate</li><li>Phosphoenolpyruvate</li><li>Oxaloacetate</li><li>3-Phosphoglycerate</li></ol><details><summary>Answer</summary><div class="ans">B. PEP carboxylase fixes CO₂ onto PEP to give oxaloacetate, the first product.</div></details></div>
+
+  <div class="q"><span class="qtag">Biophysics</span><p>17. The quickest common method to estimate a protein’s α-helix and β-sheet content in solution is:</p><ol type="A"><li>X-ray crystallography</li><li>Circular dichroism</li><li>Mass spectrometry</li><li>SDS-PAGE</li></ol><details><summary>Answer</summary><div class="ans">B. CD in the far-UV gives characteristic spectra for helix and sheet. X-ray gives full structure but needs crystals.</div></details></div>
+
+  <div class="q"><span class="qtag">Biochemistry</span><p>18. An acetate buffer (pKa 4.76) is at pH 5.76. The ratio [acetate]/[acetic acid] is:</p><ol type="A"><li>0.1</li><li>1</li><li>10</li><li>100</li></ol><details><summary>Answer</summary><div class="ans">C. pH − pKa = 1, so the ratio is 10¹ = 10.</div></details></div>
+
+  <div class="q"><span class="qtag">Techniques</span><p>19. An NADH solution reads A₃₄₀ = 0.311 in a 1 cm cuvette (ε = 6220 M⁻¹ cm⁻¹). Its concentration is:</p><ol type="A"><li>5 µM</li><li>50 µM</li><li>500 µM</li><li>5 mM</li></ol><details><summary>Answer</summary><div class="ans">B. c = A ÷ εl = 0.311 ÷ 6220 = 5 × 10⁻⁵ M = 50 µM.</div></details></div>
+
+  <div class="q"><span class="qtag">Molecular biology</span><p>20. Double-stranded DNA contains 30% adenine. Its guanine content is:</p><ol type="A"><li>20%</li><li>30%</li><li>40%</li><li>70%</li></ol><details><summary>Answer</summary><div class="ans">A. A = T = 30%, so G + C = 40% and G = 20%.</div></details></div>
+</section>
+
+<section id="plan">
+  <h2>14-day plan</h2>
+  <div class="prose">
+    <p>Each study day: two revision blocks on the subject (about 3 hours), then 30 timed CSIR-NET Part B questions on it, then 15 minutes adding every mistake to an error log. Tick days off as she goes; ticks are saved in this browser.</p>
+  </div>
+  <ul class="plan" id="planlist">
+    <li data-k="d1"><input type="checkbox" aria-label="Done: 13 Nov"><span class="d">Fri 13 Nov</span><span class="what">Diagnostic: 50 mixed MCQs, timed. Rank subjects by score. Gather notes and set up the error log.</span></li>
+    <li data-k="d2"><input type="checkbox" aria-label="Done: 14 Nov"><span class="d">Sat 14 Nov</span><span class="what">Cell biology: membranes and transport, organelles, protein sorting, cytoskeleton, cell cycle, apoptosis, signalling.</span></li>
+    <li data-k="d3"><input type="checkbox" aria-label="Done: 15 Nov"><span class="d">Sun 15 Nov</span><span class="what">Molecular biology: replication, transcription, RNA processing, translation, operons, eukaryotic regulation, RNAi.</span></li>
+    <li data-k="d4" class="key"><input type="checkbox" aria-label="Done: 16 Nov"><span class="d">Mon 16 Nov</span><span class="what">Molecular techniques: restriction enzymes, vectors, cloning, blots, PCR and qPCR, sequencing, chromatography, ELISA. Also submit the inStem Project Associate application, which closes 17 Nov.</span></li>
+    <li data-k="d5"><input type="checkbox" aria-label="Done: 17 Nov"><span class="d">Tue 17 Nov</span><span class="what">Genetics: ratios and epistasis, linkage and three-point crosses, bacterial and phage genetics, Hardy–Weinberg. Heavy on numericals.</span></li>
+    <li data-k="d6"><input type="checkbox" aria-label="Done: 18 Nov"><span class="d">Wed 18 Nov</span><span class="what">Biochemistry I: biomolecule structure, enzyme kinetics and inhibition, vitamins and coenzymes, buffers.</span></li>
+    <li data-k="d7"><input type="checkbox" aria-label="Done: 19 Nov"><span class="d">Thu 19 Nov</span><span class="what">Biochemistry II: glycolysis, TCA, ETC and ATP yield, key regulatory enzymes, lipid and amino acid metabolism outlines, photosynthesis.</span></li>
+    <li data-k="d8" class="key"><input type="checkbox" aria-label="Done: 20 Nov"><span class="d">Fri 20 Nov</span><span class="what">Full mock 1: SCTIMST PhD paper under exam conditions (2 hours). Then review every wrong and guessed answer.</span></li>
+    <li data-k="d9"><input type="checkbox" aria-label="Done: 21 Nov"><span class="d">Sat 21 Nov</span><span class="what">Developmental biology. Start interview prep: write the 2-minute dissertation summary.</span></li>
+    <li data-k="d10"><input type="checkbox" aria-label="Done: 22 Nov"><span class="d">Sun 22 Nov</span><span class="what">Animal physiology and immunity. Interview prep: read two BITS Hyderabad faculty pages and note one question for each.</span></li>
+    <li data-k="d11"><input type="checkbox" aria-label="Done: 23 Nov"><span class="d">Mon 23 Nov</span><span class="what">Microbiology and ecology. Interview prep: technique explanations (how it works, controls, how it fails).</span></li>
+    <li data-k="d12"><input type="checkbox" aria-label="Done: 24 Nov"><span class="d">Tue 24 Nov</span><span class="what">Plant physiology and biophysics. Interview prep: practise the “design an experiment” framework aloud.</span></li>
+    <li data-k="d13" class="key"><input type="checkbox" aria-label="Done: 25 Nov"><span class="d">Wed 25 Nov</span><span class="what">Full mock 2 (JNU paper or a CSIR-NET Part B set of 75). Re-read the whole error log. One full mock interview with a friend or family member.</span></li>
+    <li data-k="d14"><input type="checkbox" aria-label="Done: 26 Nov"><span class="d">Thu 26 Nov</span><span class="what">Light revision of the formula table and pathway sheet only. Pack documents. Sleep by 10 pm.</span></li>
+  </ul>
+  <p class="progress" id="progress" aria-live="polite">0 of 14 days done<button class="reset" type="button" id="reset">Clear ticks</button></p>
+</section>
+
+<section id="interview">
+  <h2>Interview guide</h2>
+  <div class="prose">
+    <p>BITS does not publish an interview format, so this is based on how department PhD panels in India commonly run. Expect a panel of several faculty from the department, roughly 15–30 minutes, starting easy and then probing whatever she says. The panel is testing three things: does she understand the basics properly, does she think like a scientist, and does she genuinely want this.</p>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h4>1. Her own story (prepare word for word)</h4>
+      <ul class="tight">
+        <li><strong>Introduce yourself</strong> in 60–90 seconds: degree, specialization, dissertation in one line, why research.</li>
+        <li><strong>Dissertation in five beats:</strong> the question, why it mattered, what she did, what she found, what she would do next. Then expect “why that method?”, “what were your controls?” and “what went wrong?”.</li>
+        <li><strong>Why a PhD now,</strong> and why BITS Hyderabad (name the faculty and research she read about).</li>
+        <li><strong>Which area,</strong> and what she will do if her first-choice lab is not available. Answer with flexibility, not desperation.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>2. Fundamentals they are likely to probe</h4>
+      <ul class="tight">
+        <li>Central dogma and its exceptions (reverse transcription, ribozymes, prions)</li>
+        <li>How PCR works; no band or multiple bands, what are the likely causes?</li>
+        <li>Western blot steps and loading controls</li>
+        <li>Apoptosis versus necrosis; cell-cycle checkpoints</li>
+        <li>RNAi versus CRISPR knockout: when would you choose each?</li>
+        <li>Positive versus negative controls, with an example from her own work</li>
+        <li>One signalling pathway end to end (for example MAPK or insulin)</li>
+        <li>Innate versus adaptive immunity, if immunology is her stated interest</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>3. The “design an experiment” question</h4>
+      <p>A common prompt: “How would you test whether gene X is needed for cell migration?” Answer in this order:</p>
+      <ol class="tight">
+        <li>Hypothesis in one sentence.</li>
+        <li>Model system and why (a cell line or an organism).</li>
+        <li>Perturbation: knockdown or knockout, plus a rescue to prove specificity.</li>
+        <li>Readout: wound-healing or transwell assay, quantified.</li>
+        <li>Controls: non-targeting siRNA or guide, untreated cells.</li>
+        <li>Statistics: replicates and the test she would use.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h4>4. How to handle hard moments</h4>
+      <ul class="tight">
+        <li><strong>Don’t know?</strong> Say so plainly, then reason aloud: “I’m not sure, but I would expect … because …”. Panels reward reasoning over bluffing.</li>
+        <li><strong>Never list a technique she has not done herself</strong> as hands-on experience; “I understand the principle” is fine.</li>
+        <li><strong>Pause before answering.</strong> Five seconds of thinking looks confident, not slow.</li>
+        <li><strong>Keep answers to about a minute,</strong> then stop and let them steer.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Know the department before she walks in</h3>
+  <div class="prose">
+    <p>Pick two or three Biological Sciences faculty at the Hyderabad campus whose work fits her interests, read their profile page and one recent abstract each, and prepare one sensible question for each. Three verified examples to start from:</p>
+    <ul class="tight">
+      <li><a href="https://www.bits-pilani.ac.in/hyderabad/kirtimaan-syal/">Dr. Kirtimaan Syal</a>, Associate Professor, who holds an ANRF-funded project.</li>
+      <li><a href="https://universe.bits-pilani.ac.in/Hyderabad/guptanishith/Profile">Prof. Nishith Gupta</a>, whose group’s details are at <a href="https://www.ipearl.org">ipearl.org</a>.</li>
+      <li>Dr. Ruchi Jain Dey, who leads an <a href="https://www.bits-pilani.ac.in/wp-content/uploads/Advertisement-for-ICMR-funded-project.pdf">ICMR project on host-directed therapies for TB</a>.</li>
+    </ul>
+    <p>The full department list is reachable from the <a href="https://www.bits-pilani.ac.in/academics/doctoral-programmes/phd-biological-sciences/">BITS Biological Sciences PhD page</a>.</p>
+  </div>
+
+  <h3>Good questions for her to ask at the end</h3>
+  <ul class="tight prose">
+    <li>How and when are PhD students matched with supervisors in the department?</li>
+    <li>Which coursework would someone from a Zoology background usually take in the first two semesters?</li>
+    <li>Do new students get access to shared facilities such as confocal microscopy or flow cytometry early on?</li>
+  </ul>
+</section>
+
+<section id="dayof">
+  <h2>Test day checklist</h2>
+  <div class="grid2">
+    <div class="prose">
+      <ul class="tight">
+        <li>Shortlist email or call letter, printed and on the phone</li>
+        <li>Original government photo ID</li>
+        <li>Mark sheets and certificates (originals and copies) if the shortlist email asks for them; check the list it gives</li>
+        <li>A one-page CV printed, in case the panel wants it</li>
+        <li>Pens, a watch if allowed, water</li>
+      </ul>
+    </div>
+    <div class="prose">
+      <ul class="tight">
+        <li>Arrive at least 45 minutes early; the Hyderabad campus is at Jawahar Nagar, Kapra Mandal, Medchal district</li>
+        <li>Plan to stay for 28 Nov in case the interview is the next day</li>
+        <li>Between the test and interview, re-read only the dissertation summary and faculty notes</li>
+        <li>Check the official admissions page for any change of date or venue</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="sources">
+  <h2>Sources</h2>
+  <ul class="sources prose">
+    <li>2nd semester 2026–27 PhD notice (dates, test format, exemptions), as republished: <a href="https://www.collegeadmission.in/notice/university/bits-pilani-admission-to-the-phd-programme-2nd-semester-2026-27-19771">collegeadmission.in</a></li>
+    <li>Official admissions page and fellowship amounts: <a href="https://admissions.bits-pilani.ac.in/PhD/phd.html">admissions.bits-pilani.ac.in/PhD/phd.html</a></li>
+    <li>Biological Sciences syllabus and reference books (official 2024–25 brochure): <a href="https://www.bits-pilani.ac.in/wp-content/uploads/PhD_Brochure_I_Sem_2024_25.pdf">PhD_Brochure_I_Sem_2024_25.pdf</a></li>
+    <li>Free textbooks: NCBI Bookshelf links in the Books section</li>
+    <li>Practice papers: SCTIMST, CSIR-NET and university PhD papers linked in the Past papers section</li>
+  </ul>
+</section>
+
+</main>
+
+<footer><div class="wrap">Prepared 13 November 2026. Tier rankings, practice questions and interview expectations are my own judgement, not official BITS guidance. Confirm the date, venue and documents on the official admissions page.</div></footer>
+
+<script>
+(function(){
+  // countdown to test
+  try{
+    var test = new Date(2026,10,27);
+    var now = new Date(); now.setHours(0,0,0,0);
+    var d = Math.round((test - now)/86400000);
+    var el = document.getElementById('days');
+    if (d > 1) el.textContent = d + ' days';
+    else if (d === 1) el.textContent = 'Tomorrow';
+    else if (d === 0) el.textContent = 'Today';
+    else el.textContent = '27 Nov';
+  }catch(e){}
+
+  // plan ticks
+  var KEY = 'bits-prep-plan-v1';
+  var items = Array.prototype.slice.call(document.querySelectorAll('#planlist li'));
+  var state = {};
+  try{ state = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; }catch(e){ state = {}; }
+  function render(){
+    var n = 0;
+    items.forEach(function(li){
+      var on = !!state[li.dataset.k];
+      li.querySelector('input').checked = on;
+      li.classList.toggle('done', on);
+      if (on) n++;
+    });
+    var p = document.getElementById('progress');
+    p.firstChild.nodeValue = n + ' of ' + items.length + ' days done';
+  }
+  items.forEach(function(li){
+    li.querySelector('input').addEventListener('change', function(e){
+      state[li.dataset.k] = e.target.checked;
+      try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(err){}
+      render();
+    });
+  });
+  document.getElementById('reset').addEventListener('click', function(){
+    state = {};
+    try{ localStorage.removeItem(KEY); }catch(err){}
+    render();
+  });
+  render();
+})();
+</script>
+</body>
+</html>

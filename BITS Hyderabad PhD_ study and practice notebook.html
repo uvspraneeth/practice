@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BITS Hyderabad PhD, Biological Sciences — study and practice notebook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F2F6F5; --surface:#FFFFFF; --ink:#13302E; --muted:#4D6663; --rule:#CFDDDA;
+  --eosin:#B8325F; --eosin-soft:#F8E3EA; --haem:#3A3E8C; --haem-soft:#E4E5F5; --neutral-soft:#E3ECEA;
+  --ok:#2F6B4F; --ok-soft:#DDF0E6; --bad:#A8322D; --bad-soft:#F9E1DF;
+  --focus:#3A3E8C; color-scheme: light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0F1C1B; --surface:#162625; --ink:#E4EFED; --muted:#9DB5B1; --rule:#2B403E;
+    --eosin:#F07AA0; --eosin-soft:#3A1C27; --haem:#A9ADF2; --haem-soft:#23264A; --neutral-soft:#1F3331;
+    --ok:#7FD1A6; --ok-soft:#183A2A; --bad:#F2928C; --bad-soft:#3D1F1D;
+    --focus:#A9ADF2; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0F1C1B; --surface:#162625; --ink:#E4EFED; --muted:#9DB5B1; --rule:#2B403E;
+  --eosin:#F07AA0; --eosin-soft:#3A1C27; --haem:#A9ADF2; --haem-soft:#23264A; --neutral-soft:#1F3331;
+  --ok:#7FD1A6; --ok-soft:#183A2A; --bad:#F2928C; --bad-soft:#3D1F1D;
+  --focus:#A9ADF2; color-scheme: dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 3.6rem)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:1.02rem;line-height:1.6}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+a{color:var(--haem);text-underline-offset:2px}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:3px}
+h1,h2,h3,h4{font-family:"Bricolage Grotesque","Atkinson Hyperlegible",system-ui,sans-serif;line-height:1.15;letter-spacing:-0.01em;margin:0}
+h1{font-size:clamp(2rem,5vw,3.1rem);font-weight:700}
+h2{font-size:clamp(1.5rem,3.2vw,2rem);font-weight:700}
+h3{font-size:1.18rem;font-weight:700;margin:1.5rem 0 .45rem}
+h4{font-size:1rem;font-weight:700;margin:1rem 0 .3rem}
+.wrap{max-width:1040px;margin:0 auto;padding:0 1.25rem}
+.prose{max-width:74ch}
+header{padding:2.6rem 0 1.6rem}
+.lede{font-size:1.1rem;color:var(--muted);max-width:68ch;margin:.8rem 0 0}
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--rule);padding:.5rem 0}
+nav.toc .wrap{display:flex;gap:.3rem 1rem;overflow-x:auto;white-space:nowrap;font-size:.92rem}
+nav.toc a{text-decoration:none;color:var(--ink)}
+nav.toc a:hover{color:var(--haem)}
+section.subject{padding:2.4rem 0;border-top:1px solid var(--rule)}
+.subhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem 1rem;margin-bottom:.6rem}
+.tier{display:inline-block;font-weight:700;font-size:.82rem;padding:.12rem .55rem;border-radius:999px;white-space:nowrap}
+.t1{background:var(--eosin-soft);color:var(--eosin)} .t2{background:var(--haem-soft);color:var(--haem)} .t3{background:var(--neutral-soft);color:var(--muted)}
+.score{font-size:.92rem;color:var(--muted)}
+.notes{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:.4rem 1.3rem 1.2rem}
+.notes ul{padding-left:1.15rem;margin:.2rem 0 .6rem}
+.notes li{margin-bottom:.3rem;max-width:78ch}
+.notes p{max-width:78ch;margin:.4rem 0}
+.trap{background:var(--eosin-soft);border-radius:6px;padding:.7rem 1rem;margin-top:1rem}
+.trap h4{margin-top:0;color:var(--eosin)}
+.trap ul{margin-bottom:0}
+.scroll{overflow-x:auto;margin:.5rem 0 .8rem}
+table{border-collapse:collapse;width:100%;font-size:.9rem;line-height:1.45}
+th,td{text-align:left;vertical-align:top;padding:.45rem .6rem;border-bottom:1px solid var(--rule)}
+thead th{font-family:"Bricolage Grotesque",sans-serif;border-bottom:2px solid var(--ink)}
+.quizhead{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 .3rem}
+.q{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:.9rem 1rem;margin-top:.7rem}
+.q .stem{margin:0 0 .55rem;font-weight:700}
+.q .num{color:var(--muted);font-weight:400;margin-right:.3rem}
+.opts{display:grid;gap:.4rem}
+button.opt{font:inherit;text-align:left;background:var(--paper);color:var(--ink);border:1px solid var(--rule);border-radius:5px;padding:.5rem .7rem;cursor:pointer;line-height:1.4}
+button.opt:hover:not(:disabled){border-color:var(--haem)}
+button.opt:disabled{cursor:default}
+button.opt.right{background:var(--ok-soft);border-color:var(--ok)}
+button.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.expl{margin-top:.6rem;padding:.55rem .8rem;border-radius:5px;background:var(--haem-soft);font-size:.95rem}
+.expl b{color:var(--haem)}
+.btn{font:inherit;font-weight:700;font-size:.92rem;background:var(--ink);color:var(--paper);border:0;border-radius:5px;padding:.5rem .95rem;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--rule);font-weight:400}
+.toolbar{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+#mock .timer{font-family:"Bricolage Grotesque",sans-serif;font-size:1.6rem;font-weight:700;color:var(--eosin)}
+.mockq .opts label{display:flex;gap:.55rem;align-items:flex-start;background:var(--paper);border:1px solid var(--rule);border-radius:5px;padding:.45rem .7rem;cursor:pointer}
+.mockq .opts input{margin-top:.3rem;accent-color:var(--haem)}
+.result{background:var(--surface);border:2px solid var(--haem);border-radius:6px;padding:1rem 1.2rem;margin-top:1rem}
+.note{font-size:.92rem;color:var(--muted)}
+.intro{padding:2rem 0;border-top:1px solid var(--rule)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem 1.6rem}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:1rem 1.2rem}
+footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px solid var(--rule)}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="wrap">
+  <h1>The notebook: everything to learn and practise for the BITS PhD test</h1>
+  <p class="lede">Exam-level notes for all ten syllabus subjects plus biostatistics. Each subject has the traps examiners use and a bank of practice questions with explanations. Answer inline, review the mistake log, then sit the timed mock with negative marking.</p>
+  <div class="grid2" style="margin-top:1.4rem">
+    <div class="card"><h4 style="margin-top:0">How to use this in 14 days</h4><p style="margin:0">Each day, read that day’s subject notes once carefully (90 min), then do its questions without looking back. Every wrong answer goes to the mistake log automatically; re-read those notes before bed. On days 8 and 13, sit the mock.</p></div>
+    <div class="card"><h4 style="margin-top:0">Progress</h4><p style="margin:0" id="overall">Loading…</p><div class="toolbar" style="margin-top:.6rem"><a class="btn" href="#mistakes" style="text-decoration:none">Mistake log</a><a class="btn ghost" href="#mock" style="text-decoration:none">Timed mock</a><button class="btn ghost" type="button" id="resetall">Clear all answers</button></div></div>
+  </div>
+</header>
+<nav class="toc" aria-label="Subjects"><div class="wrap">
+  <a href="#cell">Cell biology</a><a href="#mol">Molecular biology</a><a href="#tech">Techniques</a><a href="#gen">Genetics</a><a href="#bio">Biochemistry</a><a href="#dev">Development</a><a href="#phys">Physiology &amp; immunity</a><a href="#micro">Microbiology</a><a href="#eco">Ecology</a><a href="#plant">Plant physiology</a><a href="#bphys">Biophysics</a><a href="#stats">Biostatistics</a><a href="#mistakes">Mistake log</a><a href="#mock">Mock test</a>
+</div></nav>
+<main class="wrap">
+<section class="subject" id="cell">
+  <div class="subhead"><h2>Cell biology</h2><span class="tier t1">Tier 1</span><span class="score" data-score="cell"></span></div>
+  <div class="notes">
+    <h3>Membranes and transport</h3>
+    <ul>
+      <li>Fluid mosaic model (Singer &amp; Nicolson, 1972). Cholesterol buffers fluidity: it stiffens at high temperature and prevents packing at low temperature.</li>
+      <li>The bilayer is asymmetric: phosphatidylserine (PS) sits on the inner leaflet. PS on the outer leaflet is an early apoptosis signal, detected by Annexin V.</li>
+      <li>Lateral diffusion is fast; flip-flop between leaflets is slow and needs flippases or scramblases. Frye &amp; Edidin’s mouse–human heterokaryon experiment showed lateral diffusion.</li>
+      <li>Simple diffusion: small nonpolar molecules (O₂, CO₂, steroids). Facilitated diffusion (GLUT carriers, channels) is saturable and needs no energy.</li>
+      <li>P-type ATPases phosphorylate themselves: Na⁺/K⁺-ATPase (3 Na⁺ out, 2 K⁺ in, per ATP; inhibited by ouabain and digoxin), SERCA, gastric H⁺/K⁺-ATPase. V-type ATPases acidify lysosomes and vacuoles. F-type is ATP synthase. ABC transporters include MDR1 (drug efflux) and CFTR (an ABC-family chloride channel).</li>
+      <li>Secondary active transport uses an ion gradient: SGLT1 (2 Na⁺ : 1 glucose symport, intestine and kidney); Na⁺/Ca²⁺ exchanger (3 Na⁺ in : 1 Ca²⁺ out, antiport). Aquaporins carry water (Agre).</li>
+    </ul>
+    <h3>Organelles and protein sorting</h3>
+    <ul>
+      <li>Secretory pathway: signal peptide → SRP binds and pauses translation → SRP receptor → Sec61 translocon in the rough ER. N-linked glycosylation starts in the ER on Asn in Asn-X-Ser/Thr, with the oligosaccharide pre-built on dolichol phosphate. O-linked glycosylation (Ser/Thr) happens in the Golgi.</li>
+      <li>Sorting signals: KDEL (soluble ER proteins retrieved from Golgi); KKXX (ER membrane proteins); nuclear localisation signal PKKKRKV (SV40 T antigen), imported through nuclear pores with importins and Ran-GTP; mitochondrial matrix proteins carry an amphipathic N-terminal presequence (TOM and TIM complexes); peroxisomal matrix proteins end in SKL (PTS1); lysosomal enzymes get mannose-6-phosphate in the cis-Golgi (missing in I-cell disease, so the enzymes are secreted).</li>
+      <li>Vesicle coats: COPII (ER → Golgi), COPI (Golgi → ER and between cisternae), clathrin with adaptor proteins (plasma membrane endocytosis and trans-Golgi → endosome; dynamin pinches off the vesicle). Rab GTPases target vesicles; v-SNARE and t-SNARE pairing drives fusion; NSF and SNAP pull SNAREs apart afterwards.</li>
+      <li>Smooth ER: lipid synthesis, cytochrome P450 detoxification, Ca²⁺ store (sarcoplasmic reticulum in muscle). Lysosome lumen pH ≈ 4.5–5 with acid hydrolases. Peroxisomes: β-oxidation of very-long-chain fatty acids, catalase; Zellweger syndrome when import fails.</li>
+      <li>Mitochondria: double membrane; cardiolipin marks the inner membrane; human mtDNA ≈ 16.5 kb encoding 37 genes (13 proteins, 22 tRNAs, 2 rRNAs); maternal inheritance; endosymbiotic origin from α-proteobacteria. Chloroplasts: thylakoids, own circular DNA, from cyanobacteria.</li>
+    </ul>
+    <h3>Cytoskeleton and junctions</h3>
+    <div class="scroll"><table>
+      <thead><tr><th></th><th>Microfilaments</th><th>Microtubules</th><th>Intermediate filaments</th></tr></thead>
+      <tbody>
+        <tr><td>Diameter</td><td>~7 nm</td><td>~25 nm, 13 protofilaments</td><td>~10 nm</td></tr>
+        <tr><td>Subunit</td><td>G-actin (ATP)</td><td>α/β-tubulin dimer (GTP); γ-tubulin nucleates at the centrosome</td><td>Keratin, vimentin, desmin, neurofilaments, lamins</td></tr>
+        <tr><td>Polarity and motors</td><td>Yes; myosins (mostly plus-end)</td><td>Yes; kinesin → plus end, dynein → minus end</td><td>No polarity, no motors</td></tr>
+        <tr><td>Drugs</td><td>Cytochalasin and latrunculin block assembly; phalloidin stabilises</td><td>Colchicine and nocodazole depolymerise; taxol stabilises</td><td>—</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li>Microtubules show dynamic instability (GTP cap). Cilia and flagella: 9+2 axoneme, dynein arms, basal body with 9 triplets; centrioles are also 9 triplets.</li>
+      <li>Junctions: tight (claudin, occludin; seal and fence), adherens (classical cadherins + actin, Ca²⁺-dependent), desmosomes (desmoglein and desmocollin + intermediate filaments), hemidesmosomes (integrin + intermediate filaments to basal lamina), gap junctions (6 connexins form a connexon; ~1.5 nm pores let ions and small metabolites pass). Integrins bind ECM proteins such as fibronectin (RGD motif).</li>
+    </ul>
+    <h3>Cell cycle and its control</h3>
+    <ul>
+      <li>G1 → S → G2 → M; G0 is quiescence. Restriction point in late G1.</li>
+      <li>G1/S: cyclin D–CDK4/6 starts phosphorylating Rb, cyclin E–CDK2 completes it; free E2F turns on S-phase genes. DNA damage → p53 stabilised → p21 inhibits CDK2.</li>
+      <li>G2/M: cyclin B–CDK1 (MPF, first found in frog oocytes). Wee1 adds inhibitory phosphates (Thr14/Tyr15); Cdc25 removes them to activate.</li>
+      <li>Spindle assembly checkpoint: unattached kinetochores make Mad2/BubR1 inhibit APC/C–Cdc20. Once all attach, APC/C ubiquitinates securin (separase then cleaves cohesin → anaphase) and cyclin B (exit from mitosis).</li>
+      <li>CDK inhibitors: INK4 family (p16) blocks CDK4/6; Cip/Kip family (p21, p27, p57) blocks broadly. Nobel 2001: Hartwell (budding yeast cdc genes), Nurse (fission yeast cdc2), Hunt (cyclins in sea urchin).</li>
+      <li>Meiosis I prophase: leptotene (condensation), zygotene (synapsis, synaptonemal complex), pachytene (crossing over), diplotene (chiasmata visible; oocytes arrest here), diakinesis. Meiosis I is reductional; non-disjunction gives aneuploidy.</li>
+    </ul>
+    <h3>Cell death</h3>
+    <ul>
+      <li>Intrinsic pathway: stress → BH3-only proteins (Bid, Bad, Puma, Noxa) → Bax/Bak pores → cytochrome c release → Apaf-1 apoptosome → caspase-9 → executioner caspases-3/7. Bcl-2 and Bcl-xL block it.</li>
+      <li>Extrinsic pathway: Fas ligand or TNF → death receptor → FADD → caspase-8. Caspase-8 cleaves Bid to tBid, linking to the intrinsic pathway.</li>
+      <li>Caspases are cysteine proteases that cut after aspartate. Apoptosis signs: shrinkage, blebbing, chromatin condensation, DNA ladder in ~180 bp steps, PS exposure, no inflammation. Necrosis: swelling, lysis, inflammation.</li>
+    </ul>
+    <h3>Signal transduction</h3>
+    <ul>
+      <li>GPCRs (7 transmembrane). Gs → adenylyl cyclase → cAMP → PKA; Gi inhibits adenylyl cyclase; Gq → PLCβ → IP₃ (Ca²⁺ release from ER) + DAG (activates PKC with Ca²⁺). Cholera toxin ADP-ribosylates Gsα (locked on); pertussis toxin ADP-ribosylates Giα (cannot inhibit). β-arrestin and GRKs desensitise.</li>
+      <li>Receptor tyrosine kinases: ligand → dimerisation → autophosphorylation → SH2 adaptor Grb2 → SOS (a GEF) → Ras-GTP → Raf → MEK → ERK. GAPs switch Ras off; oncogenic Ras has lost GTPase activity. PI3K → PIP₃ → Akt (survival); PTEN removes the 3-phosphate.</li>
+      <li>Other pathways: JAK–STAT (cytokines), TGF-β (receptor Ser/Thr kinases → SMADs), Wnt (β-catenin saved from the APC/Axin/GSK3 destruction complex), Notch (γ-secretase releases NICD), Hedgehog (Patched releases inhibition of Smoothened), NO → soluble guanylyl cyclase → cGMP. Steroid and thyroid hormones use intracellular nuclear receptors with zinc-finger DNA-binding domains.</li>
+    </ul>
+    <div class="trap"><h4>Traps examiners use</h4><ul>
+      <li>COPII is ER → Golgi, COPI is the reverse. Students swap them.</li>
+      <li>Taxol stabilises microtubules; it does not depolymerise them. It still arrests mitosis.</li>
+      <li>Kinesin is plus-end directed; dynein minus-end. In axons, plus ends point to the terminal.</li>
+      <li>IP₃ releases Ca²⁺; DAG activates PKC. Neither acts on the other’s target.</li>
+      <li>Cholera toxin hits Gs; pertussis toxin hits Gi. Both raise cAMP.</li>
+    </ul></div>
+  </div>
+  <div class="quizhead"><h3 style="margin:0">Practice: cell biology</h3><button class="btn ghost" type="button" data-reset="cell">Reset this set</button></div>
+  <div class="quiz" data-subject="cell"></div>
+</section>
+
+<section class="subject" id="mol">
+  <div class="subhead"><h2>Molecular biology and gene expression</h2><span class="tier t1">Tier 1</span><span class="score" data-score="mol"></span></div>
+  <div class="notes">
+    <h3>DNA structure and the classic experiments</h3>
+    <ul>
+      <li>B-DNA: right-handed, ~10.5 bp per turn, 3.4 nm pitch, major and minor grooves. A-form: dehydrated, RNA–DNA hybrids and dsRNA. Z-form: left-handed, GC repeats.</li>
+      <li>Griffith (transformation, 1928) → Avery, MacLeod &amp; McCarty (the principle is DNA, 1944) → Hershey &amp; Chase (³²P DNA enters, ³⁵S protein stays out, 1952) → Meselson &amp; Stahl (semiconservative, ¹⁵N/¹⁴N in a CsCl gradient, 1958). After 1 generation in ¹⁴N: all hybrid; after 2: half hybrid, half light.</li>
+    </ul>
+    <h3>Replication</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>Function</th><th>E. coli</th><th>Eukaryotes</th></tr></thead>
+      <tbody>
+        <tr><td>Origin recognition</td><td>DnaA at oriC</td><td>ORC; MCM helicase loaded in G1 (licensing, once per cycle)</td></tr>
+        <tr><td>Helicase</td><td>DnaB (loaded by DnaC)</td><td>CMG (MCM2–7 with Cdc45, GINS)</td></tr>
+        <tr><td>Primase</td><td>DnaG</td><td>Pol α–primase</td></tr>
+        <tr><td>Main polymerase</td><td>Pol III holoenzyme (β-clamp)</td><td>Pol ε (leading), Pol δ (lagging), PCNA clamp loaded by RFC</td></tr>
+        <tr><td>Primer removal</td><td>Pol I (5′→3′ exonuclease)</td><td>RNase H and FEN1</td></tr>
+        <tr><td>Ligase cofactor</td><td>NAD⁺</td><td>ATP</td></tr>
+        <tr><td>Okazaki fragments</td><td>1,000–2,000 nt</td><td>100–200 nt</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li>Pol I has three activities; the Klenow fragment keeps polymerase and 3′→5′ proofreading but loses 5′→3′ exonuclease. All DNA polymerases synthesise 5′→3′ and need a primer.</li>
+      <li>Gyrase (bacterial type II topoisomerase) adds negative supercoils and is the quinolone target. Topo I cuts one strand, topo II both strands. Termination in E. coli at ter sites bound by Tus.</li>
+      <li>Telomerase: a reverse transcriptase (TERT) carrying its own RNA template; extends the 3′ G-rich overhang. Mitochondrial DNA is copied by Pol γ.</li>
+      <li>Repair: mismatch repair (MutS, MutL, MutH; the parental strand is identified by Dam methylation of GATC); base excision (glycosylase then AP endonuclease; uracil-DNA glycosylase); nucleotide excision for bulky lesions and thymine dimers (UvrABC; defective in xeroderma pigmentosum); photolyase reverses dimers directly; double-strand breaks by NHEJ (Ku70/80, error-prone) or homologous recombination (RecA in bacteria, Rad51, BRCA1/2).</li>
+    </ul>
+    <h3>Transcription</h3>
+    <ul>
+      <li>Bacterial RNA polymerase: core α₂ββ′ω plus σ⁷⁰. Promoter −10 TATAAT (Pribnow box) and −35 TTGACA. Termination: intrinsic (GC-rich hairpin followed by U-run) or Rho-dependent (Rho helicase). Rifampicin binds the β subunit; actinomycin D intercalates.</li>
+      <li>Eukaryotic polymerases: Pol I → 28S, 18S, 5.8S rRNA (nucleolus); Pol II → mRNA, most snRNAs, miRNAs; Pol III → tRNA, 5S rRNA, U6 snRNA, 7SL RNA. α-amanitin: Pol II very sensitive, Pol III moderately, Pol I resistant.</li>
+      <li>Pol II initiation: TATA box (~−25 to −30) bound by TBP within TFIID; TFIIH has helicase activity and phosphorylates CTD Ser5 at initiation; Ser2 phosphorylation marks elongation. Enhancers act at a distance through Mediator.</li>
+      <li>mRNA processing: 5′ cap (7-methylguanosine, 5′–5′ triphosphate); poly(A) signal AAUAAA; splicing by the spliceosome (U1 binds the 5′ site GU, U2 the branch-point A, U4/U6, U5), lariat formed by a 2′–5′ bond from the branch-point adenosine. Group I self-splicing introns use an external guanosine. RNA editing: apolipoprotein B C→U makes the shorter ApoB-48 in the gut.</li>
+    </ul>
+    <h3>Translation</h3>
+    <ul>
+      <li>Ribosomes: 70S = 30S (16S rRNA) + 50S (23S, 5S); 80S = 40S (18S) + 60S (28S, 5.8S, 5S). S values do not add.</li>
+      <li>Bacterial initiation: Shine–Dalgarno (AGGAGG) pairs with the 3′ end of 16S rRNA; initiator is fMet-tRNA. Eukaryotes: eIF4E binds the cap, the 43S complex scans to the first AUG in a Kozak context.</li>
+      <li>Peptidyl transferase is the 23S rRNA (a ribozyme). EF-Tu (eEF1A) delivers aminoacyl-tRNA; EF-G (eEF2) translocates; diphtheria toxin ADP-ribosylates eEF2. Release factors: RF1 (UAA, UAG), RF2 (UAA, UGA); eRF1 reads all three.</li>
+      <li>Cost: 4 high-energy bonds per peptide bond (2 for charging, ATP → AMP; 1 GTP for EF-Tu; 1 GTP for EF-G).</li>
+      <li>Code: 64 codons, 61 sense, 3 stops; degenerate; wobble at the codon’s 3rd position (anticodon’s 5′ base); inosine pairs with U, C or A.</li>
+      <li>Antibiotics: streptomycin (30S, misreading), tetracycline (blocks A site on 30S), chloramphenicol (50S peptidyl transferase), erythromycin (50S exit tunnel), puromycin (aminoacyl-tRNA mimic; both ribosome types), cycloheximide (80S only).</li>
+    </ul>
+    <h3>Gene regulation</h3>
+    <ul>
+      <li>lac operon (lacZ, lacY, lacA): LacI repressor binds the operator; allolactose or IPTG removes it. CAP–cAMP activates when glucose is low (catabolite repression). Highest expression: lactose present, glucose absent.</li>
+      <li>Mutants: lacI⁻ constitutive but recessive (a wild-type I⁺ on an F′ restores inducibility, since repressor is diffusible); lacOᶜ constitutive and cis-dominant (only affects genes on its own DNA); lacIˢ super-repressor, non-inducible and dominant.</li>
+      <li>trp operon: repressible (Trp is the corepressor) plus attenuation. Leader peptide has two Trp codons; with plenty of Trp the ribosome covers region 2 and the 3:4 terminator hairpin forms; with little Trp the ribosome stalls on region 1 and the 2:3 antiterminator forms.</li>
+      <li>Phage λ: cI repressor (lysogeny) versus Cro (lytic); the decision depends on cII stability.</li>
+      <li>Chromatin: nucleosome = 147 bp around an octamer of H2A, H2B, H3, H4 (two each); H1 binds linker DNA. Acetylation (HATs) opens chromatin, HDACs close it. H3K4me3 marks active promoters; H3K27me3 (Polycomb) and H3K9me3 (bound by HP1) are repressive. DNA methylation at CpG: DNMT1 maintains, DNMT3A/3B set new marks. Imprinting and X-inactivation (Xist RNA) rely on these.</li>
+      <li>Small RNAs: pri-miRNA → Drosha/DGCR8 in the nucleus → pre-miRNA → Exportin-5 → Dicer in the cytoplasm → ~22 nt duplex → Argonaute in RISC. siRNAs (perfect match) cleave mRNA; miRNAs (partial match, 3′ UTR seed) mostly repress translation. RNAi: Fire &amp; Mello, Nobel 2006.</li>
+    </ul>
+    <h3>Mutation</h3>
+    <ul>
+      <li>Transitions: purine ↔ purine or pyrimidine ↔ pyrimidine. Transversions: purine ↔ pyrimidine.</li>
+      <li>Mutagens: 5-bromouracil (base analogue, A:T → G:C transitions), 2-aminopurine (transitions), EMS (alkylates G, G:C → A:T), nitrous acid (deaminates C → U and A → hypoxanthine), acridines and proflavin (intercalate → frameshifts), UV (pyrimidine dimers). Ames test: reversion of his⁻ Salmonella, with liver S9 extract for metabolic activation.</li>
+      <li>Other landmarks: reverse transcriptase (Temin, Baltimore), catalytic RNA (Cech, Altman), prions (Prusiner).</li>
+    </ul>
+    <div class="trap"><h4>Traps examiners use</h4><ul>
+      <li>Klenow lacks the 5′→3′ exonuclease, not proofreading.</li>
+      <li>5S rRNA is made by Pol III, not Pol I like the other rRNAs.</li>
+      <li>lacOᶜ is cis-dominant; lacI⁻ is recessive in trans.</li>
+      <li>Wobble is at the codon’s 3rd base, which pairs with the anticodon’s 1st (5′) base.</li>
+      <li>Meselson–Stahl after two generations: 50% hybrid, 50% light, zero heavy.</li>
+    </ul></div>
+  </div>
+  <div class="quizhead"><h3 style="margin:0">Practice: molecular biology</h3><button class="btn ghost" type="button" data-reset="mol">Reset this set</button></div>
+  <div class="quiz" data-subject="mol"></div>
+</section>
+
+<section class="subject" id="tech">
+  <div class="subhead"><h2>Molecular techniques</h2><span class="tier t1">Tier 1</span><span class="score" data-score="tech"></span></div>
+  <div class="notes">
+    <h3>Cutting, joining and cloning</h3>
+    <ul>
+      <li>Type II restriction enzymes cut within palindromic sites; host DNA is protected by methylation (restriction–modification). EcoRI G^AATTC (5′ overhang), PstI CTGCA^G (3′ overhang), SmaI CCC^GGG (blunt). Isoschizomers share a site; neoschizomers share the site but cut differently. A 4-bp site occurs every 4⁴ = 256 bp; a 6-bp site every 4,096 bp.</li>
+      <li>T4 DNA ligase joins ends; alkaline phosphatase removes vector 5′ phosphates to stop self-ligation; Klenow fills in 5′ overhangs; terminal transferase adds tails.</li>
+      <li>pBR322: amp and tet resistance, insertional inactivation. pUC: lacZα blue–white screening with X-gal and IPTG; an insert breaks α-complementation, so recombinant colonies are white.</li>
+      <li>Insert capacity: plasmid up to ~10 kb; λ replacement vector ~23 kb; cosmid ~35–45 kb; BAC ~100–300 kb (F-factor based); YAC ~100 kb to over 1 Mb (needs CEN, ARS, TEL). Ti plasmid of Agrobacterium for plants. Expression in E. coli BL21(DE3) with a T7 promoter, induced by IPTG.</li>
+      <li>Getting DNA in: CaCl₂ competent cells with heat shock, or electroporation. cDNA libraries use reverse transcriptase with oligo(dT) primers and lack introns; genomic libraries include introns and non-coding DNA.</li>
+    </ul>
+    <h3>Separating and detecting</h3>
+    <ul>
+      <li>Agarose gels (0.5–2%) for DNA; polyacrylamide for small DNA and proteins; pulsed-field gels for very large DNA. DNA runs towards the anode (+). Ethidium bromide intercalates; SYBR dyes are safer.</li>
+      <li>SDS-PAGE: SDS denatures and coats proteins with uniform negative charge, so separation is by mass; β-mercaptoethanol or DTT breaks disulfides. 2D gel: isoelectric focusing (by pI) first, then SDS-PAGE. Native PAGE keeps complexes intact.</li>
+      <li>Blots: Southern (DNA; Edwin Southern, 1975), Northern (RNA), Western (protein, antibodies; loading controls β-actin, GAPDH, tubulin), Southwestern (DNA-binding proteins). High stringency = higher temperature and lower salt.</li>
+      <li>Chromatography: gel filtration (largest elute first), ion exchange (DEAE is an anion exchanger that binds negatively charged proteins; CM is a cation exchanger), affinity (His-tag on Ni-NTA eluted with imidazole; GST-tag eluted with glutathione), HPLC.</li>
+      <li>Centrifugation: differential; rate-zonal (sucrose gradient, by S value); isopycnic (CsCl, by buoyant density).</li>
+    </ul>
+    <h3>PCR family</h3>
+    <ul>
+      <li>Steps: denature ~94–95 °C, anneal ~50–65 °C (about 5 °C below primer Tm), extend 72 °C. Copies = start × 2ⁿ at ideal efficiency. Mullis, Nobel 1993.</li>
+      <li>Taq (Thermus aquaticus) lacks proofreading and adds a 3′ A overhang (TA cloning). Pfu and Phusion proofread. Primer Tm by the Wallace rule: 2 × (A+T) + 4 × (G+C) °C for short primers.</li>
+      <li>Troubleshooting: no product → template quality, primer design, Mg²⁺, annealing too high; extra bands → raise annealing temperature, lower Mg²⁺, fewer cycles; primer dimers → redesign or hot-start.</li>
+      <li>RT-PCR uses reverse transcriptase first. qPCR: SYBR Green (binds any dsDNA, needs a melt curve) or TaqMan probes (cleaved by Taq’s 5′→3′ exonuclease). Ct falls as template rises; at 100% efficiency a 1-cycle difference is 2-fold and ~3.3 cycles is 10-fold. Relative quantification by ΔΔCt against a reference gene.</li>
+    </ul>
+    <h3>Sequencing and editing</h3>
+    <ul>
+      <li>Sanger: ddNTPs lack the 3′-OH, so chains stop; now read by capillary electrophoresis with fluorescent ddNTPs. Maxam–Gilbert is chemical cleavage.</li>
+      <li>NGS: Illumina (bridge amplification, reversible-terminator sequencing by synthesis); pyrosequencing (pyrophosphate release → light via luciferase); Ion Torrent (H⁺ release); long reads by PacBio (SMRT) and Oxford Nanopore.</li>
+      <li>CRISPR-Cas9: a ~20 nt guide; SpCas9 needs NGG PAM just 3′ of the target and cuts bluntly ~3 bp upstream of it. NHEJ repair gives indels (knockouts); HDR with a donor gives precise edits. Cas12a uses TTTV and leaves staggered ends. Doudna &amp; Charpentier, Nobel 2020.</li>
+    </ul>
+    <h3>Imaging and interaction assays</h3>
+    <ul>
+      <li>GFP from Aequorea (Shimomura, Chalfie, Tsien; Nobel 2008). Confocal uses a pinhole to reject out-of-focus light (optical sections). FRAP measures mobility; FRET reports proximity below ~10 nm. Super-resolution (STED, PALM/STORM; Nobel 2014).</li>
+      <li>ELISA (direct, indirect, sandwich, competitive); immunoprecipitation and co-IP; ChIP (protein–DNA in vivo); yeast two-hybrid (protein–protein: bait on Gal4 DNA-binding domain, prey on activation domain); flow cytometry and FACS; microarrays and RNA-seq.</li>
+    </ul>
+    <div class="trap"><h4>Traps examiners use</h4><ul>
+      <li>Blue colonies are non-recombinant; white ones carry an insert.</li>
+      <li>In gel filtration the biggest molecules come out first.</li>
+      <li>A higher Ct means less starting template.</li>
+      <li>Extra PCR bands mean annealing is too permissive: raise the temperature.</li>
+      <li>DEAE is an anion exchanger even though DEAE itself is positively charged.</li>
+    </ul></div>
+  </div>
+  <div class="quizhead"><h3 style="margin:0">Practice: molecular techniques</h3><button class="btn ghost" type="button" data-reset="tech">Reset this set</button></div>
+  <div class="quiz" data-subject="tech"></div>
+</section>
+<section class="subject" id="gen">
+  <div class="subhead"><h2>Genetics</h2><span class="tier t1">Tier 1</span><span class="score" data-score="gen"></span></div>
+  <div class="notes">
+    <h3>Mendelian ratios you must recognise instantly</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>Ratio</th><th>Meaning</th><th>Classic example</th></tr></thead>
+      <tbody>
+        <tr><td>3:1, 1:2:1, 1:1</td><td>Monohybrid F2; incomplete dominance or codominance; test cross</td><td>Pea; snapdragon colour; MN blood group</td></tr>
+        <tr><td>9:3:3:1 and 1:1:1:1</td><td>Dihybrid F2; dihybrid test cross</td><td>Mendel’s seed shape × colour</td></tr>
+        <tr><td>2:1</td><td>Recessive lethal in homozygote</td><td>Yellow coat in mice</td></tr>
+        <tr><td>9:3:4</td><td>Recessive epistasis</td><td>Labrador coat (ee is yellow regardless of B)</td></tr>
+        <tr><td>12:3:1</td><td>Dominant epistasis</td><td>Summer squash fruit colour</td></tr>
+        <tr><td>9:7</td><td>Duplicate recessive (complementary genes)</td><td>Sweet pea flower colour</td></tr>
+        <tr><td>15:1</td><td>Duplicate dominant genes</td><td>Shepherd’s purse capsule shape</td></tr>
+        <tr><td>13:3</td><td>Dominant suppression (inhibitory gene)</td><td>Feather colour in poultry</td></tr>
+        <tr><td>9:6:1</td><td>Duplicate genes with cumulative effect</td><td>Summer squash fruit shape</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li>Probability shortcut for AaBbCc × AaBbCc: multiply per gene. Fully recessive = (1/4)³ = 1/64; fully heterozygous = (1/2)³ = 1/8. Number of gametes from n heterozygous pairs = 2ⁿ.</li>
+      <li>Polygenic additive traits: n gene pairs give 2n + 1 phenotypic classes in F2; each extreme is (1/4)ⁿ.</li>
+      <li>n alleles of one gene give n(n+1)/2 genotypes (ABO: 3 alleles → 6 genotypes, 4 phenotypes).</li>
+      <li>Penetrance (fraction showing the phenotype), expressivity (degree), pleiotropy (one gene, many traits).</li>
+      <li>Chi-square: df = classes − 1. Critical values at p = 0.05: 3.84 (df 1), 5.99 (df 2), 7.81 (df 3). χ² smaller than critical → fits the ratio.</li>
+    </ul>
+    <h3>Linkage and mapping</h3>
+    <ul>
+      <li>Recombination frequency (RF) = recombinants ÷ total; 1% = 1 cM (map unit). RF never exceeds 50%.</li>
+      <li>Three-point cross: parental classes are most frequent, double crossovers (DCO) least. The middle gene is the one that differs between the DCO and parental classes. Distance A–B includes DCOs in both intervals.</li>
+      <li>Coefficient of coincidence = observed DCO ÷ expected DCO (expected = product of the two RFs); interference = 1 − coincidence.</li>
+      <li>Ordered tetrads (Neurospora): gene–centromere distance = ½ × % second-division segregation asci.</li>
+      <li>Linkage groups equal the haploid chromosome number. Morgan (Drosophila), Sturtevant made the first map.</li>
+    </ul>
+    <h3>Pedigrees and sex</h3>
+    <ul>
+      <li>Autosomal dominant: every generation, affected child has an affected parent. Autosomal recessive: skips generations, consanguinity, unaffected carrier parents.</li>
+      <li>X-linked recessive (haemophilia, colour blindness, DMD): mostly males, passed from carrier mothers, never father to son. X-linked dominant: affected father passes it to all daughters and no sons. Mitochondrial: affected mother to all children; affected father to none. Y-linked: father to all sons.</li>
+      <li>Sex determination: XY with SRY (humans); XX/XO (grasshopper); ZW female (birds, butterflies); X:A ratio via Sxl (Drosophila); haplodiploidy (bees). Barr bodies = number of X − 1.</li>
+      <li>Dosage compensation: mammals inactivate one X; Drosophila males double X expression (MSL complex); C. elegans hermaphrodites halve both X.</li>
+      <li>Aneuploidies: Down (47,+21; or Robertsonian 14/21), Edwards (+18), Patau (+13), Klinefelter (47,XXY; male, one Barr body), Turner (45,X; female, no Barr body). Cri-du-chat: 5p deletion. CML: Philadelphia chromosome t(9;22), BCR–ABL.</li>
+      <li>Inversion heterozygotes: paracentric (centromere outside) crossing over gives a dicentric bridge and acentric fragment; pericentric (includes centromere) gives duplications and deletions.</li>
+    </ul>
+    <h3>Bacterial and phage genetics</h3>
+    <ul>
+      <li>Transformation: uptake of naked DNA by competent cells. Conjugation: F⁺ × F⁻ transfers F only; Hfr transfers chromosome genes in order (interrupted mating maps in minutes; recipient rarely becomes F⁺); F′ carries some chromosomal genes. Transduction: generalised (P1, P22; any host gene) or specialised (λ; genes next to attλ, such as gal and bio). High cotransduction frequency means genes are close.</li>
+      <li>Complementation (cis–trans) test: two recessive mutants in trans give wild type → different genes; no wild type → same gene (cistron). Benzer’s rII mapping in T4 reached single-nucleotide resolution.</li>
+    </ul>
+    <h3>Population and quantitative genetics</h3>
+    <ul>
+      <li>Hardy–Weinberg: p + q = 1; p² + 2pq + q² = 1. Assumes large population, random mating, no mutation, migration or selection. For rare recessive diseases, carrier frequency ≈ 2q.</li>
+      <li>X-linked: male phenotype frequency = q; affected females = q².</li>
+      <li>Genetic drift is strongest in small populations (founder effect, bottleneck). Inbreeding raises homozygosity without changing allele frequencies.</li>
+      <li>Heritability: broad H² = Vg/Vp; narrow h² = Va/Vp (predicts response to selection).</li>
+    </ul>
+    <h3>Non-Mendelian inheritance</h3>
+    <ul>
+      <li>Cytoplasmic: leaf variegation in Mirabilis (Correns), petite yeast, Chlamydomonas chloroplast genes.</li>
+      <li>Maternal effect: offspring phenotype follows the mother’s genotype (snail Limnaea coiling; Drosophila bicoid).</li>
+      <li>Genomic imprinting: Prader–Willi (paternal 15q11–13 lost) and Angelman (maternal lost).</li>
+    </ul>
+    <div class="trap"><h4>Traps examiners use</h4><ul>
+      <li>Maternal effect is not maternal inheritance: the mother’s nuclear genotype decides, one generation late.</li>
+      <li>Klinefelter has a Barr body; Turner does not.</li>
+      <li>In a three-point cross, distance between outer genes must add the DCOs twice (once per interval).</li>
+      <li>Complementation means different genes. Students reverse this.</li>
+      <li>Carrier frequency for a 1 in 10,000 recessive disease is about 1 in 50, not 1 in 100.</li>
+    </ul></div>
+  </div>
+  <div class="quizhead"><h3 style="margin:0">Practice: genetics</h3><button class="btn ghost" type="button" data-reset="gen">Reset this set</button></div>
+  <div class="quiz" data-subject="gen"></div>
+</section>
+
+<section class="subject" id="bio">
+  <div class="subhead"><h2>Biological chemistry</h2><span class="tier t1">Tier 1</span><span class="score" data-score="bio"></span></div>
+  <div class="notes">
+    <h3>Biomolecules</h3>
+    <ul>
+      <li>Essential amino acids: Phe, Val, Thr, Trp, Ile, Met, His, Leu, Lys (Arg semi-essential). Glycine is achiral; proline breaks helices; cysteine forms disulfides.</li>
+      <li>pKa values: α-COOH ~2, α-NH₃⁺ ~9–10; side chains Asp 3.9, Glu 4.1, His 6.0, Cys 8.3, Tyr 10.1, Lys 10.5, Arg 12.5. pI of a neutral amino acid = average of the two pKas around the zwitterion (glycine: (2.34 + 9.60)/2 = 5.97). His is the best buffer near pH 7.</li>
+      <li>Proteins absorb at 280 nm (Trp &gt; Tyr), nucleic acids at 260 nm.</li>
+      <li>α-helix: right-handed, 3.6 residues per turn, 0.15 nm rise per residue, 0.54 nm pitch; C=O of residue i bonds to N–H of i + 4. β-sheets can be parallel or antiparallel. The hydrophobic effect drives tertiary folding. Anfinsen (ribonuclease refolding): sequence determines structure. Chaperones: Hsp70, GroEL/GroES.</li>
+      <li>Haemoglobin binds O₂ cooperatively (sigmoid, Hill coefficient ~2.8); myoglobin is hyperbolic.</li>
+      <li>Sugars: glucose is an aldohexose, fructose a ketohexose. Anomers differ at C1 (α/β); epimers at one other carbon (glucose/galactose at C4, glucose/mannose at C2). Sucrose (Glc α1→β2 Fru) is non-reducing; lactose (Gal β1→4 Glc) and maltose (α1→4) are reducing. Cellulose β1→4; amylose α1→4; amylopectin and glycogen add α1→6 branches (glycogen every 8–12 residues). Chitin: N-acetylglucosamine β1→4.</li>
+      <li>Lipids: essential fatty acids linoleic (ω-6) and α-linolenic (ω-3). Cholesterol gives steroid hormones, bile acids and vitamin D.</li>
+    </ul>
+    <h3>Enzymes</h3>
+    <ul>
+      <li>Enzymes lower activation energy; they do not change ΔG or the equilibrium constant.</li>
+      <li>v = Vmax[S] ÷ (Km + [S]). Km = [S] at half Vmax. At [S] = Km, v = 0.5 Vmax; at [S] = 3Km, v = 0.75 Vmax; at [S] = 9Km, v = 0.9 Vmax.</li>
+      <li>kcat = turnover number; kcat/Km = catalytic efficiency, capped near 10⁸–10⁹ M⁻¹ s⁻¹ by diffusion (triose phosphate isomerase, carbonic anhydrase, catalase, fumarase).</li>
+      <li>Lineweaver–Burk: y-intercept 1/Vmax, x-intercept −1/Km, slope Km/Vmax.</li>
+    </ul>
+    <div class="scroll"><table>
+      <thead><tr><th>Inhibition</th><th>Km (apparent)</th><th>Vmax</th><th>Lineweaver–Burk</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>Competitive</td><td>Increases</td><td>Unchanged</td><td>Lines meet on y-axis</td><td>Malonate on succinate dehydrogenase; methotrexate on DHFR</td></tr>
+        <tr><td>Pure non-competitive</td><td>Unchanged</td><td>Decreases</td><td>Lines meet on x-axis</td><td>Heavy metals on some enzymes</td></tr>
+        <tr><td>Uncompetitive</td><td>Decreases</td><td>Decreases</td><td>Parallel lines</td><td>Lithium on inositol monophosphatase</td></tr>
+        <tr><td>Mixed</td><td>Up or down</td><td>Decreases</td><td>Meet off the axes</td><td>—</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li>Irreversible inhibitors: DFP (active-site Ser of serine proteases and AChE), penicillin (transpeptidase), aspirin (acetylates COX). Suicide inhibitors are activated by the enzyme itself.</li>
+      <li>Allosteric enzymes give sigmoid curves (aspartate transcarbamoylase: CTP inhibits, ATP activates). Zymogens: trypsinogen → trypsin by enteropeptidase. Isozymes: LDH has 5. EC classes: 1 oxidoreductases, 2 transferases, 3 hydrolases, 4 lyases, 5 isomerases, 6 ligases, 7 translocases.</li>
+    </ul>
+    <h3>Vitamins and coenzymes</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>Vitamin</th><th>Coenzyme</th><th>Key enzymes or role</th><th>Deficiency</th></tr></thead>
+      <tbody>
+        <tr><td>B1 thiamine</td><td>TPP</td><td>Pyruvate DH, α-ketoglutarate DH, transketolase</td><td>Beriberi</td></tr>
+        <tr><td>B2 riboflavin</td><td>FAD, FMN</td><td>Succinate DH, complex I</td><td>Cheilosis</td></tr>
+        <tr><td>B3 niacin</td><td>NAD⁺, NADP⁺</td><td>Dehydrogenases</td><td>Pellagra</td></tr>
+        <tr><td>B5 pantothenate</td><td>Coenzyme A</td><td>Acyl transfer</td><td>Rare</td></tr>
+        <tr><td>B6 pyridoxine</td><td>PLP</td><td>Transaminases, decarboxylases, glycogen phosphorylase</td><td>Neuropathy, anaemia</td></tr>
+        <tr><td>B7 biotin</td><td>Biotin</td><td>Carboxylases (pyruvate, acetyl-CoA); avidin binds it</td><td>Dermatitis</td></tr>
+        <tr><td>B9 folate</td><td>THF</td><td>One-carbon transfer (thymidylate, purines)</td><td>Megaloblastic anaemia, neural tube defects</td></tr>
+        <tr><td>B12 cobalamin</td><td>Methylcobalamin, adenosylcobalamin</td><td>Methionine synthase, methylmalonyl-CoA mutase</td><td>Pernicious anaemia</td></tr>
+        <tr><td>C ascorbate</td><td>—</td><td>Prolyl and lysyl hydroxylase (collagen)</td><td>Scurvy</td></tr>
+        <tr><td>K</td><td>—</td><td>γ-carboxylation of Glu in factors II, VII, IX, X (warfarin blocks)</td><td>Bleeding</td></tr>
+      </tbody>
+    </table></div>
+    <h3>Bioenergetics</h3>
+    <ul>
+      <li>ΔG = ΔG°′ + RT ln Q; ΔG°′ = −nFΔE°′ (F = 96.5 kJ V⁻¹ mol⁻¹). NADH → O₂ (ΔE°′ ≈ 1.14 V, n = 2) releases ~220 kJ/mol.</li>
+      <li>ATP → ADP: ΔG°′ = −30.5 kJ/mol. Higher-energy donors: PEP (−61.9), 1,3-bisphosphoglycerate (−49.3), creatine phosphate (−43). Glucose-6-phosphate (−13.8) is lower.</li>
+    </ul>
+    <h3>Carbohydrate metabolism</h3>
+    <ul>
+      <li>Glycolysis (cytosol): irreversible steps hexokinase (glucokinase in liver), PFK-1 (committed and rate-limiting; activated by AMP and fructose-2,6-bisphosphate, inhibited by ATP and citrate), pyruvate kinase. Net 2 ATP and 2 NADH per glucose. Substrate-level phosphorylation by phosphoglycerate kinase and pyruvate kinase. Arsenate uncouples at GAPDH; iodoacetate inhibits GAPDH; fluoride inhibits enolase.</li>
+      <li>Anaerobic fates: lactate (LDH) or, in yeast, ethanol (pyruvate decarboxylase with TPP, then alcohol dehydrogenase); both regenerate NAD⁺.</li>
+      <li>Pyruvate dehydrogenase complex uses five cofactors: TPP, lipoamide, CoA, FAD, NAD⁺.</li>
+      <li>TCA (matrix): isocitrate DH (rate-limiting) and α-KG DH each give NADH + CO₂; succinyl-CoA synthetase makes GTP; succinate DH (complex II, FAD, membrane-bound, inhibited by malonate); malate DH gives NADH. Per acetyl-CoA: 3 NADH, 1 FADH₂, 1 GTP, 2 CO₂. Fluorocitrate blocks aconitase. Pyruvate carboxylase refills oxaloacetate (anaplerosis).</li>
+      <li>Gluconeogenesis bypasses: pyruvate carboxylase (biotin; activated by acetyl-CoA) + PEPCK; fructose-1,6-bisphosphatase; glucose-6-phosphatase (liver and kidney, not muscle). Cost: 4 ATP + 2 GTP + 2 NADH per glucose.</li>
+      <li>Pentose phosphate pathway: G6PD (rate-limiting) makes NADPH and ribose-5-phosphate; G6PD deficiency causes haemolysis under oxidative stress.</li>
+      <li>Glycogen: synthase uses UDP-glucose; phosphorylase uses PLP. Glucagon and adrenaline → cAMP → PKA → phosphorylation activates phosphorylase and inactivates synthase.</li>
+    </ul>
+    <h3>Oxidative phosphorylation</h3>
+    <ul>
+      <li>Complex I (NADH–Q; rotenone, amytal; pumps 4 H⁺), II (succinate–Q; no pumping), III (cytochrome bc₁; antimycin A; Q cycle, 4 H⁺), IV (cytochrome c oxidase; cyanide, azide, CO; 2 H⁺ per 2 e⁻), V (ATP synthase; oligomycin blocks Fo). Mitchell’s chemiosmotic theory; Boyer’s binding-change, rotary mechanism.</li>
+      <li>Uncouplers (2,4-DNP, UCP1 thermogenin in brown fat) raise O₂ use but cut ATP synthesis.</li>
+      <li>P/O ≈ 2.5 for NADH and 1.5 for FADH₂; ~30–32 ATP per glucose (older books 36–38). Malate–aspartate shuttle keeps NADH; glycerol-3-phosphate shuttle gives FADH₂.</li>
+    </ul>
+    <h3>Lipid and nitrogen metabolism</h3>
+    <ul>
+      <li>β-oxidation (matrix): carnitine shuttle (CPT-I inhibited by malonyl-CoA). Each round gives 1 FADH₂, 1 NADH, 1 acetyl-CoA. Palmitate (C16): 7 rounds, 8 acetyl-CoA, 106 ATP net (108 − 2 for activation).</li>
+      <li>Fatty acid synthesis (cytosol): acetyl-CoA carboxylase (biotin, rate-limiting, activated by citrate) makes malonyl-CoA; fatty acid synthase uses NADPH and stops at palmitate. Ketone bodies (acetoacetate, β-hydroxybutyrate, acetone) made in liver mitochondria. Cholesterol: HMG-CoA reductase is rate-limiting (statins).</li>
+      <li>Transamination needs PLP (ALT, AST). Urea cycle: carbamoyl phosphate synthetase I (activated by N-acetylglutamate) and ornithine transcarbamoylase in mitochondria; argininosuccinate synthetase, lyase and arginase in cytosol. One N from NH₄⁺, the other from aspartate; 3 ATP (4 high-energy bonds) per urea.</li>
+      <li>Purely ketogenic amino acids: leucine and lysine. Phenylketonuria: phenylalanine hydroxylase defect.</li>
+    </ul>
+    <h3>Photosynthesis</h3>
+    <ul>
+      <li>Light reactions (thylakoid): PSII (P680) splits water at the Mn₄CaO₅ cluster, so O₂ comes from water (Ruben &amp; Kamen, ¹⁸O) → plastoquinone → cytochrome b₆f → plastocyanin → PSI (P700) → ferredoxin → FNR → NADPH (Z-scheme). Cyclic flow around PSI makes ATP only, no NADPH or O₂. Emerson’s red drop and enhancement effect showed two photosystems.</li>
+      <li>Calvin cycle (stroma): RuBisCO fixes CO₂ onto RuBP → 2 × 3-phosphoglycerate. Per CO₂: 3 ATP + 2 NADPH; per glucose: 18 ATP + 12 NADPH. RuBisCO’s oxygenase reaction drives photorespiration across chloroplast, peroxisome and mitochondrion.</li>
+      <li>C4 (Hatch–Slack): PEP carboxylase in mesophyll (no O₂ affinity) makes oxaloacetate; malate is decarboxylated in bundle-sheath cells (Kranz anatomy), concentrating CO₂ around RuBisCO; costs 2 extra ATP per CO₂. CAM: stomata open at night, malate stored in vacuoles; temporal separation.</li>
+    </ul>
+    <div class="trap"><h4>Traps examiners use</h4><ul>
+      <li>Competitive inhibitors leave Vmax unchanged; uncompetitive lower both Km and Vmax.</li>
+      <li>Succinate dehydrogenase is both a TCA enzyme and complex II, and it does not pump protons.</li>
+      <li>Muscle lacks glucose-6-phosphatase, so muscle glycogen cannot raise blood glucose.</li>
+      <li>Photosynthetic O₂ comes from water, not CO₂.</li>
+      <li>Leucine and lysine are the only purely ketogenic amino acids.</li>
+    </ul></div>
+  </div>
+  <div class="quizhead"><h3 style="margin:0">Practice: biological chemistry</h3><button class="btn ghost" type="button" data-reset="bio">Reset this set</button></div>
+  <div class="quiz" data-subject="bio"></div>
+</section>
+<section class="subject" id="dev">
+  <div class="subhead"><h2>Developmental biology</h2><span class="tier t2">Tier 2</span><span class="score" data-score="dev"></span></div>
+  <div class="notes">
+    <h3>Gametes and fertilisation</h3>
+    <ul>
+      <li>Spermatogenesis: one primary spermatocyte → 4 sperm; Sertoli cells nurse, Leydig cells make testosterone. Oogenesis: oocytes arrest in prophase I (diplotene) until puberty, ovulate at metaphase II, and finish meiosis II only at fertilisation; one ovum plus polar bodies.</li>
+      <li>Sea urchin: acrosome reaction exposes bindin. Mammals: sperm capacitation in the female tract; ZP3 on the zona pellucida triggers the acrosome reaction.</li>
+      <li>Blocks to polyspermy: fast block (membrane depolarisation, sea urchin) and slow block (Ca²⁺ wave → cortical granule exocytosis → fertilisation envelope).</li>
+    </ul>
+    <h3>Cleavage and gastrulation</h3>
+    <ul>
+      <li>Cleavage follows yolk: isolecithal holoblastic (sea urchin; mammals, rotational); mesolecithal unequal holoblastic (amphibians); telolecithal meroblastic discoidal (birds, reptiles, fish); centrolecithal superficial (insects, syncytial blastoderm). Spiral cleavage in molluscs and annelids; radial in echinoderms and amphibians.</li>
+      <li>Mammals: compaction at the 8-cell stage → morula → blastocyst with inner cell mass (Oct4, Nanog; becomes epiblast and hypoblast) and trophectoderm (Cdx2).</li>
+      <li>Gastrulation movements: invagination, involution, ingression, epiboly, delamination.</li>
+      <li>Amphibian axis: sperm entry triggers cortical rotation; the dorsal side forms opposite the entry point (grey crescent). Vegetal dorsal cells with nuclear β-catenin form the Nieuwkoop centre, which induces the Spemann–Mangold organizer in the dorsal lip of the blastopore (1924 newt graft gave a second axis). The organizer secretes BMP antagonists (Noggin, Chordin, Follistatin): ectoderm becomes neural by default when BMP is blocked.</li>
+      <li>Equivalent organizers: Hensen’s node (chick), the node (mouse), the shield (zebrafish).</li>
+    </ul>
+    <h3>Germ layers and their derivatives</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>Ectoderm</th><th>Mesoderm</th><th>Endoderm</th></tr></thead>
+      <tbody><tr>
+        <td>Epidermis, hair, nails, lens; nervous system; neural crest (sensory and autonomic neurons, Schwann cells, melanocytes, adrenal medulla, craniofacial cartilage and bone, odontoblasts)</td>
+        <td>Notochord; somites (sclerotome → vertebrae and ribs; dermomyotome → dermis and skeletal muscle); kidney, gonads, heart, blood, smooth muscle, limb skeleton</td>
+        <td>Gut lining, liver, pancreas, lungs, thyroid, thymus epithelium, bladder lining</td>
+      </tr></tbody>
+    </table></div>
+    <ul>
+      <li>Neural tube patterning: notochord and floor plate make Sonic hedgehog (ventral); BMPs from epidermis and roof plate (dorsal). Somites form by the clock-and-wavefront mechanism (oscillating Notch/Hes genes with FGF/Wnt gradients).</li>
+    </ul>
+    <h3>Drosophila axis and segmentation</h3>
+    <ul>
+      <li>Maternal effect genes: anterior bicoid (mRNA at the anterior pole; Bicoid protein gradient activates hunchback and represses caudal translation); posterior nanos (represses hunchback translation; localised by Oskar in the pole plasm); terminal torso (receptor tyrosine kinase); dorsal–ventral: Gurken from the oocyte dorsalises follicle cells; on the ventral side, Spätzle activates Toll, giving a gradient of nuclear Dorsal protein that is highest ventrally.</li>
+      <li>Zygotic hierarchy: gap genes (hunchback, Krüppel, knirps, giant) → pair-rule genes (even-skipped, fushi tarazu; 7 stripes) → segment polarity genes (engrailed, wingless, hedgehog) → Hox genes (Antennapedia complex: lab, pb, Dfd, Scr, Antp; Bithorax complex: Ubx, abd-A, Abd-B).</li>
+      <li>Hox colinearity: gene order 3′ → 5′ matches expression anterior → posterior and early → late. Ubx loss turns halteres into wings (four-winged fly); Antennapedia gain in the head turns antennae into legs. Nüsslein-Volhard, Wieschaus and Lewis: Nobel 1995.</li>
+    </ul>
+    <h3>Vertebrate limb</h3>
+    <ul>
+      <li>Apical ectodermal ridge (AER; FGF8): proximal–distal outgrowth. Remove it and distal parts are missing; FGF beads rescue.</li>
+      <li>Zone of polarizing activity (ZPA; Shh): anterior–posterior identity. Grafted anteriorly, it gives mirror-image extra digits.</li>
+      <li>Dorsal–ventral: Wnt7a in dorsal ectoderm, Engrailed-1 ventral. Interdigital cells die by apoptosis (BMP). Tbx5 forelimb, Tbx4 and Pitx1 hindlimb.</li>
+    </ul>
+    <h3>Other model systems</h3>
+    <ul>
+      <li>C. elegans: invariant cell lineage (Sulston); 959 somatic cells in the adult hermaphrodite; 131 cells die by programmed cell death (CED-3 = caspase, CED-4 = Apaf-1, CED-9 = Bcl-2; Horvitz). Vulval induction by LIN-3 (EGF-like) from the anchor cell. XX hermaphrodite, XO male.</li>
+      <li>Arabidopsis flower (ABC model): A (APETALA1, APETALA2) → sepals; A + B (APETALA3, PISTILLATA) → petals; B + C → stamens; C (AGAMOUS) → carpels; A and C repress each other; E (SEPALLATA) needed for all. agamous mutant: sepals, petals, petals, then repeats (no stamens or carpels, indeterminate).</li>
+      <li>Stem cells: totipotent (zygote), pluripotent (ICM, ES cells), multipotent (adult stem cells). iPS cells: Oct4, Sox2, Klf4, c-Myc (Yamanaka); Gurdon’s Xenopus nuclear transfer; Nobel 2012. Dolly (1996) by somatic nuclear transfer.</li>
+      <li>Regeneration: morphallaxis (Hydra), epimorphosis via blastema (salamander limb), compensatory growth (mammalian liver); planarian neoblasts.</li>
+      <li>Metamorphosis: thyroid hormone (T3) in amphibians; ecdysone in insects, with juvenile hormone deciding the type of moult (high JH → larval moult; low → pupal; none → adult). Imaginal discs form adult structures.</li>
+      <li>Mammalian sex: SRY → Sox9 → Sertoli cells → AMH (Müllerian ducts regress) and testosterone (Wolffian ducts develop); DHT (5α-reductase) for external genitalia. Reptiles often use temperature-dependent sex determination (aromatase).</li>
+      <li>Teratogens: thalidomide (limb defects), retinoic acid (alters Hox expression), alcohol (fetal alcohol syndrome).</li>
+    </ul>
+    <div class="trap"><h4>Traps examiners use</h4><ul>
+      <li>Bicoid is a maternal effect gene: the mother’s genotype decides the embryo’s head.</li>
+      <li>Neural crest does not make skeletal muscle of the trunk or limbs; somites do.</li>
+      <li>The AER controls outgrowth; the ZPA controls digit identity. Students swap them.</li>
+      <li>Neural induction works by blocking BMP, not by adding a neural signal.</li>
+    </ul></div>
+  </div>
+  <div class="quizhead"><h3 style="margin:0">Practice: developmental biology</h3><button class="btn ghost" type="button" data-reset="dev">Reset this set</button></div>
+  <div class="quiz" data-subject="dev"></div>
+</section>
+
+<section class="subject" id="phys">
+  <div class="subhead"><h2>Animal physiology and immunity</h2><span class="tier t2">Tier 2</span><span class="score" data-score="phys"></span></div>
+  <div class="notes">
+    <h3>Digestion and respiration</h3>
+    <ul>
+      <li>Stomach: parietal cells secrete HCl and intrinsic factor (needed for B12 absorption); chief cells secrete pepsinogen. Gastrin stimulates acid. Secretin → pancreatic bicarbonate; CCK → pancreatic enzymes and gall-bladder contraction. Enteropeptidase activates trypsinogen in the duodenum. Fats leave enterocytes as chylomicrons into lacteals.</li>
+      <li>Lung volumes: tidal ~500 mL; vital capacity = inspiratory reserve + tidal + expiratory reserve; residual volume cannot be measured by spirometry. Surfactant (dipalmitoylphosphatidylcholine from type II alveolar cells) lowers surface tension.</li>
+      <li>O₂ transport: ~98% bound to haemoglobin; P50 ~26–27 mmHg. Right shift (lower affinity, more unloading): more CO₂, more H⁺ (lower pH), higher temperature, more 2,3-BPG (Bohr effect). Fetal Hb and myoglobin are left-shifted; fetal Hb binds 2,3-BPG poorly. CO binds Hb ~200–250× more strongly than O₂.</li>
+      <li>CO₂ transport: ~70% as bicarbonate (carbonic anhydrase in red cells, chloride shift), ~20% carbamino-Hb, ~7–10% dissolved. Haldane effect: deoxygenated Hb carries more CO₂.</li>
+      <li>Control: medullary centres; central chemoreceptors sense CSF H⁺ (from CO₂); peripheral chemoreceptors (carotid and aortic bodies) sense low PO₂.</li>
+    </ul>
+    <h3>Circulation and blood</h3>
+    <ul>
+      <li>Conduction: SA node → AV node (delay) → bundle of His → Purkinje fibres. ECG: P = atrial depolarisation; QRS = ventricular depolarisation; T = ventricular repolarisation.</li>
+      <li>Cardiac output = heart rate × stroke volume (~5 L/min). Frank–Starling: more filling → stronger contraction. First heart sound = AV valves close; second = semilunar valves close.</li>
+      <li>Clotting ends with thrombin turning fibrinogen into fibrin; Ca²⁺ is required. Haemophilia A lacks factor VIII, B lacks factor IX. Red cells live ~120 days; erythropoietin comes from the kidney.</li>
+    </ul>
+    <h3>Kidney and excretion</h3>
+    <ul>
+      <li>GFR ~125 mL/min (~180 L/day). Inulin clearance measures GFR; PAH clearance measures renal plasma flow.</li>
+      <li>Proximal tubule reabsorbs ~65% of Na⁺ and water and normally all glucose and amino acids. Loop of Henle is the countercurrent multiplier: descending limb permeable to water, thick ascending limb impermeable to water and pumping NaCl via NKCC2 (furosemide target).</li>
+      <li>ADH (vasopressin) inserts aquaporin-2 in the collecting duct. Aldosterone (zona glomerulosa) boosts Na⁺ reabsorption and K⁺ secretion. RAAS: renin (juxtaglomerular cells) → angiotensin I → ACE (lungs) → angiotensin II. ANP opposes it.</li>
+      <li>Nitrogen waste: ammonotelic (most fish), ureotelic (mammals, adult amphibians), uricotelic (birds, reptiles, insects).</li>
+    </ul>
+    <h3>Nerve and muscle</h3>
+    <ul>
+      <li>Resting potential ~−70 mV (K⁺ leak plus Na⁺/K⁺ pump). Action potential: voltage-gated Na⁺ in (blocked by tetrodotoxin), then voltage-gated K⁺ out (blocked by TEA). Absolute refractory period comes from Na⁺ channel inactivation. Saltatory conduction at nodes of Ranvier. Hodgkin and Huxley: squid giant axon.</li>
+      <li>Synapse: Ca²⁺ entry triggers SNARE-mediated release. Botulinum and tetanus toxins cleave SNAREs (botulinum → flaccid paralysis; tetanus blocks inhibitory interneurons → spastic paralysis).</li>
+      <li>Transmitters: ACh (nicotinic = ligand-gated cation channel, blocked by curare; muscarinic = GPCR; acetylcholinesterase blocked by organophosphates); GABA (main inhibitory in brain; GABA-A is a Cl⁻ channel); glycine (inhibitory in spinal cord; strychnine blocks); glutamate (main excitatory; NMDA receptors need Mg²⁺ removed and let Ca²⁺ in, central to LTP).</li>
+      <li>Sarcomere: A band (myosin length) stays constant; I band and H zone shorten. Sliding filament theory (Huxley &amp; Hanson; Huxley &amp; Niedergerke). Excitation–contraction: T-tubule DHP receptor → ryanodine receptor on SR → Ca²⁺ binds troponin C → tropomyosin moves. ATP is needed for cross-bridge release (rigor mortis without it). Smooth muscle uses calmodulin and myosin light-chain kinase.</li>
+    </ul>
+    <h3>Endocrinology</h3>
+    <ul>
+      <li>Hypothalamus → anterior pituitary: TRH → TSH, CRH → ACTH, GnRH → FSH and LH, GHRH → GH (somatostatin inhibits GH; dopamine inhibits prolactin). Posterior pituitary releases oxytocin and ADH made in hypothalamic neurons.</li>
+      <li>Adrenal cortex: glomerulosa → aldosterone, fasciculata → cortisol, reticularis → androgens. Medulla (neural crest) → adrenaline and noradrenaline. Thyroid: T3/T4 and calcitonin (lowers Ca²⁺); parathyroid hormone raises Ca²⁺. Pancreas: α → glucagon, β → insulin (receptor tyrosine kinase; moves GLUT4 to the membrane in muscle and fat), δ → somatostatin.</li>
+      <li>Receptor location: peptides and catecholamines bind surface receptors; steroids and thyroid hormones bind intracellular receptors. cAMP: glucagon, β-adrenergic, ADH (V2), TSH, ACTH. IP₃/Ca²⁺: α1-adrenergic, ADH (V1), oxytocin. cGMP: ANP.</li>
+    </ul>
+    <h3>Immunity</h3>
+    <ul>
+      <li>Innate: barriers, neutrophils, macrophages, NK cells, complement, interferons α/β. Toll-like receptors: TLR4 (LPS), TLR3 (dsRNA), TLR5 (flagellin), TLR9 (unmethylated CpG DNA).</li>
+      <li>MHC I on all nucleated cells presents cytosolic peptides (proteasome → TAP) to CD8⁺ T cells. MHC II on dendritic cells, macrophages and B cells presents endocytosed antigen to CD4⁺ T cells. Thymus: positive selection in the cortex, negative selection in the medulla.</li>
+      <li>Antibodies: two heavy and two light chains; Fab binds antigen, Fc drives effector functions. IgG (most abundant, crosses placenta), IgA (secretions and colostrum, dimer with J chain), IgM (pentamer, first in primary response, best at complement), IgE (allergy, parasites, mast cells), IgD (naive B-cell receptor).</li>
+      <li>Diversity: V(D)J recombination by RAG1/2 (Tonegawa, Nobel 1987) plus junctional diversity (TdT); somatic hypermutation and class switching by AID in germinal centres. Burnet’s clonal selection.</li>
+      <li>T helper subsets: Th1 (IFN-γ; intracellular pathogens), Th2 (IL-4, IL-5, IL-13; IgE, parasites), Th17 (IL-17; extracellular bacteria, fungi, autoimmunity), Treg (FoxP3, IL-10, TGF-β).</li>
+      <li>Complement: classical (C1q on antibody), lectin (MBL), alternative (spontaneous C3) → C3 convertase → membrane attack complex C5b–C9.</li>
+      <li>Hypersensitivity: type I IgE (anaphylaxis, hay fever); II antibody against cell-surface antigens (transfusion reaction, haemolytic disease of the newborn); III immune complexes (serum sickness, SLE); IV T-cell delayed (tuberculin test, contact dermatitis).</li>
+      <li>Monoclonal antibodies: hybridomas (Köhler &amp; Milstein, Nobel 1984); HAT medium kills unfused myeloma cells because they lack HGPRT.</li>
+    </ul>
+    <div class="trap"><h4>Traps examiners use</h4><ul>
+      <li>A band stays constant during contraction; only I band and H zone shorten.</li>
+      <li>Right shift means lower O₂ affinity, not higher.</li>
+      <li>Most CO₂ travels as bicarbonate in plasma, not bound to haemoglobin.</li>
+      <li>Thyroid hormone is an amino acid derivative but acts on a nuclear receptor.</li>
+      <li>Tuberculin test is type IV (T cells), not antibody-mediated.</li>
+    </ul></div>
+  </div>
+  <div class="quizhead"><h3 style="margin:0">Practice: physiology and immunity</h3><button class="btn ghost" type="button" data-reset="phys">Reset this set</button></div>
+  <div class="quiz" data-subject="phys"></div>
+</section>
+
+<section class="subject" id="micro">
+  <div class="subhead"><h2>Microbiology</h2><span class="tier t2">Tier 2</span><span class="score" data-score="micro"></span></div>
+  <div class="notes">
+    <h3>History and classification</h3>
+    <ul>
+      <li>Leeuwenhoek (first observations); Pasteur (swan-neck flask against spontaneous generation; pasteurisation; anthrax and rabies vaccines); Koch (postulates; anthrax, TB; pure culture on solid media, agar suggested by Fanny Hesse); Lister (antisepsis); Fleming (penicillin, 1928); Ivanovsky and Beijerinck (filterable agent of tobacco mosaic); Winogradsky (soil microbes, enrichment culture).</li>
+      <li>Woese’s three domains (16S/18S rRNA): Bacteria, Archaea (ether-linked isoprenoid lipids, no peptidoglycan, histone-like proteins), Eukarya.</li>
+    </ul>
+    <h3>Bacterial cell</h3>
+    <ul>
+      <li>Peptidoglycan: NAM–NAG chains (β1→4) cross-linked by peptides. Lysozyme cuts the β1→4 bond; penicillin blocks transpeptidation; vancomycin binds D-Ala-D-Ala.</li>
+      <li>Gram-positive: thick peptidoglycan with teichoic acids. Gram-negative: thin peptidoglycan, periplasm, outer membrane with LPS (lipid A = endotoxin, core, O-antigen) and porins.</li>
+      <li>Gram stain: crystal violet → iodine (mordant) → alcohol (decolourise) → safranin. Positive = purple, negative = pink. Acid-fast stain (Ziehl–Neelsen) for mycolic acid–rich Mycobacterium. Mycoplasma has no wall (sterols in its membrane) and resists β-lactams.</li>
+      <li>Endospores (Bacillus, Clostridium): dehydrated core with calcium dipicolinate; survive boiling. Flagella spin using proton motive force; sex pili for conjugation; capsules aid virulence (Griffith’s smooth strain).</li>
+    </ul>
+    <h3>Growth and control</h3>
+    <ul>
+      <li>Growth curve: lag, log (exponential), stationary, death. Generations n = (log N − log N₀) ÷ 0.301 = 3.3 × log(N/N₀); generation time = elapsed time ÷ n.</li>
+      <li>Oxygen classes: obligate aerobes, facultative anaerobes (E. coli), microaerophiles, aerotolerant anaerobes, obligate anaerobes (lack catalase and superoxide dismutase). Temperature: psychrophiles, mesophiles, thermophiles, hyperthermophiles.</li>
+      <li>Media: selective and differential MacConkey (bile salts and crystal violet select Gram-negatives; lactose fermenters pink); EMB (E. coli metallic green sheen); blood agar haemolysis (α partial, green; β complete, clear; γ none).</li>
+      <li>Sterilisation: autoclave 121 °C, 15 psi, 15–20 min (kills spores; indicator Geobacillus stearothermophilus); hot-air oven 160–170 °C for ~2 h; 0.22 µm filtration for heat-labile liquids (does not remove viruses); ethylene oxide gas; gamma rays (penetrating); UV (surfaces, thymine dimers). Pasteurisation (63 °C for 30 min, or 72 °C for 15 s) reduces but does not sterilise. D-value = time to kill 90%.</li>
+    </ul>
+    <h3>Viruses and other agents</h3>
+    <ul>
+      <li>Baltimore classes: I dsDNA (herpes, pox), II ssDNA (parvovirus), III dsRNA (rotavirus), IV +ssRNA (polio, SARS-CoV-2), V −ssRNA (influenza, rabies; must carry their own RNA-dependent RNA polymerase), VI +ssRNA with reverse transcriptase (HIV), VII dsDNA with reverse transcriptase (hepatitis B).</li>
+      <li>Phage: lytic (T4) or temperate (λ, lysogeny with a prophage). One-step growth curve: eclipse, latent period, burst size. Plaque assay counts PFU.</li>
+      <li>HIV gp120 binds CD4 with CCR5 or CXCR4 co-receptors; reverse transcriptase, integrase and protease are drug targets. Influenza: 8 segments; antigenic drift = point mutations; antigenic shift = segment reassortment (pandemics). SARS-CoV-2 spike binds ACE2.</li>
+      <li>Viroids: small circular RNA, no protein coat (potato spindle tuber). Prions: misfolded PrPSc protein, no nucleic acid.</li>
+    </ul>
+    <h3>Disease and antibiotics</h3>
+    <ul>
+      <li>Exotoxins (proteins, often A–B, heat-labile, can be made into toxoids): cholera (Gs locked on → cAMP → Cl⁻ and water loss), diphtheria (ADP-ribosylates eEF2), tetanus and botulinum (see physiology). Endotoxin: lipid A of Gram-negative LPS, heat-stable, causes fever and shock.</li>
+      <li>Diseases worth knowing: TB (M. tuberculosis; BCG), typhoid (Salmonella Typhi), cholera (Vibrio cholerae), plague (Yersinia pestis), leprosy (M. leprae), syphilis (Treponema pallidum), malaria (Plasmodium via female Anopheles; P. falciparum most severe; Ronald Ross), kala-azar (Leishmania donovani, sandfly), sleeping sickness (Trypanosoma brucei, tsetse fly), Chagas disease (T. cruzi), amoebic dysentery (Entamoeba histolytica).</li>
+      <li>Antibiotic targets: wall (β-lactams, vancomycin, bacitracin); 30S (aminoglycosides, tetracyclines); 50S (macrolides, chloramphenicol, linezolid); DNA gyrase and topo IV (quinolones); RNA polymerase (rifampicin); folate synthesis (sulfonamides block dihydropteroate synthase as PABA analogues; trimethoprim blocks DHFR); mycolic acid (isoniazid); membrane (polymyxin). Resistance: β-lactamases, efflux pumps, altered targets (MRSA’s PBP2a), spread by plasmids and transposons.</li>
+    </ul>
+    <h3>Environmental and applied</h3>
+    <ul>
+      <li>Nitrogen fixation by nitrogenase (O₂-sensitive, needs Mo and Fe): Rhizobium in legume nodules (leghaemoglobin buffers O₂), free-living Azotobacter and Clostridium, cyanobacterial heterocysts. Nitrification: Nitrosomonas (NH₃ → NO₂⁻), Nitrobacter (NO₂⁻ → NO₃⁻). Denitrification (Pseudomonas, Paracoccus): NO₃⁻ → N₂. Anammox oxidises NH₄⁺ with NO₂⁻.</li>
+      <li>Methanogens are archaea. Industrial microbes: Saccharomyces (ethanol), Lactobacillus (lactic acid, curd), Aspergillus niger (citric acid), Penicillium chrysogenum (penicillin), Streptomyces griseus (streptomycin), Bacillus thuringiensis (Cry insecticidal proteins). Chakrabarty’s engineered Pseudomonas for oil degradation. BOD measures organic pollution; coliform tests indicate faecal contamination.</li>
+    </ul>
+    <div class="trap"><h4>Traps examiners use</h4><ul>
+      <li>Pasteurisation is not sterilisation.</li>
+      <li>0.22 µm filters remove bacteria but not viruses.</li>
+      <li>Negative-sense RNA viruses must carry their polymerase into the cell.</li>
+      <li>Nitrosomonas makes nitrite from ammonia; Nitrobacter makes nitrate from nitrite. Students swap them.</li>
+      <li>Antigenic shift (reassortment) causes pandemics; drift causes seasonal change.</li>
+    </ul></div>
+  </div>
+  <div class="quizhead"><h3 style="margin:0">Practice: microbiology</h3><button class="btn ghost" type="button" data-reset="micro">Reset this set</button></div>
+  <div class="quiz" data-subject="micro"></div>
+</section>
+<section class="subject" id="eco">
+  <div class="subhead"><h2>Ecology</h2><span class="tier t3">Tier 3</span><span class="score" data-score="eco"></span></div>
+  <div class="notes">
+    <h3>Abiotic factors and rules</h3>
+    <ul>
+      <li>Liebig’s law of the minimum (the scarcest resource limits growth); Shelford’s law of tolerance (both too little and too much limit). Eury- = wide tolerance, steno- = narrow.</li>
+      <li>Bergmann’s rule: larger bodies in colder climates. Allen’s rule: shorter extremities in colder climates. Gloger’s rule: darker pigmentation in warm, humid regions.</li>
+    </ul>
+    <h3>Ecosystems and energy</h3>
+    <ul>
+      <li>NPP = GPP − autotroph respiration. Highest NPP per area: tropical rainforests, estuaries, coral reefs, swamps and marshes. The open ocean is low per area but large in total; deserts and tundra are lowest.</li>
+      <li>Energy flows one way; about 10% passes to the next trophic level (Lindeman, 1942). Pyramids: numbers can be inverted (one tree, many insects); biomass can be inverted in open water (phytoplankton turn over fast); energy is never inverted.</li>
+      <li>Cycles: carbon and nitrogen have large atmospheric pools; phosphorus is sedimentary with no significant gas phase. Biomagnification concentrates DDT and mercury up food chains. Eutrophication: nutrient enrichment → algal blooms → low O₂.</li>
+    </ul>
+    <h3>Populations</h3>
+    <ul>
+      <li>Exponential: dN/dt = rN; Nₜ = N₀e^(rt); doubling time = ln 2 ÷ r ≈ 0.693 ÷ r. Logistic: dN/dt = rN(1 − N/K); growth is fastest at N = K/2.</li>
+      <li>r-selected species: many small offspring, little care, unstable habitats. K-selected: few large offspring, much care, stable habitats.</li>
+      <li>Survivorship curves: type I (most survive to old age; humans), type II (constant risk; many birds, Hydra), type III (huge early mortality; oysters, most fish, many plants).</li>
+      <li>Lincoln–Petersen estimate: N = (marked in first sample × total in second) ÷ marked recaptured.</li>
+    </ul>
+    <h3>Communities</h3>
+    <ul>
+      <li>Interactions: mutualism (+/+), commensalism (+/0), amensalism (−/0), competition (−/−), predation and parasitism (+/−).</li>
+      <li>Gause’s competitive exclusion principle (Paramecium aurelia beats P. caudatum). Hutchinson’s fundamental versus realised niche. Resource partitioning (MacArthur’s warblers). Keystone species: Paine’s removal of the sea star Pisaster.</li>
+      <li>Succession: primary (bare rock; lichens as pioneers) is slower than secondary (abandoned field). Hydrarch starts in water, xerarch on dry rock; both end at a climax community.</li>
+      <li>Diversity: alpha (within a site), beta (turnover between sites), gamma (regional); Shannon and Simpson indices. Island biogeography (MacArthur &amp; Wilson): species richness rises with island size and falls with distance; species–area relation S = cA^z.</li>
+    </ul>
+    <h3>Regional ecology</h3>
+    <ul>
+      <li>Biomes: tropical rainforest, savanna, desert, temperate grassland, temperate deciduous forest, taiga (boreal conifer), tundra (permafrost).</li>
+      <li>Lakes: littoral, limnetic, profundal and benthic zones. Summer stratification: epilimnion, metalimnion (thermocline), hypolimnion; spring and autumn turnover. Streams are lotic; lakes and ponds lentic. Marine: intertidal, neritic, oceanic; the photic zone supports photosynthesis.</li>
+      <li>India’s biodiversity hotspots: Himalaya, Indo-Burma, Western Ghats and Sri Lanka, Sundaland (Nicobar Islands). Conservation in situ (national parks, sanctuaries, biosphere reserves) and ex situ (seed banks, zoos).</li>
+    </ul>
+    <div class="trap"><h4>Traps examiners use</h4><ul>
+      <li>The pyramid of energy is the only one that is never inverted.</li>
+      <li>Logistic growth rate is maximal at K/2, not at K.</li>
+      <li>Commensalism is +/0; amensalism is −/0.</li>
+    </ul></div>
+  </div>
+  <div class="quizhead"><h3 style="margin:0">Practice: ecology</h3><button class="btn ghost" type="button" data-reset="eco">Reset this set</button></div>
+  <div class="quiz" data-subject="eco"></div>
+</section>
+
+<section class="subject" id="plant">
+  <div class="subhead"><h2>Plant physiology</h2><span class="tier t3">Tier 3</span><span class="score" data-score="plant"></span></div>
+  <div class="notes">
+    <h3>Water relations and transport</h3>
+    <ul>
+      <li>Water potential ψ = ψs + ψp (plus gravity for tall trees). Pure water = 0 MPa; solutes make ψs negative; water moves from higher to lower ψ. ψs = −iCRT.</li>
+      <li>Routes: apoplast, symplast, transmembrane. The Casparian strip (suberin) in the endodermis forces water and ions through the symplast.</li>
+      <li>Ascent of sap: cohesion–tension theory (Dixon &amp; Joly) driven by transpiration pull. Root pressure explains guttation through hydathodes; capillarity contributes little.</li>
+      <li>Stomata: blue light activates the guard-cell H⁺-ATPase → K⁺ (and Cl⁻, malate) enter → water follows → guard cells swell → pore opens. ABA closes them (Ca²⁺ signalling, anion and K⁺ efflux).</li>
+      <li>Phloem: Münch pressure-flow hypothesis, source to sink; sucrose is loaded actively by H⁺–sucrose symport into sieve tubes with companion cells. Aphid stylets sample phloem sap.</li>
+    </ul>
+    <h3>Mineral nutrition</h3>
+    <ul>
+      <li>Macronutrients: C, H, O, N, P, K, Ca, Mg, S. Micronutrients: Fe, Mn, Cu, Zn, B, Mo, Cl, Ni.</li>
+      <li>Mobile elements (N, P, K, Mg) show deficiency first in older leaves; immobile ones (Ca, S, Fe, B) in young leaves.</li>
+      <li>Roles: Mg in chlorophyll; Mo in nitrogenase and nitrate reductase; Mn in PSII’s water-splitting cluster; Fe in cytochromes and ferredoxin; Cu in plastocyanin; Ca in middle-lamella calcium pectate; Zn for auxin synthesis; Ni in urease; B for pollen tubes and Ca use.</li>
+      <li>Deficiency signs: N → older-leaf chlorosis; Fe → interveinal chlorosis of young leaves; Zn → little leaf; B → heart rot of beet; Mn → grey speck of oats; Mo → whiptail of cauliflower.</li>
+      <li>Nitrogen assimilation: nitrate reductase (cytosol) → nitrite reductase (plastid) → NH₄⁺ → GS–GOGAT (glutamine synthetase, glutamate synthase).</li>
+    </ul>
+    <h3>Plant hormones</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>Hormone</th><th>Discovery</th><th>Main effects</th></tr></thead>
+      <tbody>
+        <tr><td>Auxin (IAA)</td><td>Went, oat coleoptile</td><td>Phototropism, apical dominance, rooting of cuttings, parthenocarpy; polar transport by PIN proteins; 2,4-D is an auxin herbicide</td></tr>
+        <tr><td>Gibberellins</td><td>Kurosawa, bakanae disease of rice (Gibberella fujikuroi)</td><td>Stem elongation, bolting, seed germination (α-amylase in barley aleurone), seedless grapes</td></tr>
+        <tr><td>Cytokinins</td><td>Skoog &amp; Miller (kinetin); zeatin from maize</td><td>Cell division, delayed senescence (Richmond–Lang effect), lateral bud growth; high cytokinin:auxin → shoots, high auxin:cytokinin → roots</td></tr>
+        <tr><td>Abscisic acid</td><td>—</td><td>Stomatal closure, seed dormancy, stress responses, growth inhibition</td></tr>
+        <tr><td>Ethylene</td><td>—</td><td>Fruit ripening (climacteric), triple response in dark-grown seedlings, abscission, epinasty; ethephon releases it; 1-MCP blocks its receptor</td></tr>
+        <tr><td>Others</td><td>—</td><td>Brassinosteroids (elongation), jasmonates (defence), salicylic acid (systemic acquired resistance), strigolactones (inhibit branching; trigger Striga germination)</td></tr>
+      </tbody>
+    </table></div>
+    <h3>Flowering and movement</h3>
+    <ul>
+      <li>Photoperiodism (Garner &amp; Allard, Maryland Mammoth tobacco). Short-day plants (really long-night plants): Xanthium, chrysanthemum, soybean. Long-day: spinach, wheat, Hyoscyamus. Day-neutral: tomato, cucumber. Leaves perceive the photoperiod.</li>
+      <li>Phytochrome: Pr absorbs red (~660 nm) → Pfr (active), which absorbs far-red (~730 nm) → Pr. A red-light night break prevents flowering in short-day plants; far-red after it reverses the effect (the last flash counts).</li>
+      <li>Florigen is the FT protein, moving from leaf to shoot apex in phloem. Vernalisation (prolonged cold) silences the floral repressor FLC in Arabidopsis.</li>
+      <li>Tropisms: phototropism (blue-light phototropins), gravitropism (amyloplast statoliths in root cap), thigmotropism. Nastic movements: Mimosa leaf folding (turgor loss in the pulvinus), sleep movements.</li>
+      <li>Respiratory quotient (CO₂ out ÷ O₂ in): carbohydrates 1, fats ~0.7, proteins ~0.8–0.9, organic acids above 1 (malic acid 1.33).</li>
+    </ul>
+    <div class="trap"><h4>Traps examiners use</h4><ul>
+      <li>Short-day plants respond to night length; interrupting the night with red light stops flowering.</li>
+      <li>Iron deficiency appears in young leaves; nitrogen deficiency in old leaves.</li>
+      <li>High auxin:cytokinin gives roots, not shoots.</li>
+    </ul></div>
+  </div>
+  <div class="quizhead"><h3 style="margin:0">Practice: plant physiology</h3><button class="btn ghost" type="button" data-reset="plant">Reset this set</button></div>
+  <div class="quiz" data-subject="plant"></div>
+</section>
+
+<section class="subject" id="bphys">
+  <div class="subhead"><h2>Biophysics</h2><span class="tier t3">Tier 3</span><span class="score" data-score="bphys"></span></div>
+  <div class="notes">
+    <h3>Forces and conformation</h3>
+    <ul>
+      <li>Approximate energies: covalent C–C ~350 kJ/mol; hydrogen bond ~4–20; van der Waals ~0.4–4. The hydrophobic effect is mainly entropy-driven (ordered water is released).</li>
+      <li>The peptide bond is planar with partial double-bond character, almost always trans. Ramachandran plot: φ (N–Cα) and ψ (Cα–C); α-helix near φ −57°, ψ −47°; β-sheet near φ −120°, ψ +120°. Glycine is most flexible, proline most restricted.</li>
+      <li>Folding: Levinthal’s paradox; molten globule intermediates; net folding free energy is small (~20–60 kJ/mol). Urea and guanidinium chloride denature.</li>
+      <li>DNA melting: absorbance at 260 nm rises (hyperchromic effect) on denaturation. Tm rises with GC content and salt and falls with formamide. Repetitive DNA renatures fastest (C₀t curves).</li>
+      <li>Membranes: transition temperature rises with longer, saturated chains; cholesterol broadens the transition.</li>
+    </ul>
+    <h3>Which method answers which question</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>Method</th><th>What it tells you</th><th>Key fact</th></tr></thead>
+      <tbody>
+        <tr><td>UV-vis absorbance</td><td>Concentration, purity</td><td>A = εcl; pure DNA A260/A280 ≈ 1.8, RNA ≈ 2.0</td></tr>
+        <tr><td>Fluorescence</td><td>Environment, binding, distance (FRET)</td><td>Emission at longer wavelength than excitation (Stokes shift); Trp is the intrinsic probe</td></tr>
+        <tr><td>Circular dichroism</td><td>Secondary structure content</td><td>α-helix: negative bands at 208 and 222 nm; β-sheet: negative near 218 nm</td></tr>
+        <tr><td>Infrared</td><td>Secondary structure, bonds</td><td>Amide I band ~1650 cm⁻¹ (C=O stretch)</td></tr>
+        <tr><td>NMR</td><td>Atomic structure and dynamics in solution</td><td>Nuclei with spin (¹H, ¹³C, ¹⁵N, ³¹P); NOE gives distances under ~5 Å; best for smaller proteins</td></tr>
+        <tr><td>EPR / ESR</td><td>Unpaired electrons</td><td>Free radicals, metal centres, spin labels</td></tr>
+        <tr><td>X-ray crystallography</td><td>Atomic structure from crystals</td><td>Bragg: nλ = 2d sin θ; the phase problem (solved by heavy atoms, MAD or molecular replacement)</td></tr>
+        <tr><td>Cryo-EM</td><td>Structures of large complexes without crystals</td><td>Nobel 2017 (Dubochet, Frank, Henderson)</td></tr>
+        <tr><td>Mass spectrometry</td><td>Mass, sequence, modifications</td><td>MALDI-TOF, ESI; tandem MS for peptide sequencing</td></tr>
+        <tr><td>ITC / SPR</td><td>Binding thermodynamics / kinetics</td><td>ITC gives ΔH, K and stoichiometry; SPR gives on and off rates</td></tr>
+      </tbody>
+    </table></div>
+    <h3>Microscopy, isotopes and sedimentation</h3>
+    <ul>
+      <li>Resolution d = 0.61λ/NA (Abbe: λ/2NA); light microscopes reach ~200 nm. Phase contrast (Zernike) shows unstained living cells; TEM for thin sections, SEM for surfaces.</li>
+      <li>Isotopes: ³H (12.3 years), ¹⁴C (5,730 years), ³²P (14.3 days), ³⁵S (87 days), ¹²⁵I (60 days, γ). Remaining fraction = (½)^(t/T).</li>
+      <li>Sedimentation coefficient S = v/ω²r (1 S = 10⁻¹³ s); S depends on shape and mass, so it does not add (30S + 50S = 70S).</li>
+      <li>Protein structure prediction: AlphaFold (Nobel 2024 with protein design by Baker).</li>
+    </ul>
+    <div class="trap"><h4>Traps examiners use</h4><ul>
+      <li>Denatured DNA absorbs more UV, not less.</li>
+      <li>CD gives secondary structure content, not an atomic structure.</li>
+      <li>NMR works in solution; X-ray needs crystals.</li>
+    </ul></div>
+  </div>
+  <div class="quizhead"><h3 style="margin:0">Practice: biophysics</h3><button class="btn ghost" type="button" data-reset="bphys">Reset this set</button></div>
+  <div class="quiz" data-subject="bphys"></div>
+</section>
+
+<section class="subject" id="stats">
+  <div class="subhead"><h2>Biostatistics and experimental design</h2><span class="tier t3">Bonus</span><span class="score" data-score="stats"></span></div>
+  <div class="notes">
+    <p>Not a named syllabus subject, but questions on controls and statistics appear in many PhD tests and in nearly every interview.</p>
+    <ul>
+      <li>Mean, median, mode; median resists outliers and suits skewed data. Standard deviation measures spread; standard error of the mean = SD ÷ √n measures precision of the mean.</li>
+      <li>Normal distribution: ~68% within ±1 SD, ~95% within ±1.96 SD, ~99.7% within ±3 SD.</li>
+      <li>Tests: t-test (two means; paired if the same samples are measured twice), ANOVA (three or more means), chi-square (counts versus expected), correlation (strength of association, r from −1 to +1; r² = variance explained), regression (predicting one variable from another).</li>
+      <li>p-value: probability of data at least this extreme if the null hypothesis is true. Type I error: rejecting a true null (false positive, rate α). Type II error: missing a real effect (false negative, rate β); power = 1 − β, raised by larger samples.</li>
+      <li>Controls: a positive control shows the assay can detect an effect; a negative control shows what “no effect” looks like; vehicle controls test the solvent. Biological replicates (independent samples) matter more than technical replicates (repeat measurements).</li>
+    </ul>
+  </div>
+  <div class="quizhead"><h3 style="margin:0">Practice: biostatistics</h3><button class="btn ghost" type="button" data-reset="stats">Reset this set</button></div>
+  <div class="quiz" data-subject="stats"></div>
+</section>
+
+<section class="subject" id="mistakes">
+  <div class="subhead"><h2>Mistake log</h2></div>
+  <p class="prose">Every question answered wrongly appears here with its explanation. Clear one by answering it correctly after resetting its subject. Read this list every night and again on the morning of the test.</p>
+  <div id="mistakelist"></div>
+</section>
+
+<section class="subject" id="mock">
+  <div class="subhead"><h2>Timed mock test</h2></div>
+  <div class="prose">
+    <p>50 questions drawn at random across all subjects, weighted towards Tier 1. 90 minutes. Scoring follows the BITS rule: +1 for correct, −0.25 for wrong, 0 for blank. Questions come from the same bank, so sit it after finishing the subject sets, and treat repeats as recall practice.</p>
+  </div>
+  <div class="toolbar" style="margin-top:.8rem"><button class="btn" type="button" id="mockstart">Start a new mock</button><span class="timer" id="mocktimer" aria-live="polite"></span></div>
+  <div id="mockarea"></div>
+</section>
+</main>
+<footer><div class="wrap">Notebook prepared 13 November 2026 for the BITS Pilani (Hyderabad Campus) PhD written test, Biological Sciences. Content follows the official syllabus subject list; questions are original practice items, not BITS questions. Answers and progress are saved only in this browser.</div></footer>
+<script>
+const Q = [
+// CELL
+{s:"cell",q:"Which coat protein forms vesicles carrying cargo from the ER to the Golgi?",o:["COPI","COPII","Clathrin","Caveolin"],a:1,e:"COPII is anterograde (ER → Golgi). COPI is retrograde (Golgi → ER). Clathrin works at the plasma membrane and trans-Golgi."},
+{s:"cell",q:"A soluble ER protein that escapes to the Golgi is returned because it carries which signal?",o:["Nuclear localisation signal","KDEL at the C-terminus","SKL at the C-terminus","Mannose-6-phosphate"],a:1,e:"KDEL receptors in the cis-Golgi bind it and send it back in COPI vesicles. SKL is the peroxisome signal."},
+{s:"cell",q:"Mannose-6-phosphate on a newly made protein sends it to the:",o:["Lysosome","Peroxisome","Mitochondrial matrix","Nucleus"],a:0,e:"M6P receptors in the trans-Golgi direct acid hydrolases to lysosomes. Without the tag (I-cell disease) the enzymes are secreted."},
+{s:"cell",q:"Taxol arrests dividing cells because it:",o:["Depolymerises microtubules","Stabilises microtubules and stops their dynamics","Blocks actin polymerisation","Inhibits kinesin ATPase"],a:1,e:"Taxol locks microtubules so the spindle cannot work. Colchicine and nocodazole do the opposite (depolymerise)."},
+{s:"cell",q:"In an axon, kinesin carries cargo towards the:",o:["Cell body (minus end)","Axon terminal (plus end)","Nucleus","Centrosome"],a:1,e:"Axonal microtubules have plus ends at the terminal; kinesin is plus-end directed (anterograde). Dynein moves to the minus end (retrograde)."},
+{s:"cell",q:"The nuclear lamina is built from which intermediate filaments?",o:["Keratins","Vimentin","Lamins","Desmin"],a:2,e:"Lamins A, B and C line the inner nuclear membrane. Keratins are epithelial, vimentin mesenchymal, desmin muscle."},
+{s:"cell",q:"Gap junction channels are formed by:",o:["Claudins","Connexins","Cadherins","Integrins"],a:1,e:"Six connexins make a connexon; two connexons from neighbouring cells form the channel. Claudins make tight junctions."},
+{s:"cell",q:"Which junction links cells to the basal lamina through integrins and intermediate filaments?",o:["Desmosome","Hemidesmosome","Adherens junction","Tight junction"],a:1,e:"Hemidesmosomes use integrins to bind the basal lamina. Desmosomes join cell to cell using desmosomal cadherins."},
+{s:"cell",q:"Cyclin B–CDK1 becomes active at G2/M when:",o:["Wee1 phosphorylates Thr14 and Tyr15","Cdc25 removes the inhibitory phosphates","p21 binds the complex","APC/C ubiquitinates cyclin B"],a:1,e:"Wee1 adds inhibitory phosphates; Cdc25 phosphatase removes them, giving active MPF. APC/C degrades cyclin B later to exit mitosis."},
+{s:"cell",q:"Separase cleaves cohesin at anaphase after APC/C targets which protein for destruction?",o:["Cohesin","Securin","Cyclin D","Mad2"],a:1,e:"Securin holds separase inactive. APC/C–Cdc20 ubiquitinates securin once all kinetochores attach; separase is freed to cut cohesin."},
+{s:"cell",q:"The synaptonemal complex forms during which stage of prophase I?",o:["Leptotene","Zygotene","Diplotene","Diakinesis"],a:1,e:"Synapsis starts in zygotene; crossing over in pachytene; chiasmata visible in diplotene."},
+{s:"cell",q:"Cytochrome c released from mitochondria directly binds:",o:["Caspase-8","Apaf-1","Bcl-2","FADD"],a:1,e:"Cytochrome c + Apaf-1 + dATP form the apoptosome, which activates caspase-9. FADD and caspase-8 belong to the extrinsic pathway."},
+{s:"cell",q:"Annexin V staining marks early apoptotic cells because they:",o:["Lose their nucleus","Expose phosphatidylserine on the outer leaflet","Swell and burst","Release lactate dehydrogenase"],a:1,e:"PS normally faces the cytosol; scramblases flip it outward in apoptosis, and Annexin V binds PS. Swelling and LDH release point to necrosis."},
+{s:"cell",q:"Cholera toxin raises cAMP in intestinal cells by:",o:["ADP-ribosylating Gsα so it stays GTP-bound","Inhibiting phosphodiesterase","Activating Gi","ADP-ribosylating Giα"],a:0,e:"Locked-on Gs keeps adenylyl cyclase active, driving Cl⁻ and water loss. Pertussis toxin ADP-ribosylates Gi instead."},
+{s:"cell",q:"IP₃ made by phospholipase Cβ acts mainly by:",o:["Activating PKC directly","Releasing Ca²⁺ from the ER through IP₃ receptors","Activating adenylyl cyclase","Opening voltage-gated Na⁺ channels"],a:1,e:"IP₃ opens ER Ca²⁺ channels. The other product, DAG, activates PKC together with Ca²⁺."},
+{s:"cell",q:"Ras is switched to its active GTP-bound form by:",o:["A GAP","A GEF such as SOS","A GDI","PTEN"],a:1,e:"GEFs swap GDP for GTP. GAPs boost GTP hydrolysis to switch Ras off. PTEN is a lipid phosphatase in the PI3K pathway."},
+{s:"cell",q:"SGLT1 moves glucose into intestinal cells against its gradient using:",o:["An H⁺ gradient","The Na⁺ gradient","Direct ATP hydrolysis","K⁺ efflux"],a:1,e:"Secondary active symport of 2 Na⁺ with 1 glucose; the Na⁺/K⁺-ATPase maintains the gradient."},
+{s:"cell",q:"Ouabain is used experimentally to inhibit:",o:["SERCA","Na⁺/K⁺-ATPase","V-type ATPase","ATP synthase"],a:1,e:"Ouabain and digoxin bind the extracellular face of the Na⁺/K⁺-ATPase. Oligomycin inhibits ATP synthase."},
+// MOL
+{s:"mol",q:"E. coli grown for many generations in ¹⁵N is moved to ¹⁴N. After two generations, what fraction of DNA is hybrid density?",o:["100%","50%","25%","0%"],a:1,e:"Semiconservative replication: after one generation all hybrid; after two, half hybrid and half light; no heavy DNA."},
+{s:"mol",q:"The Klenow fragment of DNA polymerase I lacks which activity?",o:["5′→3′ polymerase","3′→5′ exonuclease","5′→3′ exonuclease","All of these"],a:2,e:"Klenow keeps polymerase and proofreading. Losing the 5′→3′ exonuclease makes it useful for fill-in reactions."},
+{s:"mol",q:"Ciprofloxacin and nalidixic acid kill bacteria by inhibiting:",o:["RNA polymerase β subunit","DNA gyrase (topoisomerase II)","The 30S ribosome","Peptidoglycan cross-linking"],a:1,e:"Quinolones trap gyrase and topoisomerase IV. Rifampicin targets RNA polymerase β."},
+{s:"mol",q:"Telomerase is best described as:",o:["A DNA-dependent DNA polymerase","A reverse transcriptase that carries its own RNA template","A DNA-dependent RNA polymerase","A self-splicing ribozyme"],a:1,e:"TERT copies the RNA template in the telomerase RNA onto the chromosome’s 3′ overhang."},
+{s:"mol",q:"Which eukaryotic polymerase synthesises the leading strand?",o:["Pol α","Pol δ","Pol ε","Pol γ"],a:2,e:"Pol ε does the leading strand; Pol δ the lagging strand; Pol α–primase starts each fragment; Pol γ copies mitochondrial DNA."},
+{s:"mol",q:"In mismatch repair in E. coli, the newly made strand is recognised because:",o:["It is methylated at GATC","It is not yet methylated at GATC","It contains uracil","It is bound by RecA"],a:1,e:"Dam methylase marks GATC with a delay, so the new strand is briefly unmethylated; MutH nicks it."},
+{s:"mol",q:"Low concentrations of α-amanitin block transcription by:",o:["RNA Pol I","RNA Pol II","RNA Pol III","Bacterial RNA polymerase"],a:1,e:"Pol II is very sensitive, Pol III moderately, Pol I resistant. Bacteria are unaffected."},
+{s:"mol",q:"5S rRNA in eukaryotes is transcribed by:",o:["Pol I","Pol II","Pol III","Pol IV"],a:2,e:"Pol III makes 5S rRNA, tRNAs, U6 and 7SL. Pol I makes the 45S precursor (28S, 18S, 5.8S)."},
+{s:"mol",q:"In spliceosomal splicing, the first nucleophile that attacks the 5′ splice site is:",o:["The 3′-OH of exon 1","The 2′-OH of the branch-point adenosine","An external guanosine","The 5′ phosphate of the intron"],a:1,e:"The branch-point A forms the lariat via a 2′–5′ bond. Group I self-splicing introns use an external guanosine instead."},
+{s:"mol",q:"Peptidyl transferase activity of the bacterial ribosome resides in:",o:["Ribosomal protein L2","23S rRNA","EF-Tu","16S rRNA"],a:1,e:"The ribosome is a ribozyme; 23S rRNA in the 50S subunit catalyses peptide bond formation."},
+{s:"mol",q:"The Shine–Dalgarno sequence base-pairs with:",o:["The 5′ end of 23S rRNA","The 3′ end of 16S rRNA","The anticodon of fMet-tRNA","The 5′ cap"],a:1,e:"AGGAGG pairs with the anti-SD sequence at the 3′ end of 16S rRNA, positioning the start codon."},
+{s:"mol",q:"How many high-energy phosphate bonds are used per peptide bond formed during elongation (including charging)?",o:["1","2","4","6"],a:2,e:"2 for aminoacylation (ATP → AMP + PPi), 1 GTP for EF-Tu delivery, 1 GTP for EF-G translocation."},
+{s:"mol",q:"A merodiploid lacI⁻ lacO⁺ lacZ⁺ / F′ lacI⁺ shows lac expression that is:",o:["Constitutive","Inducible","Never expressed","Expressed only in cis"],a:1,e:"The F′ provides diffusible repressor, so I⁺ is dominant in trans and the operon becomes inducible again."},
+{s:"mol",q:"An operator-constitutive mutation (lacOᶜ) is:",o:["Recessive","Cis-dominant","Trans-dominant","Lethal"],a:1,e:"Oᶜ can’t bind repressor, so only genes on the same DNA are constitutive. It cannot help a second copy in trans."},
+{s:"mol",q:"When tryptophan is plentiful, the trp leader forms which hairpin?",o:["1:2 pause","2:3 antiterminator","3:4 terminator","No hairpin"],a:2,e:"The ribosome passes the Trp codons quickly and covers region 2, so regions 3 and 4 pair into the terminator."},
+{s:"mol",q:"Which histone mark is placed by Polycomb complexes and associated with repression?",o:["H3K4me3","H3K27me3","H3K9ac","H4K16ac"],a:1,e:"PRC2 deposits H3K27me3. H3K4me3 marks active promoters; acetylation generally opens chromatin."},
+{s:"mol",q:"Drosha processes:",o:["pre-miRNA into a miRNA duplex in the cytoplasm","pri-miRNA into pre-miRNA in the nucleus","mRNA within RISC","long dsRNA into siRNA"],a:1,e:"Drosha–DGCR8 crops pri-miRNA in the nucleus; Exportin-5 exports the hairpin; Dicer cuts it in the cytoplasm."},
+{s:"mol",q:"5-Bromouracil mainly produces:",o:["Frameshifts","A:T → G:C transitions","Transversions","Large deletions"],a:1,e:"5-BU is a thymine analogue that tautomerises and pairs with G. Acridines cause frameshifts."},
+{s:"mol",q:"Which antibiotic inhibits only eukaryotic (80S) ribosomes?",o:["Chloramphenicol","Cycloheximide","Streptomycin","Puromycin"],a:1,e:"Cycloheximide blocks eukaryotic translocation. Puromycin acts on both; chloramphenicol and streptomycin on bacteria."},
+// TECH
+{s:"tech",q:"After cloning into pUC and plating on X-gal + IPTG, blue colonies most likely contain:",o:["Recombinant plasmid","Non-recombinant plasmid with intact lacZα","No plasmid","A contaminating fungus"],a:1,e:"Intact lacZα gives β-galactosidase activity → blue. An insert disrupts it → white. Untransformed cells die on ampicillin."},
+{s:"tech",q:"Which vector accepts the largest inserts?",o:["Plasmid","Cosmid","BAC","YAC"],a:3,e:"YACs carry ~100 kb to over 1 Mb; BACs ~100–300 kb; cosmids ~35–45 kb."},
+{s:"tech",q:"Why is a cut vector treated with alkaline phosphatase before ligation?",o:["To remove 5′ phosphates so the vector cannot re-close on itself","To create overhangs","To methylate the vector","To linearise it"],a:0,e:"Ligase needs a 5′ phosphate. The insert still supplies phosphates, so only recombinants ligate."},
+{s:"tech",q:"Taq products clone easily into T-vectors because Taq:",o:["Proofreads","Adds a single 3′ A overhang","Leaves blunt ends","Adds 5′ phosphates"],a:1,e:"Taq’s terminal transferase activity adds a 3′ A that pairs with the vector’s 3′ T overhang."},
+{s:"tech",q:"With 100% PCR efficiency, sample A has Ct 20 and sample B Ct 23 for the same normalised gene. A has how much more template?",o:["3-fold","8-fold","23-fold","One-eighth as much"],a:1,e:"3 cycles earlier = 2³ = 8-fold more starting template. Lower Ct means more template."},
+{s:"tech",q:"A 20-mer primer has 10 A/T and 10 G/C. Its Tm by the Wallace rule is about:",o:["50 °C","60 °C","70 °C","80 °C"],a:1,e:"Tm = 2(A+T) + 4(G+C) = 20 + 40 = 60 °C."},
+{s:"tech",q:"Dideoxynucleotides terminate chains in Sanger sequencing because they lack:",o:["A 2′-OH","A 3′-OH","A 5′ phosphate","A base"],a:1,e:"Without a 3′-OH, no phosphodiester bond can form with the next nucleotide."},
+{s:"tech",q:"A Northern blot is used to detect:",o:["Specific DNA sequences","Specific RNA molecules","Specific proteins","DNA-binding proteins"],a:1,e:"Southern = DNA, Northern = RNA, Western = protein, Southwestern = DNA-binding proteins."},
+{s:"tech",q:"Streptococcus pyogenes Cas9 requires which PAM next to its target?",o:["NGG","TTTV","NAAG","GGN at the 5′ end"],a:0,e:"SpCas9 needs 5′-NGG-3′ immediately after the protospacer. Cas12a uses a 5′ TTTV PAM."},
+{s:"tech",q:"In gel filtration chromatography, which elutes first?",o:["The smallest molecules","The largest molecules","The most negatively charged","The most hydrophobic"],a:1,e:"Large molecules are excluded from bead pores and take the shortest path."},
+{s:"tech",q:"A His-tagged protein bound to Ni-NTA is usually eluted with:",o:["Imidazole","Reduced glutathione","Maltose","Biotin"],a:0,e:"Imidazole competes with histidine for nickel. Glutathione elutes GST-tags; maltose elutes MBP-tags."},
+{s:"tech",q:"In SDS-PAGE, proteins separate mainly by:",o:["Native charge","Molecular mass","Isoelectric point","Native shape"],a:1,e:"SDS denatures and coats proteins with roughly uniform negative charge per unit length."},
+{s:"tech",q:"The first dimension of a classical 2D protein gel separates by:",o:["Mass","Isoelectric point","Hydrophobicity","Glycosylation"],a:1,e:"Isoelectric focusing first, then SDS-PAGE by mass."},
+{s:"tech",q:"FRET between two fluorophores typically requires a separation of:",o:["Less than about 10 nm","50–100 nm","About 1 µm","Any distance"],a:0,e:"Efficiency falls with the sixth power of distance; useful range ~1–10 nm."},
+{s:"tech",q:"A yeast two-hybrid screen detects:",o:["DNA–protein binding","Protein–protein interactions","RNA secondary structure","Enzyme kinetics"],a:1,e:"Bait on the Gal4 DNA-binding domain and prey on the activation domain reconstitute a transcription factor when they interact."},
+{s:"tech",q:"A confocal microscope gives sharper optical sections mainly because:",o:["It uses electrons","A pinhole rejects out-of-focus light","It uses shorter wavelengths","It needs no fluorescence"],a:1,e:"The detection pinhole blocks light from planes above and below focus."},
+{s:"tech",q:"A PCR gives several unexpected bands. The best first change is to:",o:["Lower the annealing temperature","Raise the annealing temperature","Add more template","Add more cycles"],a:1,e:"Non-specific priming is reduced by a higher annealing temperature; lowering Mg²⁺ also helps."},
+{s:"tech",q:"DEAE-cellulose is used to bind proteins that are, at the working pH:",o:["Positively charged","Negatively charged","Uncharged","Hydrophobic"],a:1,e:"DEAE carries a positive charge, so it is an anion exchanger and binds negative proteins."},
+{s:"tech",q:"A 4-base cutter (such as AluI) cuts random DNA about once every:",o:["16 bp","64 bp","256 bp","4,096 bp"],a:2,e:"4⁴ = 256 bp. A 6-base cutter cuts every 4⁶ = 4,096 bp."},
+{s:"tech",q:"In a TaqMan qPCR assay, the fluorescent signal appears when:",o:["SYBR Green binds dsDNA","Taq’s 5′→3′ exonuclease cleaves the probe, separating reporter from quencher","The primers anneal","The template is denatured"],a:1,e:"The cleaved reporter dye is freed from the quencher, so signal accumulates with each cycle."},
+// GEN
+{s:"gen",q:"An F2 ratio of 9:7 indicates:",o:["Duplicate recessive epistasis (complementary genes)","Dominant epistasis","Recessive epistasis","Incomplete dominance"],a:0,e:"Both dominant alleles are needed for the phenotype; any recessive homozygote gives the alternative (sweet pea)."},
+{s:"gen",q:"An F2 ratio of 12:3:1 indicates:",o:["Recessive epistasis","Dominant epistasis","Duplicate dominant genes","Complementary genes"],a:1,e:"A dominant allele at one locus masks the other locus (summer squash colour)."},
+{s:"gen",q:"In Labradors, BbEe × BbEe gives black:brown:yellow in what ratio?",o:["9:3:4","9:6:1","12:3:1","9:7"],a:0,e:"ee is yellow regardless of B (recessive epistasis): 9 B_E_ black, 3 bbE_ brown, 4 _ _ee yellow."},
+{s:"gen",q:"From AaBbCc × AaBbCc (independent assortment), the probability of an aabbcc offspring is:",o:["1/8","1/16","1/27","1/64"],a:3,e:"(1/4)³ = 1/64."},
+{s:"gen",q:"From the same cross, the probability of an AaBbCc offspring is:",o:["1/4","1/8","1/16","1/64"],a:1,e:"Each gene gives a heterozygote with probability 1/2, so (1/2)³ = 1/8."},
+{s:"gen",q:"A trait controlled additively by 3 gene pairs gives how many phenotypic classes in the F2?",o:["4","6","7","9"],a:2,e:"2n + 1 = 7 classes (0 to 6 contributing alleles)."},
+{s:"gen",q:"Genes a–b are 10 cM apart and b–c 20 cM apart. If observed double crossovers are 1%, interference is:",o:["0.2","0.5","0.8","1.0"],a:1,e:"Expected DCO = 0.10 × 0.20 = 2%. Coincidence = 1/2 = 0.5; interference = 1 − 0.5 = 0.5."},
+{s:"gen",q:"In a three-point test cross, the gene in the middle is identified by:",o:["The most frequent classes","Comparing the double-crossover classes with the parental classes","The single-crossover classes alone","The sex of the progeny"],a:1,e:"In the DCO classes only the middle gene has switched relative to the parental arrangement."},
+{s:"gen",q:"For a χ² test of a 3:1 ratio, the degrees of freedom and critical value at p = 0.05 are:",o:["1 and 3.84","2 and 5.99","3 and 7.81","1 and 1.96"],a:0,e:"df = classes − 1 = 1; critical χ² = 3.84."},
+{s:"gen",q:"An affected father and unaffected mother have all daughters affected and no sons affected. The most likely pattern is:",o:["Autosomal dominant","Autosomal recessive","X-linked dominant","Y-linked"],a:2,e:"A father gives his X to every daughter and his Y to every son."},
+{s:"gen",q:"How many Barr bodies are seen in a 48,XXXY individual?",o:["0","1","2","3"],a:2,e:"Barr bodies = X chromosomes − 1 = 2."},
+{s:"gen",q:"Interrupted-mating experiments map bacterial genes in units of:",o:["Centimorgans","Minutes","Kilobases","Percent recombination"],a:1,e:"Hfr genes enter the recipient in order over time, so distance is measured in minutes."},
+{s:"gen",q:"Specialised transduction by phage λ transfers:",o:["Any host gene at random","Only genes next to the λ attachment site, such as gal and bio","Only plasmid genes","Only the F factor"],a:1,e:"Faulty excision of the prophage picks up neighbouring genes. P1 and P22 perform generalised transduction."},
+{s:"gen",q:"Two recessive mutants with the same phenotype are crossed; the trans heterozygote is wild type. This shows the mutations are:",o:["In the same gene","In different genes","Dominant","Linked closely"],a:1,e:"Complementation means each mutant supplies the product the other lacks, so they lie in different genes."},
+{s:"gen",q:"An X-linked recessive allele has frequency 0.08 in males. The expected frequency of affected females is:",o:["0.08","0.016","0.0064","0.0016"],a:2,e:"Male frequency = q = 0.08; affected females = q² = 0.0064."},
+{s:"gen",q:"An autosomal recessive disease affects 1 in 10,000. The carrier frequency is about:",o:["1 in 50","1 in 100","1 in 200","1 in 5,000"],a:0,e:"q² = 1/10,000, q = 0.01, 2pq ≈ 0.0198 ≈ 1 in 50."},
+{s:"gen",q:"In the snail Limnaea, a dd (sinistral allele) mother mated to a DD father produces offspring that coil:",o:["Dextrally, because offspring are Dd","Sinistrally, because the mother’s genotype decides","Half and half","Randomly"],a:1,e:"Maternal effect: coiling follows the mother’s genotype (dd), whatever the offspring genotype."},
+{s:"gen",q:"A Turner syndrome karyotype is:",o:["47,XXY","45,X","47,XYY","47,+21"],a:1,e:"45,X: female, no Barr body. 47,XXY is Klinefelter."},
+{s:"gen",q:"Narrow-sense heritability is the ratio of:",o:["Total genetic variance to phenotypic variance","Additive genetic variance to phenotypic variance","Environmental to phenotypic variance","Dominance to additive variance"],a:1,e:"h² = Va/Vp predicts response to selection; broad-sense H² uses all genetic variance."},
+// BIO
+{s:"bio",q:"Glycine has pKa values of 2.34 and 9.60. Its isoelectric point is about:",o:["2.34","5.97","7.00","9.60"],a:1,e:"pI = (2.34 + 9.60)/2 = 5.97."},
+{s:"bio",q:"Which amino acid side chain is the best buffer near pH 7?",o:["Aspartate","Histidine","Lysine","Arginine"],a:1,e:"Histidine’s imidazole pKa ≈ 6.0, closest to physiological pH."},
+{s:"bio",q:"In an α-helix, the backbone C=O of residue i hydrogen-bonds with the N–H of residue:",o:["i + 2","i + 3","i + 4","i + 5"],a:2,e:"i → i + 4, giving 3.6 residues per turn."},
+{s:"bio",q:"Which disaccharide is non-reducing?",o:["Lactose","Maltose","Sucrose","Cellobiose"],a:2,e:"Sucrose joins C1 of glucose to C2 of fructose, so both anomeric carbons are tied up."},
+{s:"bio",q:"On a Lineweaver–Burk plot, the x-intercept equals:",o:["1/Vmax","−1/Km","Km/Vmax","−Km"],a:1,e:"y-intercept = 1/Vmax; slope = Km/Vmax; x-intercept = −1/Km."},
+{s:"bio",q:"An uncompetitive inhibitor:",o:["Raises Km, leaves Vmax","Lowers both Km and Vmax","Lowers Vmax only","Raises both"],a:1,e:"It binds only the ES complex; Lineweaver–Burk lines are parallel."},
+{s:"bio",q:"At a substrate concentration of 3 × Km, the reaction velocity is what fraction of Vmax?",o:["25%","50%","75%","90%"],a:2,e:"v = 3Km/(Km + 3Km) = 3/4."},
+{s:"bio",q:"An enzyme with kcat/Km near 10⁹ M⁻¹ s⁻¹ is:",o:["Allosterically inhibited","Limited by diffusion of substrate to the enzyme","Working far below capacity","Irreversibly inhibited"],a:1,e:"Such enzymes (triose phosphate isomerase, carbonic anhydrase) are catalytically perfect."},
+{s:"bio",q:"Biotin is the cofactor for:",o:["Transaminases","Pyruvate carboxylase","Pyruvate dehydrogenase","Methylmalonyl-CoA mutase"],a:1,e:"Biotin carries CO₂ for carboxylases. Transaminases use PLP; PDH uses TPP; the mutase uses B12."},
+{s:"bio",q:"Vitamin K is required for:",o:["Hydroxylation of proline","γ-Carboxylation of glutamate in clotting factors","Transamination","Carboxylation of pyruvate"],a:1,e:"Factors II, VII, IX and X need γ-carboxyglutamate to bind Ca²⁺; warfarin blocks vitamin K recycling."},
+{s:"bio",q:"Which enzyme requires thiamine pyrophosphate?",o:["Alanine aminotransferase","Pyruvate dehydrogenase (E1)","Acetyl-CoA carboxylase","Glycogen phosphorylase"],a:1,e:"TPP is used by PDH, α-ketoglutarate DH and transketolase."},
+{s:"bio",q:"The committed, rate-limiting step of glycolysis is catalysed by:",o:["Hexokinase","Phosphofructokinase-1","Aldolase","Pyruvate kinase"],a:1,e:"PFK-1 is activated by AMP and fructose-2,6-bisphosphate and inhibited by ATP and citrate."},
+{s:"bio",q:"Substrate-level phosphorylation in the TCA cycle is carried out by:",o:["Citrate synthase","Isocitrate dehydrogenase","Succinyl-CoA synthetase","Malate dehydrogenase"],a:2,e:"Succinyl-CoA → succinate makes GTP (or ATP)."},
+{s:"bio",q:"Cyanide inhibits which component of the electron transport chain?",o:["Complex I","Complex III","Complex IV","ATP synthase"],a:2,e:"Rotenone → I; antimycin A → III; cyanide, azide, CO → IV; oligomycin → ATP synthase."},
+{s:"bio",q:"Adding 2,4-dinitrophenol to respiring mitochondria:",o:["Stops O₂ consumption","Increases O₂ consumption while ATP synthesis falls","Increases ATP synthesis","Blocks complex I"],a:1,e:"An uncoupler collapses the proton gradient, so electron flow speeds up but energy is lost as heat."},
+{s:"bio",q:"Complete oxidation of one palmitate (C16) yields about how many ATP (modern P/O ratios)?",o:["36","96","106","129"],a:2,e:"8 acetyl-CoA (80 ATP) + 7 FADH₂ (10.5) + 7 NADH (17.5) = 108, minus 2 for activation = 106. (129 uses old P/O values.)"},
+{s:"bio",q:"The rate-limiting enzyme of cholesterol synthesis, targeted by statins, is:",o:["Acetyl-CoA carboxylase","HMG-CoA synthase","HMG-CoA reductase","Squalene epoxidase"],a:2,e:"HMG-CoA reductase converts HMG-CoA to mevalonate."},
+{s:"bio",q:"Which amino acids are purely ketogenic?",o:["Leucine and lysine","Alanine and glycine","Phenylalanine and tyrosine","Serine and threonine"],a:0,e:"Leu and Lys yield only acetyl-CoA or acetoacetate. Phe and Tyr are both glucogenic and ketogenic."},
+{s:"bio",q:"In the urea cycle, the second nitrogen of urea comes from:",o:["Glutamine","Aspartate","Free NH₄⁺","Glycine"],a:1,e:"Aspartate condenses with citrulline (argininosuccinate synthetase). The first N enters as NH₄⁺ via carbamoyl phosphate."},
+{s:"bio",q:"For NADH → O₂, ΔE°′ ≈ +1.14 V and n = 2. ΔG°′ is about:",o:["−110 kJ/mol","−220 kJ/mol","−440 kJ/mol","+220 kJ/mol"],a:1,e:"ΔG°′ = −nFΔE°′ = −2 × 96.5 × 1.14 ≈ −220 kJ/mol."},
+{s:"bio",q:"The Calvin cycle needs how much ATP and NADPH to make one glucose?",o:["12 ATP, 12 NADPH","18 ATP, 12 NADPH","18 ATP, 18 NADPH","36 ATP, 12 NADPH"],a:1,e:"Per CO₂: 3 ATP and 2 NADPH; six CO₂ for one hexose."},
+{s:"bio",q:"Experiments with ¹⁸O showed photosynthetic O₂ comes from:",o:["CO₂","Water","Glucose","Ribulose bisphosphate"],a:1,e:"Ruben and Kamen labelled water and recovered ¹⁸O₂; PSII splits water."},
+{s:"bio",q:"Which enzyme of gluconeogenesis is missing from skeletal muscle?",o:["Pyruvate carboxylase","PEP carboxykinase","Fructose-1,6-bisphosphatase","Glucose-6-phosphatase"],a:3,e:"Without glucose-6-phosphatase, muscle cannot release free glucose from its glycogen."},
+{s:"bio",q:"The pyruvate dehydrogenase complex uses all of these cofactors except:",o:["TPP","Lipoamide","Biotin","FAD"],a:2,e:"PDH uses TPP, lipoamide, CoA, FAD and NAD⁺. Biotin belongs to carboxylases."},
+// DEV
+{s:"dev",q:"The Spemann–Mangold organizer induces neural tissue mainly by secreting proteins that:",o:["Activate BMP signalling","Antagonise BMP signalling (Noggin, Chordin)","Activate Notch","Block Hedgehog"],a:1,e:"Ectoderm becomes neural by default when BMP is blocked; epidermis needs BMP."},
+{s:"dev",q:"The Nieuwkoop centre in Xenopus is defined by:",o:["Nuclear β-catenin in dorsal vegetal cells","Bicoid protein","High BMP4 ventrally","Sonic hedgehog in the notochord"],a:0,e:"Cortical rotation stabilises β-catenin dorsally; these vegetal cells induce the organizer above them."},
+{s:"dev",q:"In amphibians, the dorsal side of the embryo forms:",o:["At the sperm entry point","Opposite the sperm entry point","At the animal pole","Randomly"],a:1,e:"Cortical rotation moves dorsalising factors away from the sperm entry side, forming the grey crescent opposite it."},
+{s:"dev",q:"Embryos from bicoid-mutant mothers typically:",o:["Lack posterior segments","Lack head and thorax structures","Have extra wings","Develop normally"],a:1,e:"Bicoid patterns the anterior; without it, anterior structures are missing and often replaced by posterior ones."},
+{s:"dev",q:"Which is a pair-rule gene?",o:["Krüppel","fushi tarazu","engrailed","Ultrabithorax"],a:1,e:"Krüppel is a gap gene, engrailed a segment-polarity gene, Ubx a Hox gene."},
+{s:"dev",q:"Loss of Ultrabithorax function in Drosophila turns:",o:["Antennae into legs","Halteres into a second pair of wings","Wings into halteres","Legs into antennae"],a:1,e:"Ubx gives the third thoracic segment its identity; without it T3 becomes T2-like (four-winged fly)."},
+{s:"dev",q:"Hox colinearity means that genes at the 3′ end of a cluster are expressed:",o:["More posteriorly and later","More anteriorly and earlier","Only in the head","Only in limbs"],a:1,e:"Chromosomal order matches body axis and timing."},
+{s:"dev",q:"Grafting a ZPA to the anterior margin of a chick limb bud produces:",o:["A truncated limb","Mirror-image duplication of digits","Loss of all digits","No change"],a:1,e:"An extra anterior source of Shh creates a second posterior-to-anterior pattern."},
+{s:"dev",q:"Removing the apical ectodermal ridge early in limb development gives:",o:["Extra digits","A limb missing its distal parts","Normal limb","Webbed digits"],a:1,e:"The AER’s FGFs drive proximal–distal outgrowth; earlier removal truncates more."},
+{s:"dev",q:"Neural crest cells do not give rise to:",o:["Melanocytes","Adrenal medulla","Schwann cells","Skeletal muscle of the limbs"],a:3,e:"Limb muscle comes from somite dermomyotome."},
+{s:"dev",q:"The sclerotome of a somite forms:",o:["Dermis of the back","Vertebrae and ribs","Skeletal muscle","Kidney"],a:1,e:"Dermomyotome gives dermis and muscle; intermediate mesoderm forms kidneys."},
+{s:"dev",q:"An Arabidopsis agamous mutant flower has the whorl pattern:",o:["Sepals, petals, stamens, carpels","Sepals, petals, petals, sepals (repeating)","Carpels, stamens, stamens, carpels","Sepals, sepals, carpels, carpels"],a:1,e:"Without C function, A expands into whorls 3 and 4, and the flower becomes indeterminate."},
+{s:"dev",q:"In C. elegans, CED-9 is the counterpart of mammalian:",o:["Caspase-3","Apaf-1","Bcl-2","Cytochrome c"],a:2,e:"CED-3 = caspase, CED-4 = Apaf-1, CED-9 = Bcl-2 (anti-apoptotic)."},
+{s:"dev",q:"The original Yamanaka factors for making iPS cells are:",o:["Oct4, Sox2, Klf4, c-Myc","Oct4, Nanog, Lin28, Sox2","Pax6, Sox2, Oct4, p53","Cdx2, Oct4, Gata6, Myc"],a:0,e:"Yamanaka (2006) used Oct3/4, Sox2, Klf4 and c-Myc. Thomson’s set used Nanog and Lin28."},
+{s:"dev",q:"The cortical granule reaction at fertilisation is the:",o:["Fast block to polyspermy","Slow block to polyspermy","Acrosome reaction","Capacitation"],a:1,e:"A Ca²⁺ wave triggers exocytosis that lifts the fertilisation envelope. The fast block is membrane depolarisation."},
+{s:"dev",q:"An insect larva moults with high juvenile hormone and ecdysone present. The next stage is:",o:["Another larva","A pupa","An adult","Death"],a:0,e:"High JH keeps the larval programme; low JH gives a pupal moult; no JH gives the adult."},
+{s:"dev",q:"Bird eggs undergo which type of cleavage?",o:["Holoblastic radial","Holoblastic rotational","Meroblastic discoidal","Superficial"],a:2,e:"Large yolk restricts cleavage to a disc on top. Insects show superficial cleavage."},
+// PHYS
+{s:"phys",q:"Fetal haemoglobin has higher O₂ affinity than adult haemoglobin mainly because it:",o:["Has more haem groups","Binds 2,3-BPG poorly","Lacks the Bohr effect","Contains iron in the Fe³⁺ state"],a:1,e:"Its γ chains bind 2,3-BPG weakly, shifting the curve left so O₂ moves from mother to fetus."},
+{s:"phys",q:"Most CO₂ in blood is transported as:",o:["Dissolved CO₂","Carbaminohaemoglobin","Bicarbonate in plasma","Carbonic acid in red cells"],a:2,e:"About 70% as HCO₃⁻, made by carbonic anhydrase in red cells and exchanged for Cl⁻ (chloride shift)."},
+{s:"phys",q:"Which shifts the O₂–haemoglobin dissociation curve to the right?",o:["Lower temperature","Higher pH","Higher 2,3-BPG","Lower PCO₂"],a:2,e:"Right shift = lower affinity: more CO₂, H⁺, temperature or 2,3-BPG."},
+{s:"phys",q:"Pulmonary surfactant is secreted by:",o:["Type I alveolar cells","Type II alveolar cells","Alveolar macrophages","Clara cells"],a:1,e:"Type II cells secrete DPPC-rich surfactant, which lowers surface tension."},
+{s:"phys",q:"The QRS complex of an ECG represents:",o:["Atrial depolarisation","Ventricular depolarisation","Ventricular repolarisation","AV node delay"],a:1,e:"P = atrial depolarisation, QRS = ventricular depolarisation, T = ventricular repolarisation."},
+{s:"phys",q:"Furosemide acts on the:",o:["Na⁺–K⁺–2Cl⁻ cotransporter of the thick ascending limb","Proximal tubule glucose transporter","Collecting duct aquaporin-2","Glomerular filtration barrier"],a:0,e:"Blocking NKCC2 disrupts the countercurrent multiplier, causing strong diuresis."},
+{s:"phys",q:"ADH increases water reabsorption by:",o:["Raising GFR","Inserting aquaporin-2 into collecting-duct cells","Activating NKCC2","Releasing renin"],a:1,e:"V2 receptors → cAMP → aquaporin-2 vesicles fuse with the apical membrane."},
+{s:"phys",q:"The clearance of inulin is used to measure:",o:["Renal plasma flow","Glomerular filtration rate","Tubular secretion","Urine concentration"],a:1,e:"Inulin is filtered but neither reabsorbed nor secreted. PAH clearance measures renal plasma flow."},
+{s:"phys",q:"Tetrodotoxin blocks nerve conduction by blocking:",o:["Voltage-gated K⁺ channels","Voltage-gated Na⁺ channels","Ligand-gated Cl⁻ channels","Na⁺/K⁺-ATPase"],a:1,e:"TTX plugs Na⁺ channels, so action potentials cannot fire. TEA blocks K⁺ channels."},
+{s:"phys",q:"During skeletal muscle contraction, which part of the sarcomere stays the same length?",o:["I band","H zone","A band","Distance between Z lines"],a:2,e:"The A band equals the myosin filament length; I band, H zone and sarcomere shorten."},
+{s:"phys",q:"In skeletal muscle, Ca²⁺ triggers contraction by binding to:",o:["Calmodulin","Troponin C","Tropomyosin","Myosin light chain"],a:1,e:"Ca²⁺ on troponin C moves tropomyosin off actin’s myosin-binding sites. Smooth muscle uses calmodulin."},
+{s:"phys",q:"Botulinum toxin causes flaccid paralysis by:",o:["Blocking nicotinic receptors","Cleaving SNARE proteins needed for ACh release","Inhibiting acetylcholinesterase","Blocking glycine release"],a:1,e:"No ACh is released at the neuromuscular junction. Tetanus toxin blocks inhibitory interneurons (spastic paralysis)."},
+{s:"phys",q:"Cortisol is produced mainly in the:",o:["Zona glomerulosa","Zona fasciculata","Zona reticularis","Adrenal medulla"],a:1,e:"Glomerulosa → aldosterone; fasciculata → cortisol; reticularis → androgens."},
+{s:"phys",q:"Which hormone acts through an intracellular (nuclear) receptor?",o:["Insulin","Glucagon","Thyroxine","ADH"],a:2,e:"Thyroid hormones and steroids enter cells. Insulin uses an RTK; glucagon and ADH use GPCRs."},
+{s:"phys",q:"Strychnine causes convulsions by blocking receptors for:",o:["GABA","Glycine","Glutamate","Acetylcholine"],a:1,e:"Glycine is the main inhibitory transmitter in the spinal cord."},
+{s:"phys",q:"Which antibody class crosses the human placenta?",o:["IgA","IgG","IgM","IgE"],a:1,e:"IgG is transported by the neonatal Fc receptor, giving the newborn passive immunity."},
+{s:"phys",q:"The first antibody made in a primary response, and a pentamer in serum, is:",o:["IgG","IgA","IgM","IgD"],a:2,e:"IgM is pentameric with a J chain and is the best complement activator."},
+{s:"phys",q:"V(D)J recombination in developing lymphocytes requires:",o:["AID","RAG1 and RAG2","Telomerase","Reverse transcriptase"],a:1,e:"RAG1/2 cut at recombination signal sequences. AID drives later somatic hypermutation and class switching."},
+{s:"phys",q:"The tuberculin skin test is an example of which hypersensitivity?",o:["Type I","Type II","Type III","Type IV"],a:3,e:"Delayed-type (48–72 h), mediated by memory T cells and macrophages."},
+{s:"phys",q:"Class switching to IgE is driven mainly by which cytokine?",o:["IFN-γ","IL-4","IL-17","IL-2"],a:1,e:"IL-4 from Th2 cells promotes IgE; IFN-γ favours IgG subclasses that activate macrophages."},
+{s:"phys",q:"HAT medium selects hybridomas because unfused myeloma cells lack:",o:["Thymidine kinase","HGPRT","DHFR","Telomerase"],a:1,e:"Aminopterin blocks de novo synthesis; cells need the HGPRT salvage pathway, which the spleen-cell partner provides."},
+{s:"phys",q:"Peptides presented on MHC class I are recognised by:",o:["CD4⁺ T cells","CD8⁺ T cells","B cells","Neutrophils"],a:1,e:"MHC I → CD8⁺ cytotoxic T cells; MHC II → CD4⁺ helper T cells."},
+{s:"phys",q:"TLR4 recognises:",o:["dsRNA","Flagellin","Lipopolysaccharide","Unmethylated CpG DNA"],a:2,e:"TLR3 dsRNA, TLR5 flagellin, TLR9 CpG DNA."},
+// MICRO
+{s:"micro",q:"Gram-negative bacteria appear pink after Gram staining because:",o:["They lack peptidoglycan","Alcohol disrupts the outer membrane and the thin wall loses the crystal violet–iodine complex","They take up crystal violet poorly","Safranin binds LPS strongly"],a:1,e:"Decolourised cells then take up the safranin counterstain. Gram-positives keep the dye in their thick wall."},
+{s:"micro",q:"Mycoplasma is resistant to penicillin because it:",o:["Makes β-lactamase","Has no cell wall","Has an outer membrane","Forms spores"],a:1,e:"Penicillin targets peptidoglycan cross-linking, which Mycoplasma lacks."},
+{s:"micro",q:"Standard autoclaving conditions are:",o:["100 °C for 30 min","121 °C at 15 psi for about 15–20 min","160 °C dry heat for 2 h","72 °C for 15 s"],a:1,e:"Moist heat under pressure kills spores. 160 °C dry is the hot-air oven; 72 °C for 15 s is pasteurisation."},
+{s:"micro",q:"Bacterial endospore heat resistance is linked to:",o:["Peptidoglycan thickness","A dehydrated core with calcium dipicolinate","Capsule","Teichoic acids"],a:1,e:"Low water and Ca-dipicolinate stabilise the core; small acid-soluble proteins protect DNA."},
+{s:"micro",q:"A culture grows from 1 × 10³ to 1.024 × 10⁶ cells in 200 minutes of exponential growth. The generation time is:",o:["10 min","20 min","40 min","200 min"],a:1,e:"1,024 = 2¹⁰, so 10 generations in 200 min = 20 min per generation."},
+{s:"micro",q:"HIV belongs to which Baltimore class?",o:["IV (+ssRNA)","V (−ssRNA)","VI (+ssRNA with reverse transcriptase)","VII (dsDNA with reverse transcriptase)"],a:2,e:"Retroviruses copy their RNA into DNA. Hepatitis B is class VII."},
+{s:"micro",q:"Negative-sense RNA viruses must package which enzyme in the virion?",o:["Reverse transcriptase","RNA-dependent RNA polymerase","DNA polymerase","Integrase"],a:1,e:"Their genome cannot be translated directly, so they bring the polymerase to make mRNA."},
+{s:"micro",q:"Viroids are:",o:["Small circular RNAs without a protein coat","Misfolded proteins","DNA viruses of bacteria","Defective retroviruses"],a:0,e:"Example: potato spindle tuber viroid. Prions are misfolded proteins."},
+{s:"micro",q:"Antigenic shift in influenza results from:",o:["Point mutations in haemagglutinin","Reassortment of genome segments between strains","Loss of neuraminidase","Recombination with host DNA"],a:1,e:"Shift (reassortment) can cause pandemics; drift (point mutations) causes seasonal change."},
+{s:"micro",q:"Endotoxin of Gram-negative bacteria is:",o:["Lipid A of lipopolysaccharide","Teichoic acid","Peptidoglycan","A secreted A–B protein"],a:0,e:"Lipid A is heat-stable and triggers fever and shock via TLR4. Exotoxins are proteins."},
+{s:"micro",q:"Diphtheria toxin inhibits protein synthesis by:",o:["Binding the 30S subunit","ADP-ribosylating eukaryotic elongation factor 2","Cleaving 28S rRNA","Blocking aminoacyl-tRNA synthetases"],a:1,e:"Inactive eEF2 cannot translocate. Ricin and Shiga toxin attack 28S rRNA instead."},
+{s:"micro",q:"Sulfonamides inhibit bacterial growth by:",o:["Blocking DHFR","Competing with PABA at dihydropteroate synthase","Inhibiting DNA gyrase","Blocking cell wall synthesis"],a:1,e:"They are PABA analogues in folate synthesis. Trimethoprim blocks DHFR; together they act synergistically."},
+{s:"micro",q:"Isoniazid, a first-line TB drug, inhibits synthesis of:",o:["Peptidoglycan","Mycolic acids","RNA","Folate"],a:1,e:"Mycolic acids make the mycobacterial wall waxy and acid-fast. Rifampicin targets RNA polymerase."},
+{s:"micro",q:"Nitrobacter converts:",o:["N₂ to NH₃","NH₃ to NO₂⁻","NO₂⁻ to NO₃⁻","NO₃⁻ to N₂"],a:2,e:"Nitrosomonas does NH₃ → NO₂⁻; Nitrobacter does NO₂⁻ → NO₃⁻; denitrifiers make N₂."},
+{s:"micro",q:"Leghaemoglobin in root nodules:",o:["Fixes nitrogen","Keeps free O₂ low around nitrogenase while supplying O₂ for respiration","Transports ammonia","Stores iron"],a:1,e:"Nitrogenase is O₂-sensitive, but the bacteroids still need O₂ to make ATP."},
+{s:"micro",q:"On MacConkey agar, lactose-fermenting colonies appear:",o:["Colourless","Pink to red","Black","Metallic green"],a:1,e:"Acid from lactose turns the neutral red indicator pink. Metallic green sheen is E. coli on EMB."},
+{s:"micro",q:"Archaeal membrane lipids differ from bacterial lipids by having:",o:["Ester-linked fatty acids","Ether-linked isoprenoid chains","No glycerol","Cholesterol"],a:1,e:"Ether bonds and branched isoprenoids (some forming monolayers) suit extreme environments."},
+// ECO
+{s:"eco",q:"Which ecological pyramid can never be inverted?",o:["Numbers","Biomass","Energy","Both numbers and biomass"],a:2,e:"Energy decreases at each trophic level. Numbers (tree) and biomass (open water) can invert."},
+{s:"eco",q:"An inverted pyramid of biomass is typical of:",o:["Grasslands","Forests","Open-water aquatic ecosystems","Deserts"],a:2,e:"Fast-turnover phytoplankton have a smaller standing biomass than the zooplankton they support."},
+{s:"eco",q:"In logistic growth, the population grows fastest when N equals:",o:["0","K/4","K/2","K"],a:2,e:"dN/dt = rN(1 − N/K) peaks at N = K/2."},
+{s:"eco",q:"A population growing exponentially with r = 0.0693 per year doubles in about:",o:["1 year","6.9 years","10 years","69 years"],a:2,e:"Doubling time = ln 2 / r = 0.693 / 0.0693 = 10 years."},
+{s:"eco",q:"50 fish are marked and released. Later, 40 are caught, of which 10 are marked. Estimated population:",o:["90","200","400","2,000"],a:1,e:"N = (50 × 40)/10 = 200."},
+{s:"eco",q:"Gause’s experiments with Paramecium illustrate:",o:["Mutualism","Competitive exclusion","Predator–prey cycles","Commensalism"],a:1,e:"Two species using the same limiting resource cannot coexist indefinitely."},
+{s:"eco",q:"A type III survivorship curve is typical of:",o:["Humans","Oysters and most fish","Many songbirds","Elephants"],a:1,e:"Very high mortality among the young; few survive to adulthood."},
+{s:"eco",q:"The keystone species concept came from experiments removing:",o:["Wolves in Yellowstone","The sea star Pisaster","Sea otters","Elephants"],a:1,e:"Paine (1966) removed Pisaster and mussels took over, cutting diversity."},
+{s:"eco",q:"Which ecosystem has among the highest net primary productivity per unit area?",o:["Open ocean","Desert","Tropical rainforest","Tundra"],a:2,e:"Rainforests, estuaries, reefs and marshes lead per area; the open ocean leads only in total."},
+{s:"eco",q:"In a stratified lake, the thermocline lies in the:",o:["Epilimnion","Metalimnion","Hypolimnion","Benthic zone"],a:1,e:"The metalimnion is the layer of rapid temperature change between warm surface and cold deep water."},
+{s:"eco",q:"Barnacles living on a whale without affecting it is an example of:",o:["Mutualism","Commensalism","Amensalism","Parasitism"],a:1,e:"+/0: barnacles benefit, the whale is unaffected."},
+{s:"eco",q:"Which biogeochemical cycle has no significant atmospheric phase?",o:["Carbon","Nitrogen","Phosphorus","Water"],a:2,e:"Phosphorus cycles through rock, soil, water and organisms."},
+{s:"eco",q:"Bergmann’s rule states that within a species, body size tends to:",o:["Decrease in colder climates","Increase in colder climates","Be unrelated to climate","Increase near the equator"],a:1,e:"Larger bodies have less surface area per volume, conserving heat."},
+{s:"eco",q:"Net primary productivity equals:",o:["GPP + respiration","GPP − autotroph respiration","Respiration − GPP","Total biomass"],a:1,e:"NPP is what is left for growth and for consumers after producers’ own respiration."},
+// PLANT
+{s:"plant",q:"A cell with ψs = −0.8 MPa and ψp = +0.3 MPa is placed in a solution with ψ = −0.6 MPa. Water will:",o:["Enter the cell","Leave the cell","Not move","First enter, then leave"],a:1,e:"Cell ψ = −0.5 MPa, higher than the solution’s −0.6 MPa, so water moves out."},
+{s:"plant",q:"The Casparian strip in the root endodermis is made of:",o:["Lignin and cellulose","Suberin","Cutin","Callose"],a:1,e:"Suberin blocks the apoplast, forcing water and ions through the symplast."},
+{s:"plant",q:"The cohesion–tension theory of sap ascent was proposed by:",o:["Münch","Dixon and Joly","Went","Garner and Allard"],a:1,e:"Münch proposed phloem pressure flow; Went worked on auxin; Garner and Allard on photoperiodism."},
+{s:"plant",q:"Stomatal opening is driven mainly by:",o:["K⁺ influx into guard cells","Ca²⁺ influx","ABA synthesis","Loss of turgor"],a:0,e:"Blue light activates the H⁺-ATPase, K⁺ enters, water follows and guard cells swell."},
+{s:"plant",q:"Deficiency symptoms appear first in older leaves for:",o:["Calcium","Iron","Nitrogen","Boron"],a:2,e:"N is mobile and moved from old to young leaves; Ca, Fe and B are immobile."},
+{s:"plant",q:"Molybdenum is a component of:",o:["Chlorophyll","Nitrogenase and nitrate reductase","Plastocyanin","Urease"],a:1,e:"Mg is in chlorophyll, Cu in plastocyanin, Ni in urease."},
+{s:"plant",q:"Manganese is essential in photosynthesis for:",o:["Chlorophyll synthesis","The water-splitting cluster of PSII","Ferredoxin","RuBisCO activation"],a:1,e:"The oxygen-evolving complex is Mn₄CaO₅."},
+{s:"plant",q:"Bolting of rosette plants can be induced by applying:",o:["Auxin","Gibberellin","Abscisic acid","Ethylene"],a:1,e:"Gibberellins promote internode elongation; they can substitute for long days or cold in some species."},
+{s:"plant",q:"Delayed leaf senescence (the Richmond–Lang effect) is caused by:",o:["Auxin","Cytokinin","Ethylene","ABA"],a:1,e:"Cytokinins keep leaves green and attract nutrients."},
+{s:"plant",q:"In tissue culture, a high auxin:cytokinin ratio promotes:",o:["Shoot formation","Root formation","Callus death","Flowering"],a:1,e:"High auxin → roots; high cytokinin → shoots; balanced → callus."},
+{s:"plant",q:"The triple response of dark-grown pea seedlings is caused by:",o:["Gibberellin","Cytokinin","Ethylene","Brassinosteroid"],a:2,e:"Shorter, thicker stem and horizontal growth in response to ethylene."},
+{s:"plant",q:"A short-day plant receives a long night interrupted by a brief red flash. It will:",o:["Flower normally","Not flower","Flower earlier","Die"],a:1,e:"Red converts Pr to Pfr, breaking the long night. A far-red flash after the red reverses this."},
+{s:"plant",q:"Florigen has been identified as:",o:["Gibberellic acid","FT protein","Phytochrome A","Auxin"],a:1,e:"FT is made in leaves and moves through phloem to the shoot apex."},
+{s:"plant",q:"The respiratory quotient for fat oxidation is about:",o:["0.7","1.0","1.33","2.0"],a:0,e:"Fats need more O₂ per CO₂ released; carbohydrates give 1.0; malic acid ~1.33."},
+{s:"plant",q:"C4 plants largely avoid photorespiration because:",o:["They lack RuBisCO","PEP carboxylase concentrates CO₂ around RuBisCO in bundle-sheath cells","They close stomata all day","They use PSI only"],a:1,e:"High CO₂ at RuBisCO suppresses its oxygenase activity."},
+{s:"plant",q:"Vernalisation in Arabidopsis promotes flowering by silencing:",o:["FT","FLC","CONSTANS","LEAFY"],a:1,e:"Prolonged cold epigenetically silences the floral repressor FLC."},
+// BPHYS
+{s:"bphys",q:"When double-stranded DNA is heated and denatures, absorbance at 260 nm:",o:["Falls","Rises (hyperchromic effect)","Is unchanged","Shifts to 280 nm"],a:1,e:"Unstacked bases absorb more UV."},
+{s:"bphys",q:"A pure DNA sample has an A260/A280 ratio of about:",o:["1.0","1.5","1.8","2.5"],a:2,e:"About 1.8 for DNA and 2.0 for RNA; lower values suggest protein contamination."},
+{s:"bphys",q:"The Tm of DNA increases with:",o:["Higher AT content","Higher GC content","Adding formamide","Lower salt concentration"],a:1,e:"GC pairs have three H-bonds and stronger stacking; salt shields phosphate repulsion."},
+{s:"bphys",q:"A CD spectrum with negative bands at 208 and 222 nm indicates mostly:",o:["β-sheet","α-helix","Random coil","Polyproline helix"],a:1,e:"β-sheet gives a single negative band near 218 nm; random coil a negative band near 198 nm."},
+{s:"bphys",q:"Which technique gives atomic structures of small proteins in solution?",o:["X-ray crystallography","NMR spectroscopy","CD spectroscopy","SDS-PAGE"],a:1,e:"NMR works in solution; X-ray needs crystals; CD gives only secondary structure content."},
+{s:"bphys",q:"The phase problem is a central difficulty in:",o:["NMR","X-ray crystallography","Mass spectrometry","Fluorescence"],a:1,e:"Detectors record intensities but not phases; heavy atoms, MAD or molecular replacement solve it."},
+{s:"bphys",q:"EPR (ESR) spectroscopy detects:",o:["Nuclear spins","Unpaired electrons","Chirality","Mass-to-charge ratio"],a:1,e:"It studies radicals, metal centres and spin labels."},
+{s:"bphys",q:"The Stokes shift in fluorescence means emission occurs at:",o:["A shorter wavelength than excitation","A longer wavelength than excitation","The same wavelength","Only in the infrared"],a:1,e:"Some energy is lost before emission, so emitted light has lower energy."},
+{s:"bphys",q:"Bragg’s law is written:",o:["E = hν","nλ = 2d sin θ","A = εcl","ΔG = −nFΔE"],a:1,e:"It relates diffraction angle to lattice spacing."},
+{s:"bphys",q:"With λ = 500 nm and NA = 1.4, the Abbe resolution limit d = λ/2NA is about:",o:["50 nm","180 nm","350 nm","700 nm"],a:1,e:"500 / 2.8 ≈ 179 nm."},
+{s:"bphys",q:"³²P has a half-life of 14.3 days. After about 43 days, what fraction remains?",o:["1/2","1/4","1/8","1/16"],a:2,e:"43 days ≈ 3 half-lives, so (1/2)³ = 1/8."},
+{s:"bphys",q:"The hydrophobic effect that drives protein folding is mainly:",o:["Enthalpy-driven by van der Waals forces","Entropy-driven by release of ordered water","Driven by covalent bonds","Driven by ionic bonds"],a:1,e:"Burying nonpolar groups frees structured water, increasing entropy."},
+{s:"bphys",q:"A 30S and a 50S subunit form a 70S ribosome because sedimentation coefficients:",o:["Are additive","Depend on shape and mass and are not additive","Depend only on charge","Are measured in daltons"],a:1,e:"S reflects mass, shape and friction, so combined particles do not sum."},
+{s:"bphys",q:"On a Ramachandran plot, the most permissive residue is:",o:["Proline","Glycine","Tryptophan","Valine"],a:1,e:"Glycine has only H as a side chain; proline’s ring restricts φ."},
+// STATS
+{s:"stats",q:"A sample has SD 10 and n = 25. The standard error of the mean is:",o:["0.4","2","10","250"],a:1,e:"SE = SD/√n = 10/5 = 2."},
+{s:"stats",q:"In a normal distribution, about what fraction lies within ±1.96 SD of the mean?",o:["68%","90%","95%","99.7%"],a:2,e:"68% within ±1 SD, 95% within ±1.96 SD, 99.7% within ±3 SD."},
+{s:"stats",q:"To compare mean expression across four treatment groups, the appropriate test is:",o:["Paired t-test","One-way ANOVA","Chi-square","Correlation"],a:1,e:"ANOVA tests three or more means; repeated t-tests inflate false positives."},
+{s:"stats",q:"A result has p = 0.03 with α = 0.05. This means:",o:["There is a 3% chance the null is true","Data this extreme would occur 3% of the time if the null were true","The effect is large","The experiment must be repeated"],a:1,e:"p is the probability of data at least this extreme under the null. It is not the probability the null is true."},
+{s:"stats",q:"A Type I error is:",o:["Failing to detect a real effect","Rejecting a true null hypothesis","Using the wrong test","Having too few samples"],a:1,e:"A false positive. A Type II error is a false negative."},
+{s:"stats",q:"In a western blot testing a knockdown, why include a sample known to express the protein strongly?",o:["As a negative control","As a positive control showing the antibody and assay work","As a loading control","To raise the sample size"],a:1,e:"Without a positive control, a missing band could just mean the detection failed."},
+{s:"stats",q:"A correlation of r = 0.8 between two variables means:",o:["One causes the other","64% of the variation in one is explained by the linear relation with the other","80% of samples are correlated","The slope is 0.8"],a:1,e:"r² = 0.64. Correlation alone does not show causation."},
+{s:"stats",q:"For strongly skewed data with outliers, the best summary of the centre is the:",o:["Mean","Median","Mode","Range"],a:1,e:"The median is not pulled by extreme values."}
+];
+
+(function(){
+  var KEY = "bitsnb-v1";
+  var store = {answers:{}};
+  try { var raw = localStorage.getItem(KEY); if (raw) { var p = JSON.parse(raw); if (p && p.answers) store = p; } } catch(e) {}
+  function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+  var LETTERS = ["A","B","C","D"];
+  var NAMES = {cell:"Cell biology",mol:"Molecular biology",tech:"Techniques",gen:"Genetics",bio:"Biochemistry",dev:"Development",phys:"Physiology & immunity",micro:"Microbiology",eco:"Ecology",plant:"Plant physiology",bphys:"Biophysics",stats:"Biostatistics"};
+
+  var PERMS = {};
+  function perm(i){
+    if (PERMS[i]) return PERMS[i];
+    var seed = (i + 1) * 2654435761 % 4294967296, a = [0,1,2,3];
+    for (var k = 3; k > 0; k--) { seed = (seed * 1664525 + 1013904223) % 4294967296; var j = Math.floor(seed / 4294967296 * (k + 1)); var t = a[k]; a[k] = a[j]; a[j] = t; }
+    return (PERMS[i] = a);
+  }
+  function L(i, orig){ return LETTERS[perm(i).indexOf(orig)]; }
+  function el(tag, cls, text){ var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+
+  function buildQuestion(i, num){
+    var item = Q[i];
+    var box = el("div","q"); box.id = "q" + i;
+    var stem = el("p","stem"); stem.appendChild(el("span","num", num + ".")); stem.appendChild(document.createTextNode(item.q)); box.appendChild(stem);
+    var opts = el("div","opts");
+    perm(i).forEach(function(orig, k){
+      var b = el("button","opt", LETTERS[k] + ". " + item.o[orig]); b.type = "button";
+      b.addEventListener("click", function(){ if (store.answers[i] === undefined) { store.answers[i] = orig; save(); paint(i); refreshAll(); } });
+      opts.appendChild(b);
+    });
+    box.appendChild(opts);
+    var ex = el("div","expl"); ex.hidden = true; box.appendChild(ex);
+    return box;
+  }
+
+  function paint(i){
+    var box = document.getElementById("q" + i); if (!box) return;
+    var chosen = store.answers[i]; var item = Q[i];
+    var btns = box.querySelectorAll("button.opt");
+    var ex = box.querySelector(".expl");
+    var pm = perm(i);
+    btns.forEach(function(b, k){
+      var orig = pm[k];
+      b.classList.remove("right","wrong"); b.disabled = chosen !== undefined;
+      if (chosen !== undefined) { if (orig === item.a) b.classList.add("right"); else if (orig === chosen) b.classList.add("wrong"); }
+    });
+    if (chosen === undefined) { ex.hidden = true; ex.textContent = ""; }
+    else {
+      ex.hidden = false; ex.textContent = "";
+      var tag = el("b", null, chosen === item.a ? "Correct. " : "Answer: " + L(i, item.a) + ". ");
+      ex.appendChild(tag); ex.appendChild(document.createTextNode(item.e));
+    }
+  }
+
+  document.querySelectorAll(".quiz").forEach(function(div){
+    var s = div.getAttribute("data-subject"); var n = 0;
+    Q.forEach(function(item, i){ if (item.s === s) { n++; div.appendChild(buildQuestion(i, n)); paint(i); } });
+  });
+
+  document.querySelectorAll("[data-reset]").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var s = btn.getAttribute("data-reset");
+      Q.forEach(function(item, i){ if (item.s === s) { delete store.answers[i]; paint(i); } });
+      save(); refreshAll();
+    });
+  });
+  document.getElementById("resetall").addEventListener("click", function(){
+    if (!confirm("Clear every saved answer?")) return;
+    store.answers = {}; save(); Q.forEach(function(_, i){ paint(i); }); refreshAll();
+  });
+
+  function refreshAll(){
+    var totals = {}; var done = 0, right = 0;
+    Q.forEach(function(item, i){
+      var t = totals[item.s] || (totals[item.s] = {n:0, done:0, right:0}); t.n++;
+      var c = store.answers[i];
+      if (c !== undefined) { t.done++; done++; if (c === item.a) { t.right++; right++; } }
+    });
+    document.querySelectorAll("[data-score]").forEach(function(sp){
+      var t = totals[sp.getAttribute("data-score")]; if (!t) return;
+      sp.textContent = t.done ? (t.right + " of " + t.done + " correct, " + (t.n - t.done) + " left") : (t.n + " questions");
+    });
+    var ov = document.getElementById("overall");
+    ov.textContent = done ? ("Answered " + done + " of " + Q.length + " questions; " + Math.round(100 * right / done) + "% correct so far.") : ("0 of " + Q.length + " questions answered. Start with today’s subject.");
+    renderMistakes();
+  }
+
+  function renderMistakes(){
+    var list = document.getElementById("mistakelist"); list.textContent = "";
+    var any = false;
+    Object.keys(NAMES).forEach(function(s){
+      var items = [];
+      Q.forEach(function(item, i){ var c = store.answers[i]; if (item.s === s && c !== undefined && c !== item.a) items.push(i); });
+      if (!items.length) return; any = true;
+      list.appendChild(el("h3", null, NAMES[s] + " (" + items.length + ")"));
+      items.forEach(function(i){
+        var item = Q[i]; var box = el("div","q");
+        box.appendChild(el("p","stem", item.q));
+        var you = el("p", null, "You chose " + L(i, store.answers[i]) + ": " + item.o[store.answers[i]]); you.style.margin = "0 0 .3rem"; you.style.color = "var(--bad)"; box.appendChild(you);
+        var ex = el("div","expl"); ex.appendChild(el("b", null, "Correct: " + L(i, item.a) + ". " + item.o[item.a] + ". ")); ex.appendChild(document.createTextNode(item.e)); box.appendChild(ex);
+        var link = el("a", null, "Go to the notes"); link.href = "#" + s; link.style.display = "inline-block"; link.style.marginTop = ".5rem"; box.appendChild(link);
+        list.appendChild(box);
+      });
+    });
+    if (!any) list.appendChild(el("p","note","No mistakes logged yet. Wrong answers from the subject sets will appear here."));
+  }
+
+  // Mock test
+  var timerId = null;
+  function shuffle(a){ for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function pick(subjects, n){ var pool = []; Q.forEach(function(item, i){ if (subjects.indexOf(item.s) >= 0) pool.push(i); }); return shuffle(pool).slice(0, n); }
+  document.getElementById("mockstart").addEventListener("click", function(){
+    var ids = shuffle(pick(["cell","mol","tech","gen","bio"], 30).concat(pick(["dev","phys","micro"], 13)).concat(pick(["eco","plant","bphys","stats"], 7)));
+    var area = document.getElementById("mockarea"); area.textContent = ""; var mockOrder = [];
+    ids.forEach(function(i, n){
+      var item = Q[i]; var box = el("div","q mockq");
+      box.appendChild(el("p","stem", (n + 1) + ". " + item.q));
+      var opts = el("div","opts"); var order = shuffle([0,1,2,3]); mockOrder[n] = order;
+      order.forEach(function(orig, k){
+        var lab = el("label"); var r = document.createElement("input"); r.type = "radio"; r.name = "m" + n; r.value = orig;
+        lab.appendChild(r); lab.appendChild(document.createTextNode(LETTERS[k] + ". " + item.o[orig])); opts.appendChild(lab);
+      });
+      box.appendChild(opts); area.appendChild(box);
+    });
+    var bar = el("div","toolbar"); bar.style.marginTop = "1rem";
+    var sub = el("button","btn","Submit and score"); sub.type = "button"; bar.appendChild(sub); area.appendChild(bar);
+    var res = el("div"); area.appendChild(res);
+    var end = Date.now() + 90 * 60 * 1000; var t = document.getElementById("mocktimer");
+    if (timerId) clearInterval(timerId);
+    function tick(){
+      var left = Math.max(0, end - Date.now()); var m = Math.floor(left / 60000), s = Math.floor((left % 60000) / 1000);
+      t.textContent = m + ":" + (s < 10 ? "0" : "") + s + " left";
+      if (left <= 0) { clearInterval(timerId); timerId = null; score(); }
+    }
+    tick(); timerId = setInterval(tick, 1000);
+    var scored = false;
+    function score(){
+      if (scored) return; scored = true; if (timerId) { clearInterval(timerId); timerId = null; }
+      t.textContent = "Time stopped";
+      var correct = 0, wrong = 0, blank = 0, bySub = {};
+      ids.forEach(function(i, n){
+        var item = Q[i]; var box = area.children[n];
+        var chosen = box.querySelector("input:checked"); var k = chosen ? Number(chosen.value) : -1;
+        var b = bySub[item.s] || (bySub[item.s] = {c:0, n:0}); b.n++;
+        box.querySelectorAll("input").forEach(function(inp){ inp.disabled = true; });
+        var labels = box.querySelectorAll("label"); var order = mockOrder[n];
+        var ca = order.indexOf(item.a);
+        labels[ca].style.borderColor = "var(--ok)"; labels[ca].style.background = "var(--ok-soft)";
+        if (k === -1) blank++; else if (k === item.a) { correct++; b.c++; } else { wrong++; var wk = order.indexOf(k); labels[wk].style.borderColor = "var(--bad)"; labels[wk].style.background = "var(--bad-soft)"; }
+        var ex = el("div","expl"); ex.appendChild(el("b", null, (k === item.a ? "Correct. " : "Answer: " + LETTERS[ca] + ". "))); ex.appendChild(document.createTextNode(item.e)); box.appendChild(ex);
+      });
+      var total = correct - 0.25 * wrong;
+      res.className = "result"; res.textContent = "";
+      res.appendChild(el("h3", null, "Score: " + total.toFixed(2) + " out of " + ids.length)); res.firstChild.style.marginTop = "0";
+      res.appendChild(el("p", null, correct + " correct, " + wrong + " wrong (−" + (0.25 * wrong).toFixed(2) + "), " + blank + " blank."));
+      var parts = Object.keys(bySub).map(function(s){ return NAMES[s] + " " + bySub[s].c + "/" + bySub[s].n; });
+      res.appendChild(el("p","note", "By subject: " + parts.join("; ") + ". Re-read the notes for any subject below 70%."));
+      sub.disabled = true;
+      res.scrollIntoView({behavior:"smooth", block:"start"});
+    }
+    sub.addEventListener("click", score);
+  });
+
+  refreshAll();
+})();
+</script>
+</body></html>
